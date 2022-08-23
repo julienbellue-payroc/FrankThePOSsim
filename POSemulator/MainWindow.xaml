@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mah:MetroWindow
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:FrankThePOSsum.UserControls"
+    xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+    x:Class="FrankThePOSsum.MainWindow"
+    mc:Ignorable="d"
+    Title="Frank the POSsum"
+    Height="471"
+    Width="Auto"
+    d:DesignWidth="629.436">
+
+    <Window.Resources>
+        <ResourceDictionary Source="images/frank.xaml" />
+    </Window.Resources>
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="SwitchTheme" Content="Switch theme">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconModern Width="22" Height="22" VerticalAlignment="Center" Kind="WeatherSun" />
+                            <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ContentPresenter Grid.Row="0" Content="{StaticResource Frank}" />
+        <Grid Grid.Row="1" Margin="10,10,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                <ComboBox x:Name="ComboBoxEnvironment" SelectionChanged="comboBoxEnvironment_SelectionChanged" MinWidth="100" />
+                <ComboBox x:Name="ComboBoxTerminal" SelectionChanged="comboBoxTerminal_SelectionChanged"  MinWidth="200" />
+            </StackPanel>
+            <TabControl x:Name="TabControlMain" Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Stretch" Width="Auto">
+                <TabItem Header="RunTransaction2">
+                    <local:RunTransaction2 />
+                </TabItem>
+                <TabItem Header="Other">
+                    <local:FullRequest />
+                </TabItem>
+                <TabItem Header="Custom">
+                </TabItem>
+            </TabControl>
+            <Grid Grid.Column="0" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Click="BtnRESTSend_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image emoji:Image.Source="💤" Height="30"/>
+                        <TextBlock Padding="0" FontSize="20">REST</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Click="BtnSOAPSend_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image emoji:Image.Source="🧼" Height="30"/>
+                        <TextBlock Padding="0" FontSize="20">SOAP</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <DockPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" LastChildFill="True">
+                <Button DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Width="150" Click="btnClearLogs_Click">
+                    <Image emoji:Image.Source="♻" Height="30"/>
+                </Button>
+                <ListView DockPanel.Dock="Top" VerticalContentAlignment="Stretch" x:Name="ListViewLogs" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Request" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding Request}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding HttpStatusCode}" />
+                            <GridViewColumn Header="Response" Width="120">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding Response}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</mah:MetroWindow>

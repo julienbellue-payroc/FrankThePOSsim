@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="FrankThePOSsum.UserControls.RunTransaction2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+      mc:Ignorable="d">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+        <StackPanel Grid.IsSharedSizeScope="True">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxApiKey" IsChecked="True">
+                    <TextBlock>API Key</TextBlock>
+                </CheckBox>
+                <CheckBox Grid.Column="1" x:Name="CheckBoxApiPassword" IsChecked="True">
+                    <TextBlock>API Password</TextBlock>
+                </CheckBox>
+                <CheckBox Grid.Column="2" x:Name="CheckBoxTerminalId" IsChecked="True">
+                    <TextBlock>terminal Id</TextBlock>
+                </CheckBox>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="150" SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition Width="*" MinWidth="260"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Row="0" Grid.Column="0" x:Name="CheckBoxCommand" IsChecked="True">
+                    <TextBlock>Command</TextBlock>
+                </CheckBox>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ComboBoxCommand" IsEnabled="{Binding ElementName=CheckBoxCommand, Path=IsChecked}" SelectionChanged="ComboBoxCommand_SelectionChanged" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxRefId">
+                    <TextBlock>refId</TextBlock>
+                </CheckBox>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateRefId_Click" Padding="0">
+                        <Image emoji:Image.Source="🔄" />
+                    </Button>
+                    <TextBox x:Name="TextBoxRefId" VerticalContentAlignment="Center" MinWidth="250" IsEnabled="{Binding ElementName=CheckBoxRefId, Path=IsChecked}"/>
+                </DockPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxAmount">
+                    <TextBlock>Amount</TextBlock>
+                </CheckBox>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0">
+                        <Image emoji:Image.Source="💲"/>
+                    </Button>
+                    <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" MinWidth="250"  IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}" />
+                </DockPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition  SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxToken">
+                    <TextBlock>Token</TextBlock>
+                </CheckBox>
+                <TextBox Grid.Column="1" x:Name="TextBoxToken" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxToken, Path=IsChecked}"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxExpDate">
+                    <TextBlock>ExpDate</TextBlock>
+                </CheckBox>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateExpDate_Click" Padding="0">
+                        <Image emoji:Image.Source="📅"/>
+                    </Button>
+                    <TextBox x:Name="TextBoxExpDate" VerticalContentAlignment="Center" MinWidth="250" IsEnabled="{Binding ElementName=CheckBoxExpDate, Path=IsChecked}"/>
+                </DockPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxInvoiceNumber">
+                    <TextBlock>InvoiceNumber</TextBlock>
+                </CheckBox>
+                <TextBox Grid.Column="1" x:Name="TextBoxInvoiceNumber" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxInvoiceNumber, Path=IsChecked}"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxMerchantId">
+                    <TextBlock>MerchantId</TextBlock>
+                </CheckBox>
+                <TextBox Grid.Column="1" x:Name="TextBoxMerchantId" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxMerchantId, Path=IsChecked}"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxPaymentType">
+                    <TextBlock>PaymentType</TextBlock>
+                </CheckBox>
+                <TextBox Grid.Column="1" x:Name="TextBoxPaymentType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxPaymentType, Path=IsChecked}"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

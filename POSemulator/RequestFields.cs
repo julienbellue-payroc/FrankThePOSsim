@@ -1,0 +1,38 @@
+﻿namespace FrankThePOSsum;
+
+public enum RequestFields
+{
+    Key,
+    Password,
+    TerminalId,
+    Command,
+    RefId,
+    Date,
+    MerchantId,
+    PaymentType,
+    Prompt,
+    Country,
+    BusinessName,
+    ContactName,
+    Address,
+    City,
+    State,
+    ZipCode,
+    Email,
+    Phone,
+    ResellerName,
+    ReferenceId,
+    TerminalSerialNumber,
+    Amount,
+    InvoiceNumber,
+    Token,
+    ExpDate,
+    Type,
+    Url,
+    IsDefault,
+    OptionName,
+    OptionValue,
+    Title,
+    MaxLength,
+    Options
+}

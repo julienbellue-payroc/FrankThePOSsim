@@ -1,5 +1,8 @@
-﻿using System.Net.Http.Json;
+﻿using System;
+using System.Net.Http;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using ControlzEx.Theming;
@@ -59,22 +62,38 @@ namespace FrankThePOSsum
 
         private async void BtnRESTSend_Click(object sender, RoutedEventArgs e)
         {
-            var content = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
-            var body = content.GenerateRestRequestBody();
+            var page = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
 
+            var jsonOptions = new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            };
+            
+            var body = JsonSerializer.Serialize(page.GenerateRestRequestBody(), jsonOptions);
+            HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json"); 
+            var httpRequestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri("https://api.econduitapps.uat.payroc.com/1.0/runTransaction"),
+                Content = httpContent
+            };
             var transaction = new TransactionLogItem
             {
-                Request = JsonSerializer.Serialize(body)
+                Request = body
             };
             App.LogTransaction.Add(transaction);
-            // var response = await App.HttpClient.PostAsJsonAsync($"{App.Environment.RestUrl}/1.0/runTransaction", body);
-            var response = await App.HttpClient.PostAsJsonAsync("https://api.econduitapps.uat.payroc.com/1.0/runTransaction", body);
+            var response = await App.HttpClient.SendAsync(httpRequestMessage);
 
+            Console.WriteLine(httpRequestMessage.ToString());
+            Console.WriteLine(response.Content.ReadAsStringAsync());
             transaction.HttpStatusCode = (int)response.StatusCode;
-            if(response.IsSuccessStatusCode)
-            {
-                transaction.Response = response.Content.ReadAsStringAsync().Result;
-            }
+
+            var responseBody = response.Content.ReadAsStringAsync().Result;
+            transaction.Response = response.IsSuccessStatusCode ?
+                responseBody :
+                $"{response.ReasonPhrase}\n{responseBody}";
+
             ListViewLogs.Items.Refresh();
         }
 
@@ -91,10 +110,10 @@ namespace FrankThePOSsum
             var response = await App.HttpClient.GetAsync(request);
         
             transaction.HttpStatusCode = (int)response.StatusCode;
-            if(response.IsSuccessStatusCode)
-            {
-                transaction.Response = response.Content.ReadAsStringAsync().Result;
-            }
+            var responseBody = response.Content.ReadAsStringAsync().Result;
+            transaction.Response = response.IsSuccessStatusCode ?
+                responseBody :
+                $"{response.ReasonPhrase}\n{responseBody}";
 
             ListViewLogs.Items.Refresh();
         }

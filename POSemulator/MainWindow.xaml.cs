@@ -93,7 +93,7 @@ namespace FrankThePOSsum
 
         private async void SendTransaction(HttpRequestMessage message)
         {
-            var logItem = "message.RequestUri";
+            var logItem = message.RequestUri?.ToString();
             if (message.Content != null)
             {
                 logItem = $"{logItem}\n{message.Content.ReadAsStringAsync().Result}";

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json.Nodes;
 using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsum.observable;
@@ -172,77 +168,78 @@ namespace FrankThePOSsum.UserControls
             }
         }
 
-        private NameValueCollection GenerateQueryString()
+        private Transaction GenerateTransaction()
         {
-            var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            Transaction transaction = new();
 
-            if(CheckBoxApiKey.IsChecked == true)
-                queryString.Add("Key", App.Terminal.ApiKey);
-            if(CheckBoxApiPassword.IsChecked == true)
-                queryString.Add("Password", App.Terminal.ApiPassword);
+            if(CheckBoxApiKey.IsChecked == true && App.Terminal.ApiKey != null)
+                transaction.Key = App.Terminal.ApiKey;
+            if(CheckBoxApiPassword.IsChecked == true && App.Terminal.ApiPassword != null)
+                transaction.Password = App.Terminal.ApiPassword;
             if(CheckBoxTerminalId.IsChecked == true)
-                queryString.Add("TerminalId", App.Terminal.Id.ToString());
+                transaction.TerminalId = App.Terminal.Id.ToString();
             if(CheckBoxCommand.IsChecked == true)
-                queryString.Add("Command", (string)ComboBoxCommand.SelectedValue);
+                transaction.Command = (string)ComboBoxCommand.SelectedValue;
             if(CheckBoxRefId.IsChecked == true)
-                queryString.Add("RefId", TextBoxRefId.Text);
+                transaction.RefId = TextBoxRefId.Text;
             if(CheckBoxDate.IsChecked == true)
-                queryString.Add("Date", TextBoxDate.Text);
+                transaction.Date = TextBoxDate.Text;
             if(CheckBoxMerchantId.IsChecked == true)
-                queryString.Add("MerchantId", TextBoxMerchantId.Text);
+                transaction.MerchantId = TextBoxMerchantId.Text;
             if(CheckBoxPaymentType.IsChecked == true)
-                queryString.Add("PaymentType", TextBoxPaymentType.Text);
+                transaction.PaymentType = TextBoxPaymentType.Text;
             if(CheckBoxPrompt.IsChecked == true)
-                queryString.Add("Prompt", TextBoxPrompt.Text);
+                transaction.Prompt = TextBoxPrompt.Text;
             if(CheckBoxCountry.IsChecked == true)
-                queryString.Add("Country", TextBoxCountry.Text);
+                transaction.Country = TextBoxCountry.Text;
             if(CheckBoxBusinessName.IsChecked == true)
-                queryString.Add("BusinessName", TextBoxBusinessName.Text);
+                transaction.BusinessName = TextBoxBusinessName.Text;
             if(CheckBoxContactName.IsChecked == true)
-                queryString.Add("ContactName", TextBoxContactName.Text);
+                transaction.ContactName = TextBoxContactName.Text;
             if(CheckBoxAddress.IsChecked == true)
-                queryString.Add("Address", TextBoxAddress.Text);
+                transaction.Address = TextBoxAddress.Text;
             if(CheckBoxCity.IsChecked == true)
-                queryString.Add("City", TextBoxCity.Text);
+                transaction.City = TextBoxCity.Text;
             if(CheckBoxState.IsChecked == true)
-                queryString.Add("State", TextBoxState.Text);
+                transaction.State = TextBoxState.Text;
             if(CheckBoxZipCode.IsChecked == true)
-                queryString.Add("ZipCode", TextBoxZipCode.Text);
+                transaction.ZipCode = TextBoxZipCode.Text;
             if(CheckBoxEmail.IsChecked == true)
-                queryString.Add("Email", TextBoxEmail.Text);
+                transaction.Email = TextBoxEmail.Text;
             if(CheckBoxPhone.IsChecked == true)
-                queryString.Add("Phone", TextBoxPhone.Text);
+                transaction.Phone = TextBoxPhone.Text;
             if(CheckBoxResellerName.IsChecked == true)
-                queryString.Add("ResellerName", TextBoxResellerName.Text);
+                transaction.ResellerName = TextBoxResellerName.Text;
             if(CheckBoxReferenceId.IsChecked == true)
-                queryString.Add("ReferenceId", TextBoxReferenceId.Text);
+                transaction.ReferenceId = TextBoxReferenceId.Text;
             if(CheckBoxTerminalSerialNumber.IsChecked == true)
-                queryString.Add("TerminalSerialNumber", TextBoxTerminalSerialNumber.Text);
+                transaction.TerminalSerialNumber = TextBoxTerminalSerialNumber.Text;
             if(CheckBoxAmount.IsChecked == true)
-                queryString.Add("Amount", TextBoxAmount.Text);
+                transaction.Amount = TextBoxAmount.Text;
             if(CheckBoxInvoiceNumber.IsChecked == true)
-                queryString.Add("InvoiceNumber", TextBoxInvoiceNumber.Text);
+                transaction.InvoiceNumber = TextBoxInvoiceNumber.Text;
             if(CheckBoxToken.IsChecked == true)
-                queryString.Add("Token", TextBoxToken.Text);
+                transaction.Token = TextBoxToken.Text;
             if(CheckBoxExpDate.IsChecked == true)
-                queryString.Add("ExpDate", TextBoxExpDate.Text);
+                transaction.ExpDate = TextBoxExpDate.Text;
             if(CheckBoxType.IsChecked == true)
-                queryString.Add("Type", TextBoxType.Text);
+                transaction.Type = TextBoxType.Text;
             if(CheckBoxUrl.IsChecked == true)
-                queryString.Add("Url", TextBoxUrl.Text);
+                transaction.Url = TextBoxUrl.Text;
             if(CheckBoxIsDefault.IsChecked == true)
-                queryString.Add("IsDefault", TextBoxIsDefault.Text);
+                transaction.IsDefault = TextBoxIsDefault.Text;
             if(CheckBoxOptionName.IsChecked == true)
-                queryString.Add("OptionName", TextBoxOptionName.Text);
+                transaction.OptionName = TextBoxOptionName.Text;
             if(CheckBoxOptionValue.IsChecked == true)
-                queryString.Add("OptionValue", TextBoxOptionValue.Text);
+                transaction.OptionValue = TextBoxOptionValue.Text;
             if(CheckBoxTitle.IsChecked == true)
-                queryString.Add("Title", TextBoxTitle.Text);
+                transaction.Title = TextBoxTitle.Text;
             if(CheckBoxMaxLength.IsChecked == true)
-                queryString.Add("MaxLength", TextBoxMaxLength.Text);
+                transaction.MaxLength = TextBoxMaxLength.Text;
             if(CheckBoxOptions.IsChecked == true)
-                queryString.Add("Options", TextBoxOptions.Text);
-            return queryString;
+                transaction.Options = TextBoxOptions.Text;
+            
+            return transaction;
         }
 
         private void ComboBoxEndpoints_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -273,22 +270,11 @@ namespace FrankThePOSsum.UserControls
         public string GenerateSoapRequest()
         {
             var endpoint = (Endpoint)ComboBoxEndpoints.SelectedItem;
-            return $"{App.Environment.SoapUrl}/{endpoint.Uri}?{GenerateQueryString()}";
+            return $"{App.Environment.SoapUrl}/{endpoint.Uri}?{GenerateTransaction().ToQueryString()}";
         }
-
-        private JsonObject GenerateRestBody()
-        {
-            throw new NotImplementedException();
-        }
-        public StringContent GenerateRestRequest()
-        {
-            var restBody = GenerateRestBody();
-            return new StringContent(restBody.ToString(), Encoding.UTF8, "application/json");
-        }
-
         public Transaction GenerateRestRequestBody()
         {
-            throw new NotImplementedException();
+            return GenerateTransaction();
         }
     }
 }

@@ -5,7 +5,7 @@ using FrankThePOSsum.observable;
 
 namespace FrankThePOSsum.UserControls
 {
-    public partial class RunTransaction2: IGenerateRequests
+    public partial class RunTransaction2: IGenerateTransaction
     {
         public RunTransaction2()
         {
@@ -29,7 +29,13 @@ namespace FrankThePOSsum.UserControls
             CheckBoxAmount.IsChecked = true;
             CheckBoxRefId.IsChecked = true;
         }
-        private Transaction GenerateBody()
+
+        public string? GetUri()
+        {
+            //TODO get runTransaction2 for SOAP and runTransaction for REST
+            return "runTransaction";
+        }
+        public Transaction GenerateTransaction()
         {
             Transaction transaction = new();
             if (CheckBoxCommand.IsChecked == true)
@@ -73,15 +79,6 @@ namespace FrankThePOSsum.UserControls
         private void BtnGenerateExpDate_Click(object sender, RoutedEventArgs e)
         {
             TextBoxExpDate.Text = DateTime.Now.ToString("MMddyyyy");
-        }
-
-        public string GenerateSoapRequest()
-        {
-            return $"{App.Environment.SoapUrl}/runTransaction2?{GenerateBody().ToQueryString()}";
-        }
-        public Transaction GenerateRestRequestBody()
-        {
-            return GenerateBody();
         }
     }
 }

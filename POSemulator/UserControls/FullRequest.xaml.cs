@@ -5,7 +5,7 @@ using FrankThePOSsum.observable;
 
 namespace FrankThePOSsum.UserControls
 {
-    public partial class FullRequest: IGenerateRequests
+    public partial class FullRequest: IGenerateTransaction
     {
         public FullRequest()
         {
@@ -168,7 +168,7 @@ namespace FrankThePOSsum.UserControls
             }
         }
 
-        private Transaction GenerateTransaction()
+        public Transaction GenerateTransaction()
         {
             Transaction transaction = new();
 
@@ -266,15 +266,10 @@ namespace FrankThePOSsum.UserControls
         {
             TextBoxIsDefault.Text = "False";
         }
-
-        public string GenerateSoapRequest()
+        public string? GetUri()
         {
             var endpoint = (Endpoint)ComboBoxEndpoints.SelectedItem;
-            return $"{App.Environment.SoapUrl}/{endpoint.Uri}?{GenerateTransaction().ToQueryString()}";
-        }
-        public Transaction GenerateRestRequestBody()
-        {
-            return GenerateTransaction();
+            return endpoint.Uri;
         }
 
         private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)

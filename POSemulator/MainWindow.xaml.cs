@@ -59,56 +59,59 @@ namespace FrankThePOSsum
             ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
             _configuration.DarkMode = _isDarkTheme;
         }
-
+        
         private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
+            var page = (IGenerateTransaction)((TabItem)TabControlMain.SelectedItem).Content;
+            var transaction = page.GenerateTransaction();
 
             var jsonOptions = new JsonSerializerOptions()
             {
                 WriteIndented = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
-            var body = JsonSerializer.Serialize(page.GenerateRestRequestBody(), jsonOptions);
+            var body = JsonSerializer.Serialize(transaction, jsonOptions);
             HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json"); 
             var httpRequestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri("https://api.econduitapps.uat.payroc.com/1.0/runTransaction"),
+                RequestUri = new Uri($"https://api.econduitapps.uat.payroc.com/1.0/{page.GetUri()}"),
                 Content = httpContent
             };
-            SendTransaction(httpRequestMessage);
+            SendTransaction(httpRequestMessage, transaction);
         }
 
         private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
+            var page = (IGenerateTransaction)((TabItem)TabControlMain.SelectedItem).Content;
+            var transaction = page.GenerateTransaction();
+            var uri = $"{App.Environment.SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
             var httpRequestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri(page.GenerateSoapRequest())
+                RequestUri = new Uri(uri)
             };
-            SendTransaction(httpRequestMessage);
+            SendTransaction(httpRequestMessage, transaction);
         }
 
-        private async void SendTransaction(HttpRequestMessage message)
+        private async void SendTransaction(HttpRequestMessage message, Transaction transaction)
         {
             var logItem = message.RequestUri?.ToString();
             if (message.Content != null)
             {
                 logItem = $"{logItem}\n{message.Content.ReadAsStringAsync().Result}";
             }
-            var transaction = new TransactionLogItem
+            var transactionLogItem = new TransactionLogItem
             {
                 Request = logItem
             };
-            App.LogTransaction.Add(transaction);
+            App.LogTransaction.Add(transactionLogItem);
             var response = await App.HttpClient.SendAsync(message);
 
-            transaction.HttpStatusCode = (int)response.StatusCode;
+            transactionLogItem.HttpStatusCode = (int)response.StatusCode;
 
             var responseBody = response.Content.ReadAsStringAsync().Result;
-            transaction.Response = response.IsSuccessStatusCode ?
+            transactionLogItem.Response = response.IsSuccessStatusCode ?
                 responseBody :
                 $"{response.ReasonPhrase}\n{responseBody}";
 

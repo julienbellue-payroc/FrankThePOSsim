@@ -60,7 +60,7 @@ namespace FrankThePOSsum
             _configuration.DarkMode = _isDarkTheme;
         }
 
-        private async void BtnRESTSend_Click(object sender, RoutedEventArgs e)
+        private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
         {
             var page = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
 
@@ -69,7 +69,6 @@ namespace FrankThePOSsum
                 WriteIndented = true,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             };
-            
             var body = JsonSerializer.Serialize(page.GenerateRestRequestBody(), jsonOptions);
             HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json"); 
             var httpRequestMessage = new HttpRequestMessage()
@@ -78,38 +77,36 @@ namespace FrankThePOSsum
                 RequestUri = new Uri("https://api.econduitapps.uat.payroc.com/1.0/runTransaction"),
                 Content = httpContent
             };
-            var transaction = new TransactionLogItem
-            {
-                Request = body
-            };
-            App.LogTransaction.Add(transaction);
-            var response = await App.HttpClient.SendAsync(httpRequestMessage);
-
-            Console.WriteLine(httpRequestMessage.ToString());
-            Console.WriteLine(response.Content.ReadAsStringAsync());
-            transaction.HttpStatusCode = (int)response.StatusCode;
-
-            var responseBody = response.Content.ReadAsStringAsync().Result;
-            transaction.Response = response.IsSuccessStatusCode ?
-                responseBody :
-                $"{response.ReasonPhrase}\n{responseBody}";
-
-            ListViewLogs.Items.Refresh();
+            SendTransaction(httpRequestMessage);
         }
 
-        private async void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
+        private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
         {
-            var content = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
-            var request = content.GenerateSoapRequest();
+            var page = (IGenerateRequests)((TabItem)TabControlMain.SelectedItem).Content;
+            var httpRequestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(page.GenerateSoapRequest())
+            };
+            SendTransaction(httpRequestMessage);
+        }
 
+        private async void SendTransaction(HttpRequestMessage message)
+        {
+            var logItem = "message.RequestUri";
+            if (message.Content != null)
+            {
+                logItem = $"{logItem}\n{message.Content.ReadAsStringAsync().Result}";
+            }
             var transaction = new TransactionLogItem
             {
-                Request = request
+                Request = logItem
             };
             App.LogTransaction.Add(transaction);
-            var response = await App.HttpClient.GetAsync(request);
-        
+            var response = await App.HttpClient.SendAsync(message);
+
             transaction.HttpStatusCode = (int)response.StatusCode;
+
             var responseBody = response.Content.ReadAsStringAsync().Result;
             transaction.Response = response.IsSuccessStatusCode ?
                 responseBody :

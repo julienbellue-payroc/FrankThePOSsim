@@ -2,8 +2,9 @@
 
 namespace FrankThePOSsum;
 
-public interface IGenerateTransaction
+public interface ITransactionControl
 {
     public Transaction GenerateTransaction();
     public string? GetUri();
+    public void SetControlsFromTransaction(Transaction transaction);
 }

@@ -5,7 +5,7 @@ using FrankThePOSsum.observable;
 
 namespace FrankThePOSsum.UserControls
 {
-    public partial class FullRequest: IGenerateTransaction
+    public partial class FullRequest: ITransactionControl
     {
         public FullRequest()
         {
@@ -242,6 +242,104 @@ namespace FrankThePOSsum.UserControls
             return transaction;
         }
 
+        public void SetControlsFromTransaction(Transaction transaction)
+        {
+            CheckBoxApiKey.IsChecked = transaction.Key != null;
+            CheckBoxApiPassword.IsChecked = transaction.Password != null;
+            CheckBoxTerminalId.IsChecked = transaction.TerminalId != null;
+
+            CheckBoxCommand.IsChecked = transaction.Command != null;
+            if (transaction.Command != null)
+                ComboBoxCommand.SelectedValue = transaction.Command;
+
+            CheckBoxRefId.IsChecked = transaction.RefId != null;
+            if(transaction.RefId != null)
+                TextBoxRefId.Text = transaction.RefId;
+            CheckBoxDate.IsChecked = transaction.Date != null; 
+            if(transaction.Date != null)
+                TextBoxDate.Text = transaction.Date;
+            CheckBoxMerchantId.IsChecked = transaction.MerchantId != null; 
+            if(transaction.MerchantId != null)
+                TextBoxMerchantId.Text = transaction.MerchantId;
+            CheckBoxPaymentType.IsChecked = transaction.PaymentType != null; 
+            if(transaction.PaymentType != null)
+                TextBoxPaymentType.Text = transaction.PaymentType;
+            CheckBoxPrompt.IsChecked = transaction.Prompt != null; 
+            if(transaction.Prompt != null)
+                TextBoxPrompt.Text = transaction.Prompt;
+            CheckBoxCountry.IsChecked = transaction.Country != null; 
+            if(transaction.Country != null)
+                TextBoxCountry.Text = transaction.Country;
+            CheckBoxBusinessName.IsChecked = transaction.BusinessName != null; 
+            if(transaction.BusinessName != null)
+                TextBoxBusinessName.Text = transaction.BusinessName;
+            CheckBoxContactName.IsChecked = transaction.ContactName != null; 
+            if(transaction.ContactName != null)
+                TextBoxContactName.Text = transaction.ContactName;
+            CheckBoxAddress.IsChecked = transaction.Address != null; 
+            if(transaction.Address != null)
+                TextBoxAddress.Text = transaction.Address;
+            CheckBoxCity.IsChecked = transaction.City != null; 
+            if(transaction.City != null)
+                TextBoxCity.Text = transaction.City;
+            CheckBoxState.IsChecked = transaction.State != null; 
+            if(transaction.State != null)
+                TextBoxState.Text = transaction.State;
+            CheckBoxZipCode.IsChecked = transaction.ZipCode != null; 
+            if(transaction.ZipCode != null)
+                TextBoxZipCode.Text = transaction.ZipCode;
+            CheckBoxEmail.IsChecked = transaction.Email != null; 
+            if(transaction.Email != null)
+                TextBoxEmail.Text = transaction.Email;
+            CheckBoxPhone.IsChecked = transaction.Phone != null; 
+            if(transaction.Phone != null)
+                TextBoxPhone.Text = transaction.Phone;
+            CheckBoxResellerName.IsChecked = transaction.ResellerName != null; 
+            if(transaction.ResellerName != null)
+                TextBoxResellerName.Text = transaction.ResellerName;
+            CheckBoxReferenceId.IsChecked = transaction.ReferenceId != null; 
+            if(transaction.ReferenceId != null)
+                TextBoxReferenceId.Text = transaction.ReferenceId;
+            CheckBoxTerminalSerialNumber.IsChecked = transaction.TerminalSerialNumber != null; 
+            if(transaction.TerminalSerialNumber != null)
+                TextBoxTerminalSerialNumber.Text = transaction.TerminalSerialNumber;
+            CheckBoxAmount.IsChecked = transaction.Amount != null; 
+            if(transaction.Amount != null)
+                TextBoxAmount.Text = transaction.Amount;
+            CheckBoxInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
+            if(transaction.InvoiceNumber != null)
+                TextBoxInvoiceNumber.Text = transaction.InvoiceNumber;
+            CheckBoxToken.IsChecked = transaction.Token != null; 
+            if(transaction.Token != null)
+                TextBoxToken.Text = transaction.Token;
+            CheckBoxExpDate.IsChecked = transaction.ExpDate != null; 
+            if(transaction.ExpDate != null)
+                TextBoxExpDate.Text = transaction.ExpDate;
+            CheckBoxType.IsChecked = transaction.Type != null; 
+            if(transaction.Type != null)
+                TextBoxType.Text = transaction.Type;
+            CheckBoxUrl.IsChecked = transaction.Url != null; 
+            if(transaction.Url != null)
+                TextBoxUrl.Text = transaction.Url;
+            CheckBoxIsDefault.IsChecked = transaction.IsDefault != null; 
+            if(transaction.IsDefault != null)
+                TextBoxIsDefault.Text = transaction.IsDefault;
+            CheckBoxOptionName.IsChecked = transaction.OptionName != null; 
+            if(transaction.OptionName != null)
+                TextBoxOptionName.Text = transaction.OptionName;
+            CheckBoxOptionValue.IsChecked = transaction.OptionValue != null; 
+            if(transaction.OptionValue != null)
+                TextBoxOptionValue.Text = transaction.OptionValue;
+            CheckBoxTitle.IsChecked = transaction.Title != null; 
+            if(transaction.Title != null)
+                TextBoxTitle.Text = transaction.Title;
+            CheckBoxMaxLength.IsChecked = transaction.MaxLength != null; 
+            if(transaction.MaxLength != null)
+                TextBoxMaxLength.Text = transaction.MaxLength;
+            CheckBoxOptions.IsChecked = transaction.Options != null; 
+            if(transaction.Options != null)
+                TextBoxOptions.Text = transaction.Options;
+        }
         private void ComboBoxEndpoints_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = (ComboBox)sender;

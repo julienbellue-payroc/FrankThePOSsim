@@ -87,6 +87,15 @@
                 <ListView DockPanel.Dock="Top" VerticalContentAlignment="Stretch" x:Name="ListViewLogs" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.View>
                         <GridView>
+                            <GridViewColumn Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Height="26" Width="26" Click="BtnReuseTransaction_Click" Padding="0">
+                                            <Image emoji:Image.Source="⬅" />
+                                        </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="Request" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>

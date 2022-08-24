@@ -5,7 +5,7 @@ using FrankThePOSsum.observable;
 
 namespace FrankThePOSsum.UserControls
 {
-    public partial class RunTransaction2: IGenerateTransaction
+    public partial class RunTransaction2: ITransactionControl
     {
         public RunTransaction2()
         {
@@ -67,7 +67,39 @@ namespace FrankThePOSsum.UserControls
             
             return transaction;
         }
-        
+
+        public void SetControlsFromTransaction(Transaction transaction)
+        {
+            CheckBoxApiKey.IsChecked = transaction.Key != null;
+            CheckBoxApiPassword.IsChecked = transaction.Password != null;
+            CheckBoxTerminalId.IsChecked = transaction.TerminalId != null;
+
+            CheckBoxCommand.IsChecked = transaction.Command != null;
+            if (transaction.Command != null)
+                ComboBoxCommand.SelectedValue = transaction.Command;
+
+            CheckBoxRefId.IsChecked = transaction.RefId != null;
+            if(transaction.RefId != null)
+                TextBoxRefId.Text = transaction.RefId;
+            CheckBoxMerchantId.IsChecked = transaction.MerchantId != null; 
+            if(transaction.MerchantId != null)
+                TextBoxMerchantId.Text = transaction.MerchantId;
+            CheckBoxPaymentType.IsChecked = transaction.PaymentType != null; 
+            if(transaction.PaymentType != null)
+                TextBoxPaymentType.Text = transaction.PaymentType;
+            CheckBoxAmount.IsChecked = transaction.Amount != null; 
+            if(transaction.Amount != null)
+                TextBoxAmount.Text = transaction.Amount;
+            CheckBoxInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
+            if(transaction.InvoiceNumber != null)
+                TextBoxInvoiceNumber.Text = transaction.InvoiceNumber;
+            CheckBoxToken.IsChecked = transaction.Token != null; 
+            if(transaction.Token != null)
+                TextBoxToken.Text = transaction.Token;
+            CheckBoxExpDate.IsChecked = transaction.ExpDate != null; 
+            if(transaction.ExpDate != null)
+                TextBoxExpDate.Text = transaction.ExpDate;
+        }
         private void BtnGenerateRefId_Click(object sender, RoutedEventArgs e)
         {
             TextBoxRefId.Text = Guid.NewGuid().ToString();

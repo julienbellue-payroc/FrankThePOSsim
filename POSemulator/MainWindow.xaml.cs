@@ -62,7 +62,7 @@ namespace FrankThePOSsum
         
         private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (IGenerateTransaction)((TabItem)TabControlMain.SelectedItem).Content;
+            var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
             var transaction = page.GenerateTransaction();
 
             var jsonOptions = new JsonSerializerOptions()
@@ -83,7 +83,7 @@ namespace FrankThePOSsum
 
         private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (IGenerateTransaction)((TabItem)TabControlMain.SelectedItem).Content;
+            var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
             var transaction = page.GenerateTransaction();
             var uri = $"{App.Environment.SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
             var httpRequestMessage = new HttpRequestMessage()
@@ -103,7 +103,8 @@ namespace FrankThePOSsum
             }
             var transactionLogItem = new TransactionLogItem
             {
-                Request = logItem
+                Request = logItem,
+                Transaction = transaction
             };
             App.LogTransaction.Add(transactionLogItem);
             var response = await App.HttpClient.SendAsync(message);
@@ -116,6 +117,16 @@ namespace FrankThePOSsum
                 $"{response.ReasonPhrase}\n{responseBody}";
 
             ListViewLogs.Items.Refresh();
+        }
+
+        private void BtnReuseTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var transactionLogItem = (TransactionLogItem)button.DataContext;
+            
+            var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
+            if (transactionLogItem.Transaction != null)
+                page.SetControlsFromTransaction(transactionLogItem.Transaction);
         }
     }
 }

@@ -30,10 +30,15 @@ namespace FrankThePOSsum.UserControls
             CheckBoxRefId.IsChecked = true;
         }
 
-        public string? GetUri()
+        public string GetUri()
         {
             //TODO get runTransaction2 for SOAP and runTransaction for REST
             return "runTransaction";
+        }
+
+        public void SetUri(string? uri)
+        {
+            // safely ignore there
         }
         public Transaction GenerateTransaction()
         {

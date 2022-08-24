@@ -370,7 +370,7 @@ namespace FrankThePOSsum.UserControls
             return endpoint.Uri;
         }
 
-        public void SetUri(string uri)
+        public void SetUri(string? uri)
         {
             //there probably is a better way to do that, but in the meantime...
             foreach (Endpoint e in ComboBoxEndpoints.Items)

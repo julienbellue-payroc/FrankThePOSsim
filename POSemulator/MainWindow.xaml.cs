@@ -94,7 +94,7 @@ namespace FrankThePOSsum
             SendTransaction(httpRequestMessage, transaction, page.GetUri());
         }
 
-        private async void SendTransaction(HttpRequestMessage message, Transaction transaction, string uri)
+        private async void SendTransaction(HttpRequestMessage message, Transaction transaction, string? uri)
         {
             var logItem = message.RequestUri?.ToString();
             if (message.Content != null)

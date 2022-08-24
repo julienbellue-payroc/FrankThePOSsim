@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-
-namespace FrankThePOSsum;
+﻿namespace FrankThePOSsum;
 
 public interface IGenerateRequests
 {

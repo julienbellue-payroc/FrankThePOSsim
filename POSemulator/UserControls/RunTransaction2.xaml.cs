@@ -35,9 +35,9 @@ namespace FrankThePOSsum.UserControls
             if (CheckBoxCommand.IsChecked == true)
                 transaction.Command = (string)ComboBoxCommand.SelectedValue;
 
-            if (CheckBoxApiKey.IsChecked == true)
+            if (CheckBoxApiKey.IsChecked == true && App.Terminal.ApiKey != null)
                 transaction.Key = App.Terminal.ApiKey;
-            if (CheckBoxApiPassword.IsChecked == true)
+            if (CheckBoxApiPassword.IsChecked == true && App.Terminal.ApiPassword != null)
                 transaction.Password = App.Terminal.ApiPassword;
             if (CheckBoxAmount.IsChecked == true)
                 transaction.Amount = TextBoxAmount.Text;

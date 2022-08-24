@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FrankThePOSsum;
+﻿namespace FrankThePOSsum;
 
 public interface ITransactionControl
 {

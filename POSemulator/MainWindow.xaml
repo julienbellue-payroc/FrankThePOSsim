@@ -90,7 +90,7 @@
                             <GridViewColumn Header="Request" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding Request}" />
+                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Request}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -98,7 +98,7 @@
                             <GridViewColumn Header="Response" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Height="Auto" TextWrapping="Wrap" Text="{Binding Response}"/>
+                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Response}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

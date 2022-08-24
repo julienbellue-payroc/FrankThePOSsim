@@ -370,6 +370,17 @@ namespace FrankThePOSsum.UserControls
             return endpoint.Uri;
         }
 
+        public void SetUri(string uri)
+        {
+            //there probably is a better way to do that, but in the meantime...
+            foreach (Endpoint e in ComboBoxEndpoints.Items)
+            {
+                if (e.Uri != uri) continue;
+                ComboBoxEndpoints.SelectedItem = e;
+                break;
+            }
+        }
+
         private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
         {
             TextBoxAmount.Text = "1";

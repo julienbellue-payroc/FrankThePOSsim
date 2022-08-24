@@ -78,7 +78,7 @@ namespace FrankThePOSsum
                 RequestUri = new Uri($"https://api.econduitapps.uat.payroc.com/1.0/{page.GetUri()}"),
                 Content = httpContent
             };
-            SendTransaction(httpRequestMessage, transaction);
+            SendTransaction(httpRequestMessage, transaction, page.GetUri());
         }
 
         private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
@@ -91,10 +91,10 @@ namespace FrankThePOSsum
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(uri)
             };
-            SendTransaction(httpRequestMessage, transaction);
+            SendTransaction(httpRequestMessage, transaction, page.GetUri());
         }
 
-        private async void SendTransaction(HttpRequestMessage message, Transaction transaction)
+        private async void SendTransaction(HttpRequestMessage message, Transaction transaction, string uri)
         {
             var logItem = message.RequestUri?.ToString();
             if (message.Content != null)
@@ -104,7 +104,8 @@ namespace FrankThePOSsum
             var transactionLogItem = new TransactionLogItem
             {
                 Request = logItem,
-                Transaction = transaction
+                Transaction = transaction,
+                Endpoint = uri
             };
             App.LogTransaction.Add(transactionLogItem);
             var response = await App.HttpClient.SendAsync(message);
@@ -125,8 +126,10 @@ namespace FrankThePOSsum
             var transactionLogItem = (TransactionLogItem)button.DataContext;
             
             var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
-            if (transactionLogItem.Transaction != null)
-                page.SetControlsFromTransaction(transactionLogItem.Transaction);
+            if (transactionLogItem.Transaction == null) return;
+
+            page.SetControlsFromTransaction(transactionLogItem.Transaction);
+            page.SetUri(transactionLogItem.Endpoint);
         }
     }
 }

@@ -309,7 +309,12 @@
                     <CheckBox Grid.Column="0" x:Name="CheckBoxAmount">
                         <TextBlock>Amount</TextBlock>
                     </CheckBox>
-                    <TextBox Grid.Column="1" x:Name="TextBoxAmount" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}"/>
+                    <DockPanel Grid.Column="1" LastChildFill="True">
+                        <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0">
+                            <Image emoji:Image.Source="💰" />
+                        </Button>
+                        <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}"/>
+                    </DockPanel>
                 </Grid>
 
                 <Grid>

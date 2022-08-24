@@ -276,6 +276,11 @@ namespace FrankThePOSsum.UserControls
         {
             return GenerateTransaction();
         }
+
+        private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxAmount.Text = "1";
+        }
     }
 }
 

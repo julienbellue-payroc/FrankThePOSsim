@@ -71,7 +71,7 @@
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
                     <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0">
-                        <Image emoji:Image.Source="💲"/>
+                        <Image emoji:Image.Source="💰"/>
                     </Button>
                     <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" MinWidth="250"  IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}" />
                 </DockPanel>

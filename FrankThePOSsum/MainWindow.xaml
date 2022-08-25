@@ -60,6 +60,7 @@
                     <local:FullRequest />
                 </TabItem>
                 <TabItem Header="Custom">
+                    <local:CustomTransaction />
                 </TabItem>
             </TabControl>
             <Grid Grid.Column="0" Grid.Row="2">

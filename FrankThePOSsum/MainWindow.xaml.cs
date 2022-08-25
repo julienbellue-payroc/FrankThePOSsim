@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using ControlzEx.Theming;
 using Microsoft.Extensions.Options;
 using FrankThePOSsum.observable;
+using FrankThePOSsum.UserControls;
 
 namespace FrankThePOSsum
 {
@@ -62,39 +63,79 @@ namespace FrankThePOSsum
         
         private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
-            var transaction = page.GenerateTransaction();
-
-            var jsonOptions = new JsonSerializerOptions()
-            {
-                WriteIndented = true,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-            };
-            var body = JsonSerializer.Serialize(transaction, jsonOptions);
-            HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json"); 
+            var content = ((TabItem)TabControlMain.SelectedItem).Content;
             var httpRequestMessage = new HttpRequestMessage()
             {
-                Method = HttpMethod.Post,
-                RequestUri = new Uri($"https://api.econduitapps.uat.payroc.com/1.0/{page.GetUri()}"),
-                Content = httpContent
+                Method = HttpMethod.Post
             };
-            SendTransaction(httpRequestMessage, transaction, page.GetUri());
+            string? uri;
+            Transaction? transaction = null;
+            if ((UserControl)content is CustomTransaction customTransaction)
+            {
+                uri = customTransaction.TextBoxEndpoint.Text;
+                httpRequestMessage.RequestUri = new Uri(uri);
+                httpRequestMessage.Content = new StringContent(
+                    customTransaction.TextBoxBody.Text,
+                    Encoding.UTF8,
+                    "application/json");
+            }
+            else
+            {
+                var page = (ITransactionControl)content;
+
+                transaction = page.GenerateTransaction();
+                uri = page.GetUri();
+
+                HttpContent httpContent = new StringContent(
+                    JsonSerializer.Serialize(
+                        transaction,
+                        new JsonSerializerOptions()
+                        {
+                            WriteIndented = true,
+                            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+                        }
+                    ),
+                    Encoding.UTF8,
+                    "application/json"
+                );
+
+                httpRequestMessage.RequestUri = new Uri($"https://api.econduitapps.uat.payroc.com/1.0/{uri}");
+                httpRequestMessage.Content = httpContent;
+            }
+            SendTransaction(httpRequestMessage, transaction, uri);
         }
 
         private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
         {
-            var page = (ITransactionControl)((TabItem)TabControlMain.SelectedItem).Content;
-            var transaction = page.GenerateTransaction();
-            var uri = $"{App.Environment.SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
+            var content = ((TabItem)TabControlMain.SelectedItem).Content;
             var httpRequestMessage = new HttpRequestMessage()
             {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(uri)
+                Method = HttpMethod.Get
             };
-            SendTransaction(httpRequestMessage, transaction, page.GetUri());
+            string? uri;
+            Transaction? transaction = null;
+            if ((UserControl)content is CustomTransaction customTransaction)
+            {
+                uri = customTransaction.TextBoxEndpoint.Text;
+                if (!string.IsNullOrEmpty(customTransaction.TextBoxBody.Text))
+                {
+                    httpRequestMessage.Content = new StringContent(
+                        customTransaction.TextBoxBody.Text,
+                        Encoding.UTF8,
+                        "application/json");
+                }
+            }
+            else
+            {
+                var page = (ITransactionControl)content;
+                transaction = page.GenerateTransaction();
+                uri = $"{App.Environment.SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
+            }
+            httpRequestMessage.RequestUri = new Uri(uri);
+            SendTransaction(httpRequestMessage, transaction, uri);
         }
 
-        private async void SendTransaction(HttpRequestMessage message, Transaction transaction, string? uri)
+        private async void SendTransaction(HttpRequestMessage message, Transaction? transaction, string? uri)
         {
             var logItem = message.RequestUri?.ToString();
             if (message.Content != null)

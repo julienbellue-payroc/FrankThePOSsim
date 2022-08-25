@@ -30,7 +30,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="150" SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition Width="*" MinWidth="260"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -83,7 +83,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition  SharedSizeGroup="ControlGroupHeight" />
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
                 </Grid.RowDefinitions>
                 <CheckBox Grid.Column="0" x:Name="CheckBoxToken">
                     <TextBlock>Token</TextBlock>

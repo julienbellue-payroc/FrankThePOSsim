@@ -38,7 +38,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="150" SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition Width="*" MinWidth="260" SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -52,7 +52,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -71,7 +71,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -90,7 +90,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -104,7 +104,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -118,7 +118,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -132,7 +132,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -146,7 +146,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -160,7 +160,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -174,7 +174,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -188,7 +188,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -202,7 +202,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -216,7 +216,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -230,7 +230,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -244,7 +244,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -258,7 +258,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -272,7 +272,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -286,7 +286,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -300,7 +300,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -319,7 +319,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -333,7 +333,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -347,7 +347,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -361,7 +361,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -375,7 +375,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -389,7 +389,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -411,7 +411,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -425,7 +425,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -439,7 +439,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -453,7 +453,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />
@@ -467,7 +467,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition SharedSizeGroup="ValueControlGroup" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition SharedSizeGroup="ControlGroupHeight" />

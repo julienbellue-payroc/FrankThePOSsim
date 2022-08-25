@@ -11,9 +11,9 @@
     x:Class="FrankThePOSsum.MainWindow"
     mc:Ignorable="d"
     Title="Frank the POSsum"
-    Height="471"
-    Width="Auto"
-    d:DesignWidth="629.436">
+    Width="1300"
+    Height="700"
+    >
 
     <Window.Resources>
         <ResourceDictionary Source="images/frank.xaml" />
@@ -40,7 +40,7 @@
         <ContentPresenter Grid.Row="0" Content="{StaticResource Frank}" />
         <Grid Grid.Row="1" Margin="10,10,10,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="450" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -102,18 +102,18 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Request" Width="120">
+                            <GridViewColumn Header="Request" Width="300">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Request}" />
+                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Path=Request}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding HttpStatusCode}" />
-                            <GridViewColumn Header="Response" Width="120">
+                            <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding Path=HttpStatusCode}" />
+                            <GridViewColumn Header="Response" Width="450">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Path=Response}"/>
+                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Path=Response}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

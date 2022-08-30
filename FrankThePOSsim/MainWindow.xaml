@@ -15,9 +15,6 @@
     Height="700"
     >
 
-    <Window.Resources>
-        <ResourceDictionary Source="images/frank.xaml" />
-    </Window.Resources>
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <Button Click="SwitchTheme" Content="Switch theme">

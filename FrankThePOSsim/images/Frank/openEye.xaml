@@ -1,0 +1,6 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Canvas x:Key="OpenLeftEye">
+        <Ellipse Name="leftEye" Canvas.Left="250" Canvas.Top="254" Width="13.4" Height="13.4" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+    </Canvas>
+</ResourceDictionary>

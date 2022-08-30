@@ -8,7 +8,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
-
+                
+                <ResourceDictionary Source="images/frank.xaml" />
+                <ResourceDictionary Source="images/frank/blinkedEye.xaml" />
+                <ResourceDictionary Source="images/frank/openEye.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

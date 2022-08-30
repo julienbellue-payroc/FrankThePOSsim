@@ -16,15 +16,15 @@ namespace FrankThePOSsim
     {
         private bool _isDarkTheme;
         private readonly Config _configuration;
-
         public MainWindow(IOptions<Config> config)
         {
+            var unusedBlinker = new EyeBlinker(3000, 5000);
             _configuration = config.Value;
 
             InitializeComponent();
             _isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
             ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
-            
+
             ComboBoxEnvironment.DisplayMemberPath = "Name";
             if (_configuration.Environments != null)
                 ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
@@ -36,6 +36,7 @@ namespace FrankThePOSsim
 
             ListViewLogs.ItemsSource = App.LogTransaction;
         }
+
 
         private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -113,17 +113,11 @@
                             <PathGeometry Figures="m 263.91415 295.76001 c 8.2951 0.0251 18.57153 -2.82275 21.00472 16.93929" FillRule="NonZero"/>
                         </Path.Data>
                     </Path>
-                    <Ellipse Canvas.Left="158.6" Canvas.Top="239.1" Width="13.4" Height="13.4" Name="path17062" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
-                    <Path Name="path17118" Fill="#FFF0BEA3" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
-                        <Path.Data>
-                            <PathGeometry Figures="m 277.1683 281.36056 c -1.02594 -15.04202 29.89024 -16.49393 28.62715 1.1978 -0.61949 8.67703 -28.02126 7.68565 -28.62715 -1.1978 z" FillRule="NonZero"/>
-                        </Path.Data>
-                    </Path>
-                    <Path Name="blinkingEye" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
-                        <Path.Data>
-                            <PathGeometry Figures="m 240.28383 262.05082 c -1.86544 -1.75009 23.45099 -16.19818 33.3704 1.01636 1.72417 2.9922 -3.12454 4.23647 -3.47255 3.98073 -16.43984 -12.08096 -28.37877 -3.57195 -29.89785 -4.99709 z" FillRule="NonZero"/>
-                        </Path.Data>
-                    </Path>
+                    <Ellipse Name="rightEye" Canvas.Left="158.6" Canvas.Top="239.1" Width="13.4" Height="13.4" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                    <Canvas>
+                        <ContentPresenter Name="FranksEye" Content="{DynamicResource LeftEye}" />
+                    </Canvas>
+
                 </Canvas>
                 <Canvas Name="Payroclogomain">
                     <Canvas.RenderTransform>

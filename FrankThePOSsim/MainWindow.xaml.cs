@@ -18,7 +18,7 @@ namespace FrankThePOSsim
         private readonly Config _configuration;
         public MainWindow(IOptions<Config> config)
         {
-            var unusedBlinker = new EyeBlinker(3000, 5000);
+            _= new EyeBlinker(3000, 5000);
             _configuration = config.Value;
 
             InitializeComponent();

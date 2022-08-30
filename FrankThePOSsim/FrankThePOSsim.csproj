@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <ApplicationIcon>images\icon.ico</ApplicationIcon>
+        <RootNamespace>FrankThePOSsim</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

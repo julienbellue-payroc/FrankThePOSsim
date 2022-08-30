@@ -119,7 +119,7 @@
                             <PathGeometry Figures="m 277.1683 281.36056 c -1.02594 -15.04202 29.89024 -16.49393 28.62715 1.1978 -0.61949 8.67703 -28.02126 7.68565 -28.62715 -1.1978 z" FillRule="NonZero"/>
                         </Path.Data>
                     </Path>
-                    <Path Name="path19109" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+                    <Path Name="blinkingEye" Fill="#FF3E3E32" StrokeThickness="3" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
                         <Path.Data>
                             <PathGeometry Figures="m 240.28383 262.05082 c -1.86544 -1.75009 23.45099 -16.19818 33.3704 1.01636 1.72417 2.9922 -3.12454 4.23647 -3.47255 3.98073 -16.43984 -12.08096 -28.37877 -3.57195 -29.89785 -4.99709 z" FillRule="NonZero"/>
                         </Path.Data>

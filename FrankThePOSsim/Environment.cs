@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FrankThePOSsum;
+namespace FrankThePOSsim;
 
 public class Environment
 {

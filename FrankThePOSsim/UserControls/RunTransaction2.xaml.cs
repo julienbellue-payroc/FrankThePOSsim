@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using FrankThePOSsum.observable;
+using FrankThePOSsim.observable;
 
-namespace FrankThePOSsum.UserControls
+namespace FrankThePOSsim.UserControls
 {
     public partial class RunTransaction2: ITransactionControl
     {

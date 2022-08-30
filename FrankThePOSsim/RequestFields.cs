@@ -1,4 +1,4 @@
-﻿namespace FrankThePOSsum;
+﻿namespace FrankThePOSsim;
 
 public enum RequestFields
 {

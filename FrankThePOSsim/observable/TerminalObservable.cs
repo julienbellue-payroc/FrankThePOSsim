@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace FrankThePOSsum.observable
+namespace FrankThePOSsim.observable
 {
     internal class TerminalObservable : ObservableCollection<Terminal>
     {

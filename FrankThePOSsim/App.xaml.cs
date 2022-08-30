@@ -6,7 +6,7 @@ using System.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FrankThePOSsum
+namespace FrankThePOSsim
 {
     /// <summary>
     /// Interaction logic for App.xaml

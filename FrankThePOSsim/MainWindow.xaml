@@ -6,11 +6,11 @@
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:FrankThePOSsum.UserControls"
+    xmlns:local="clr-namespace:FrankThePOSsim.UserControls"
     xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
-    x:Class="FrankThePOSsum.MainWindow"
+    x:Class="FrankThePOSsim.MainWindow"
     mc:Ignorable="d"
-    Title="Frank the POSsum"
+    Title="Frank the POSsim"
     Width="1300"
     Height="700"
     >
@@ -88,7 +88,7 @@
                 <ListView DockPanel.Dock="Top"
                           VerticalContentAlignment="Stretch"
                           x:Name="ListViewLogs"
-                          xmlns:lcl="clr-namespace:FrankThePOSsum"
+                          xmlns:lcl="clr-namespace:FrankThePOSsim"
                           d:DataContext="{d:DesignInstance Type=lcl:TransactionLogItem}"
                           SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled">

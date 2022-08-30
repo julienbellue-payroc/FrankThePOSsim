@@ -6,11 +6,11 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using ControlzEx.Theming;
+using FrankThePOSsim.observable;
+using FrankThePOSsim.UserControls;
 using Microsoft.Extensions.Options;
-using FrankThePOSsum.observable;
-using FrankThePOSsum.UserControls;
 
-namespace FrankThePOSsum
+namespace FrankThePOSsim
 {
     public partial class MainWindow
     {

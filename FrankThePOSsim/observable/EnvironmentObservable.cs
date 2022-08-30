@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FrankThePOSsum.observable
+namespace FrankThePOSsim.observable
 {
     internal class EnvironmentObservable : ObservableCollection<Environment>
     {

@@ -152,12 +152,7 @@ namespace FrankThePOSsim
             App.LogTransaction.Add(transactionLogItem);
             var response = await App.HttpClient.SendAsync(message);
 
-            transactionLogItem.HttpStatusCode = (int)response.StatusCode;
-
-            var responseBody = response.Content.ReadAsStringAsync().Result;
-            transactionLogItem.Response = response.IsSuccessStatusCode ?
-                responseBody :
-                $"{response.ReasonPhrase}\n{responseBody}";
+            transactionLogItem.Response = new Response(response);
 
             ListViewLogs.Items.Refresh();
         }

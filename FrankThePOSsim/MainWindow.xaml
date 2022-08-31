@@ -107,11 +107,30 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding Path=HttpStatusCode}" />
                             <GridViewColumn Header="Response" Width="450">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Path=Response}" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Response.HttpStatus, FallbackValue='', Mode=OneWay}" />
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="ResultCode" />
+                                            <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.ResultCode, FallbackValue='', Mode=OneWay}" />
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Message" />
+                                            <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay}" />
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Full message" />
+                                            <Expander Grid.Row="3" Grid.Column="1" IsExpanded="False">
+                                                <TextBox TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=OneWay}" />
+                                            </Expander>
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

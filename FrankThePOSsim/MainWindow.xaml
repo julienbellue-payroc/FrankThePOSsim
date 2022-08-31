@@ -82,6 +82,20 @@
                           VirtualizingPanel.ScrollUnit="Pixel"
                           xmlns:lcl="clr-namespace:FrankThePOSsim"
                           d:DataContext="{d:DesignInstance Type=lcl:TransactionLogItem}">
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="Transparent" />
+                                    <Setter Property="BorderBrush"
+                                            Value="Transparent" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Width="40">
                             <DataGridTemplateColumn.CellTemplate>

@@ -35,7 +35,7 @@ namespace FrankThePOSsim
             ComboBoxTerminal.ItemsSource = new TerminalObservable((Environment)ComboBoxEnvironment.SelectedItem);
             ComboBoxTerminal.SelectedIndex = 0;
 
-            ListViewLogs.ItemsSource = App.LogTransaction;
+            DataGridLogs.ItemsSource = App.LogTransaction;
         }
 
 
@@ -156,7 +156,7 @@ namespace FrankThePOSsim
 
             transactionLogItem.Response = new Response(response);
 
-            ListViewLogs.Items.Refresh();
+            DataGridLogs.Items.Refresh();
         }
 
         private void BtnReuseTransaction_Click(object sender, RoutedEventArgs e)

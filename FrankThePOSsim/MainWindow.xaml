@@ -74,61 +74,61 @@
                 <Button DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Width="150" Click="btnClearLogs_Click">
                     <Image emoji:Image.Source="♻" Height="30"/>
                 </Button>
-                <ListView DockPanel.Dock="Top"
-                          VerticalContentAlignment="Stretch"
-                          x:Name="ListViewLogs"
+                <DataGrid DockPanel.Dock="Top"
+                          AutoGenerateColumns="False"
+                          x:Name="DataGridLogs"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          VirtualizingPanel.ScrollUnit="Pixel"
                           xmlns:lcl="clr-namespace:FrankThePOSsim"
-                          d:DataContext="{d:DesignInstance Type=lcl:TransactionLogItem}"
-                          SelectionMode="Single"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Width="40">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Height="26" Width="26" Click="BtnReuseTransaction_Click" Padding="0">
-                                            <Image emoji:Image.Source="⬅" />
-                                        </Button>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Request" Width="300">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBox Height="Auto" TextWrapping="Wrap" Text="{Binding Path=Request}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Response" Width="450">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                                <RowDefinition Height="Auto"/>
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Response.HttpStatus, FallbackValue='', Mode=OneWay}" />
-                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="ResultCode" />
-                                            <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.ResultCode, FallbackValue='', Mode=OneWay}" />
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Message" />
-                                            <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay}" />
-                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Full message" />
-                                            <Expander Grid.Row="3" Grid.Column="1" IsExpanded="False">
-                                                <TextBox TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=OneWay}" />
-                                            </Expander>
-                                        </Grid>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                          d:DataContext="{d:DesignInstance Type=lcl:TransactionLogItem}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="40">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Height="26" Width="26" Click="BtnReuseTransaction_Click" Padding="0">
+                                        <Image emoji:Image.Source="⬅" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="2*" Header="Request">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Text="{Binding Path=Request, FallbackValue='', Mode=OneWay}"
+                                             IsReadOnly="True"
+                                             TextWrapping="Wrap"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="3*" Header="Response">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Response.HttpStatus, FallbackValue='', Mode=OneWay}" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="ResultCode" />
+                                        <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.ResultCode, FallbackValue='', Mode=OneWay}" />
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Message" />
+                                        <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay}" />
+                                        <Expander Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Header="Full message" IsExpanded="False" Height="Auto">
+                                            <TextBox TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=OneWay}" />
+                                        </Expander>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </DockPanel>
         </Grid>
     </Grid>

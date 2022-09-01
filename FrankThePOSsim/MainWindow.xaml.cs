@@ -118,7 +118,7 @@ namespace FrankThePOSsim
                     "application/json"
                 );
 
-                httpRequestMessage.RequestUri = new Uri($"https://api.econduitapps.uat.payroc.com/1.0/{uri}");
+                httpRequestMessage.RequestUri = new Uri($"{((Environment)ComboBoxEnvironment.SelectedItem).RestUrl}/1.0/{uri}");
                 httpRequestMessage.Content = httpContent;
             }
             SendTransaction(httpRequestMessage, transaction, uri);

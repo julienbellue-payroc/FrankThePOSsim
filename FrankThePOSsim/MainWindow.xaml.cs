@@ -23,8 +23,7 @@ namespace FrankThePOSsim
 
             InitializeComponent();
             _isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
-            Resources["IconSource"] = _isDarkTheme ? "☀" : "🌙";
-            ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
+            SetTheme();
 
             ComboBoxEnvironment.DisplayMemberPath = "Name";
             if (_configuration.Environments != null)
@@ -59,8 +58,13 @@ namespace FrankThePOSsim
         private void SwitchTheme(object sender, RoutedEventArgs e)
         {
             _isDarkTheme = !_isDarkTheme;
-            ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
             _configuration.DarkMode = _isDarkTheme;
+            SetTheme();
+        }
+
+        private void SetTheme()
+        {
+            ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
             Resources["IconSource"] = _isDarkTheme ? "☀" : "🌙";
         }
         

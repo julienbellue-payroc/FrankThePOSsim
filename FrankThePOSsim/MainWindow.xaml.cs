@@ -15,11 +15,24 @@ namespace FrankThePOSsim
     public partial class MainWindow
     {
         private bool _isDarkTheme;
-        private readonly Config _configuration;
-        public MainWindow(IOptions<Config> config)
+        private Config _configuration;
+        public MainWindow(IOptionsMonitor<Config> configurationMonitor)
         {
             _= new EyeBlinker(3000, 5000);
-            _configuration = config.Value;
+            configurationMonitor.OnChange(config =>
+            {
+                _configuration = config;
+                Dispatcher.Invoke(() =>
+                {
+                    if (_configuration.Environments != null)
+                        ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
+                    ComboBoxEnvironment.SelectedIndex = 0;
+                    ComboBoxTerminal.ItemsSource =
+                        new TerminalObservable((Environment)ComboBoxEnvironment.SelectedItem);
+                    ComboBoxTerminal.SelectedIndex = 0;
+                });
+            });
+            _configuration = configurationMonitor.CurrentValue;
 
             InitializeComponent();
             _isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;

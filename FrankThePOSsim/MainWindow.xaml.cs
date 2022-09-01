@@ -41,8 +41,7 @@ namespace FrankThePOSsim
         private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = (ComboBox)sender;
-            App.Environment = (Environment)comboBox.SelectedItem;
-            ComboBoxTerminal.ItemsSource = new TerminalObservable(App.Environment);
+            ComboBoxTerminal.ItemsSource = new TerminalObservable((Environment)comboBox.SelectedItem);
             ComboBoxTerminal.SelectedIndex = 0;
         }
         private void comboBoxTerminal_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -136,7 +135,7 @@ namespace FrankThePOSsim
             {
                 var page = (ITransactionControl)content;
                 transaction = page.GenerateTransaction();
-                uri = $"{App.Environment.SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
+                uri = $"{((Environment)ComboBoxEnvironment.SelectedItem).SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
             }
             httpRequestMessage.RequestUri = new Uri(uri);
             SendTransaction(httpRequestMessage, transaction, uri);

@@ -14,7 +14,6 @@ namespace FrankThePOSsim
 {
     public partial class MainWindow
     {
-        private bool _isDarkTheme;
         private Config _configuration;
         public MainWindow(IOptionsMonitor<Config> configurationMonitor)
         {
@@ -24,6 +23,7 @@ namespace FrankThePOSsim
                 _configuration = config;
                 Dispatcher.Invoke(() =>
                 {
+                    SetTheme();
                     if (_configuration.Environments != null)
                         ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
                     ComboBoxEnvironment.SelectedIndex = 0;
@@ -33,6 +33,7 @@ namespace FrankThePOSsim
                 });
             });
             _configuration = configurationMonitor.CurrentValue;
+
 
             InitializeComponent();
             _isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
@@ -69,15 +70,16 @@ namespace FrankThePOSsim
         }
         private void SwitchTheme(object sender, RoutedEventArgs e)
         {
-            _isDarkTheme = !_isDarkTheme;
-            _configuration.DarkMode = _isDarkTheme;
+            _configuration.DarkMode = _configuration.DarkMode.HasValue && !_configuration.DarkMode.Value;
+            UpdateSetting("DarkMode", _configuration.DarkMode.Value.ToString());
             SetTheme();
         }
 
         private void SetTheme()
         {
-            ThemeManager.Current.ChangeTheme(Application.Current, _isDarkTheme? "Dark.Blue":"Light.Blue");
-            Resources["IconSource"] = _isDarkTheme ? "☀" : "🌙";
+            bool isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
+            ThemeManager.Current.ChangeTheme(Application.Current, isDarkTheme ? "Dark.Blue":"Light.Blue");
+            Resources["IconSource"] = isDarkTheme ? "☀" : "🌙";
         }
         
         private void BtnRESTSend_Click(object sender, RoutedEventArgs e)

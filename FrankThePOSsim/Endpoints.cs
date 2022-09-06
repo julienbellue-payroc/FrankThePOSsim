@@ -5,7 +5,6 @@ namespace FrankThePOSsim
     internal class Endpoints
     {
         public List<Endpoint> All { get; }
-        //TODO triple-check the endpoints and their required fields
         public Endpoints()
         {
             All = new List<Endpoint>
@@ -20,9 +19,34 @@ namespace FrankThePOSsim
                         RequestFields.TerminalId,
                         RequestFields.Command,
                         RequestFields.RefId,
+                        RequestFields.Date
+                    }
+                },
+                new()
+                {
+                    Uri = "checkStatus2",
+                    RequiredFields = new List<RequestFields>()
+                    {
+                        RequestFields.Key,
+                        RequestFields.Password,
+                        RequestFields.TerminalId,
+                        RequestFields.Command,
+                        RequestFields.RefId,
                         RequestFields.Date,
-                        RequestFields.MerchantId,
-                        RequestFields.PaymentType
+                        RequestFields.MerchantId
+                    }
+                },
+                new()
+                {
+                    Uri = "checkStatusList",
+                    RequiredFields = new List<RequestFields>()
+                    {
+                        RequestFields.Key,
+                        RequestFields.Password,
+                        RequestFields.TerminalId,
+                        RequestFields.Command,
+                        RequestFields.RefId,
+                        RequestFields.Date
                     }
                 },
                 new()
@@ -89,7 +113,6 @@ namespace FrankThePOSsim
                     Uri = "pairTerminal",
                     RequiredFields = new List<RequestFields>()
                     {
-                        RequestFields.Country,
                         RequestFields.BusinessName,
                         RequestFields.ContactName,
                         RequestFields.Address,
@@ -103,13 +126,25 @@ namespace FrankThePOSsim
                         RequestFields.TerminalSerialNumber
                     }
                 },
-                //new Endpoint
-                //{
-                //    uri = "pairTerminalWithCountry",
-                //    requiredFields =
-                //    {
-                //    }
-                //},
+                new()
+                {
+                    Uri = "pairTerminalWithCountry",
+                    RequiredFields = new List<RequestFields>()
+                    {
+                        RequestFields.BusinessName,
+                        RequestFields.ContactName,
+                        RequestFields.Address,
+                        RequestFields.City,
+                        RequestFields.State,
+                        RequestFields.ZipCode,
+                        RequestFields.Country,
+                        RequestFields.Email,
+                        RequestFields.Phone,
+                        RequestFields.ResellerName,
+                        RequestFields.ReferenceId,
+                        RequestFields.TerminalSerialNumber
+                    }
+                },
                 new()
                 {
                     Uri = "runTransaction",
@@ -120,11 +155,7 @@ namespace FrankThePOSsim
                         RequestFields.Password,
                         RequestFields.Amount,
                         RequestFields.TerminalId,
-                        RequestFields.RefId,
-                        RequestFields.InvoiceNumber,
-                        RequestFields.MerchantId,
-                        RequestFields.ExpDate,
-                        RequestFields.PaymentType
+                        RequestFields.RefId
                     }
                 },
                 new()
@@ -141,8 +172,7 @@ namespace FrankThePOSsim
                         RequestFields.InvoiceNumber,
                         RequestFields.MerchantId,
                         RequestFields.Token,
-                        RequestFields.ExpDate,
-                        RequestFields.PaymentType
+                        RequestFields.ExpDate
                     }
                 },
                 new()

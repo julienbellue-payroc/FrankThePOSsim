@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -34,9 +35,7 @@ namespace FrankThePOSsim
             });
             _configuration = configurationMonitor.CurrentValue;
 
-
             InitializeComponent();
-            _isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
             SetTheme();
 
             ComboBoxEnvironment.DisplayMemberPath = "Name";
@@ -51,7 +50,23 @@ namespace FrankThePOSsim
             DataGridLogs.ItemsSource = App.LogTransaction;
         }
 
+        private void UpdateSetting()
+        {
+            var jsonWriteOptions = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+            var configurationWrapper = new {
 
+                Config = _configuration
+
+            };
+
+            var newJson = JsonSerializer.Serialize(configurationWrapper, jsonWriteOptions);
+            var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+            File.WriteAllText(appSettingsPath, newJson);
+        }
+        
         private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var comboBox = (ComboBox)sender;
@@ -71,13 +86,13 @@ namespace FrankThePOSsim
         private void SwitchTheme(object sender, RoutedEventArgs e)
         {
             _configuration.DarkMode = _configuration.DarkMode.HasValue && !_configuration.DarkMode.Value;
-            UpdateSetting("DarkMode", _configuration.DarkMode.Value.ToString());
+            UpdateSetting();
             SetTheme();
         }
 
         private void SetTheme()
         {
-            bool isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
+            var isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
             ThemeManager.Current.ChangeTheme(Application.Current, isDarkTheme ? "Dark.Blue":"Light.Blue");
             Resources["IconSource"] = isDarkTheme ? "☀" : "🌙";
         }

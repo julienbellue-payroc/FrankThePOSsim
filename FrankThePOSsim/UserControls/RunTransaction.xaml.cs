@@ -5,9 +5,9 @@ using FrankThePOSsim.observable;
 
 namespace FrankThePOSsim.UserControls
 {
-    public partial class RunTransaction2: ITransactionControl
+    public partial class RunTransaction: ITransactionControl
     {
-        public RunTransaction2()
+        public RunTransaction()
         {
             InitializeComponent();
 
@@ -19,7 +19,6 @@ namespace FrankThePOSsim.UserControls
         {
             var comboBox = (ComboBox)sender;
             var isGift = ((string)comboBox.SelectedItem).ToLower().StartsWith("gift");
-            CheckBoxToken.IsChecked = !isGift;
             CheckBoxExpDate.IsChecked = !isGift;
             CheckBoxInvoiceNumber.IsChecked = !isGift;
             CheckBoxMerchantId.IsChecked = !isGift;
@@ -32,7 +31,6 @@ namespace FrankThePOSsim.UserControls
 
         public string GetUri()
         {
-            //TODO get runTransaction2 for SOAP and runTransaction for REST
             return "runTransaction";
         }
 
@@ -58,8 +56,6 @@ namespace FrankThePOSsim.UserControls
 
             if (CheckBoxRefId.IsChecked == true)
                 transaction.RefId = TextBoxRefId.Text;
-            if (CheckBoxToken.IsChecked == true)
-                transaction.Token = TextBoxToken.Text;
             if (CheckBoxExpDate.IsChecked == true)
                 transaction.ExpDate = TextBoxExpDate.Text;
             if (CheckBoxMerchantId.IsChecked == true)
@@ -98,9 +94,6 @@ namespace FrankThePOSsim.UserControls
             CheckBoxInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
             if(transaction.InvoiceNumber != null)
                 TextBoxInvoiceNumber.Text = transaction.InvoiceNumber;
-            CheckBoxToken.IsChecked = transaction.Token != null; 
-            if(transaction.Token != null)
-                TextBoxToken.Text = transaction.Token;
             CheckBoxExpDate.IsChecked = transaction.ExpDate != null; 
             if(transaction.ExpDate != null)
                 TextBoxExpDate.Text = transaction.ExpDate;

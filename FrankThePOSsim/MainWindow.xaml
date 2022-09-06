@@ -42,8 +42,8 @@
                 <ComboBox x:Name="ComboBoxTerminal" SelectionChanged="comboBoxTerminal_SelectionChanged"  MinWidth="200" />
             </StackPanel>
             <TabControl x:Name="TabControlMain" Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Stretch" Width="Auto">
-                <TabItem Header="RunTransaction2">
-                    <local:RunTransaction2 />
+                <TabItem Header="RunTransaction">
+                    <local:RunTransaction />
                 </TabItem>
                 <TabItem Header="Other">
                     <local:FullRequest />

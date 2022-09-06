@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FrankThePOSsim.UserControls.RunTransaction2"
+﻿<UserControl x:Class="FrankThePOSsim.UserControls.RunTransaction"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -75,20 +75,6 @@
                     </Button>
                     <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" MinWidth="250"  IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}" />
                 </DockPanel>
-            </Grid>
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxToken">
-                    <TextBlock>Token</TextBlock>
-                </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxToken" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxToken, Path=IsChecked}"/>
             </Grid>
 
             <Grid>

@@ -123,7 +123,6 @@ namespace FrankThePOSsim
                         RequestFields.RefId,
                         RequestFields.InvoiceNumber,
                         RequestFields.MerchantId,
-                        RequestFields.Token,
                         RequestFields.ExpDate,
                         RequestFields.PaymentType
                     }

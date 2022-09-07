@@ -10,22 +10,25 @@ jobs:
   deploy:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - uses: actions/setup-dotnet@v1
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.x
           
-      - name: dotnet restore
+      - name: Run dotnet restore
         run: dotnet restore ${{ env.PROJECT_PATH }}
         
-      - name: dotnet build
+      - name: Run dotnet build
         run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
         
-      - name: dotnet publish
+      - name: Run dotnet publish
         run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --no-build
       
-      - uses: actions/create-release@v1
+      - name: Create the release
+        uses: actions/create-release@v1
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,8 +36,11 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
 
-      - uses: csexton/release-asset-action@v2
+      - name: Upload asset to release
+        uses: csexton/release-asset-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pattern: FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/*.exe
+          files: |
+            FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/appsettings.json
+            FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/FrankThePOSsim.exe
           release-url: ${{ steps.create_release.outputs.upload_url }}

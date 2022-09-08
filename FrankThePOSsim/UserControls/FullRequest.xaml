@@ -475,7 +475,7 @@
                 <CheckBox Grid.Column="0" x:Name="CheckBoxOptions">
                     <TextBlock>Options</TextBlock>
                 </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxOptions" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxOptions, Path=IsChecked}"/>
+                <TextBox ToolTipService.ToolTip="Comma separated." Grid.Column="1" x:Name="TextBoxOptions" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxOptions, Path=IsChecked}"/>
             </Grid>
         </StackPanel>
     </ScrollViewer>

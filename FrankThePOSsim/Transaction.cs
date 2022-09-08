@@ -39,7 +39,7 @@ public class Transaction
     public string? OptionValue { get; set; }
     public string? Title { get; set; }
     public string? MaxLength { get; set; }
-    public string? Options { get; set; }
+    public List<string>? Options { get; set; }
     
     
     public string ToQueryString()
@@ -49,14 +49,13 @@ public class Transaction
         foreach (var p in props)
         {
             var value = p.GetValue(this, null);
-            var enumerable = value as ICollection;
-            if (enumerable != null)
+            if (value is ICollection enumerable)
             {
                 result.AddRange(from object v in enumerable select $"{p.Name}={HttpUtility.UrlEncode(v.ToString())}");
             }
             else
             {
-                result.Add(string.Format("{0}={1}", p.Name, HttpUtility.UrlEncode(value?.ToString())));
+                result.Add($"{p.Name}={HttpUtility.UrlEncode(value?.ToString())}");
             }
         }
 

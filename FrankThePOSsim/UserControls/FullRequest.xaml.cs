@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsim.observable;
@@ -237,7 +238,7 @@ namespace FrankThePOSsim.UserControls
             if(CheckBoxMaxLength.IsChecked == true)
                 transaction.MaxLength = TextBoxMaxLength.Text;
             if(CheckBoxOptions.IsChecked == true)
-                transaction.Options = TextBoxOptions.Text;
+                transaction.Options = new List<string>(TextBoxOptions.Text.Split(','));
             
             return transaction;
         }
@@ -338,7 +339,7 @@ namespace FrankThePOSsim.UserControls
                 TextBoxMaxLength.Text = transaction.MaxLength;
             CheckBoxOptions.IsChecked = transaction.Options != null; 
             if(transaction.Options != null)
-                TextBoxOptions.Text = transaction.Options;
+                TextBoxOptions.Text = string.Join(",", transaction.Options);
         }
         private void ComboBoxEndpoints_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {

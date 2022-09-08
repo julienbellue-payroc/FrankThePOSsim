@@ -84,7 +84,6 @@ namespace FrankThePOSsim
                 },
                 new()
                 {
-                    //TODO Options is supposed to be an array.
                     Uri = "getUserSelection",
                     RequiredFields = new List<RequestFields>()
                     {

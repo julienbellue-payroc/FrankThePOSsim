@@ -1,15 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace FrankThePOSsim.observable
+namespace FrankThePOSsim.observable;
+
+internal class EndPointObservable : ObservableCollection<Endpoint>
 {
-    internal class EndPointObservable : ObservableCollection<Endpoint>
+    public EndPointObservable(Endpoints endpoints)
     {
-        public EndPointObservable(Endpoints endpoints)
+        foreach (var endpoint in endpoints.All)
         {
-            foreach (var endpoint in endpoints.All)
-            {
-                Add(endpoint);
-            }
+            Add(endpoint);
         }
     }
 }

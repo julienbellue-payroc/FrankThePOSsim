@@ -1,10 +1,9 @@
-﻿namespace FrankThePOSsim.UserControls
+﻿namespace FrankThePOSsim.UserControls;
+
+public partial class CustomTransaction
 {
-    public partial class CustomTransaction
+    public CustomTransaction()
     {
-        public CustomTransaction()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

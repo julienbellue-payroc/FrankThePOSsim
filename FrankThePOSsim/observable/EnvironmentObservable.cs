@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FrankThePOSsim.observable
+namespace FrankThePOSsim.observable;
+
+internal class EnvironmentObservable : ObservableCollection<Environment>
 {
-    internal class EnvironmentObservable : ObservableCollection<Environment>
+    public EnvironmentObservable(List<Environment> environments)
     {
-        public EnvironmentObservable(List<Environment> environments)
+        foreach (var environment in environments)
         {
-            foreach (var environment in environments)
-            {
-                Add(environment);
-            }
+            Add(environment);
         }
     }
 }

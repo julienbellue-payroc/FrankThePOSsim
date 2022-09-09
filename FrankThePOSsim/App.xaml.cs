@@ -44,7 +44,15 @@ Create a default one?
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile(ConfigFilePath, optional: false, reloadOnChange: true);
 
-        Configuration = builder.Build();
+        try
+        {
+            Configuration = builder.Build();
+        }
+        catch (InvalidDataException ex)
+        {
+            MessageBox.Show($"Invalid configuration file: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            Current.Shutdown();
+        }
 
         var serviceCollection = new ServiceCollection();
         ConfigureServices(serviceCollection);

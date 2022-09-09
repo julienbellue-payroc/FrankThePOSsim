@@ -17,7 +17,7 @@ public partial class MainWindow
     private Config _configuration;
     public MainWindow(IOptionsMonitor<Config> configurationMonitor)
     {
-        _= new EyeBlinker(3000, 5000);
+        _= new Winker(3000, 5000);
         configurationMonitor.OnChange(config =>
         {
             _configuration = config;

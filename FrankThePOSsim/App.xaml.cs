@@ -52,7 +52,7 @@ Create a default one?
         ServiceProvider = serviceCollection.BuildServiceProvider();
             
         //Preload the resources
-        Current.Resources["LeftEye"] = Current.Resources["BlinkedLeftEye"];
+        Current.Resources["LeftEye"] = Current.Resources["ClosedLeftEye"];
         Current.Resources["LeftEye"] = Current.Resources["OpenLeftEye"];
             
         var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();

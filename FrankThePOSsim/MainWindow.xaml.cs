@@ -50,22 +50,10 @@ namespace FrankThePOSsim
             DataGridLogs.ItemsSource = App.LogTransaction;
         }
 
-        private void UpdateSetting()
-        {
-            var jsonWriteOptions = new JsonSerializerOptions()
-            {
-                WriteIndented = true
-            };
-            var configurationWrapper = new {
-
-                Config = _configuration
-
-            };
-
-            var newJson = JsonSerializer.Serialize(configurationWrapper, jsonWriteOptions);
-            var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-            File.WriteAllText(appSettingsPath, newJson);
-        }
+    private void UpdateSetting()
+    {
+        _configuration.SaveToFile();
+    }
         
         private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -35,19 +35,4 @@ public class Config
         };
         return this;
     }
-    public void SaveToFile()
-    {
-        var jsonWriteOptions = new JsonSerializerOptions()
-        {
-            WriteIndented = true
-        };
-        var configurationWrapper = new
-        {
-            Config = this
-        };
-        
-        var newJson = JsonSerializer.Serialize(configurationWrapper, jsonWriteOptions);
-        var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, App.ConfigFilePath);
-        File.WriteAllText(appSettingsPath, newJson);
-    }
 }

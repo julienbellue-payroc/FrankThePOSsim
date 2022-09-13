@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using ControlzEx.Theming;
+using FrankThePOSsim.Helpers;
 using FrankThePOSsim.observable;
 using FrankThePOSsim.UserControls;
 using Microsoft.Extensions.Options;
@@ -51,7 +52,7 @@ public partial class MainWindow
 
     private void UpdateSetting()
     {
-        _configuration.SaveToFile();
+        ConfigSaverHelper.SaveToFile(_configuration);
     }
         
     private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)

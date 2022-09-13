@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Net.Http;
 using System.Windows;
+using FrankThePOSsim.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -37,7 +38,7 @@ Create a default one?
             }
             else
             {
-                new Config().SetDefault().SaveToFile();
+                ConfigSaverHelper.SaveToFile(new Config().SetDefault());
             }
         }
         var builder = new ConfigurationBuilder()

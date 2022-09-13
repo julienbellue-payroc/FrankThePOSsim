@@ -4,14 +4,14 @@ using Newtonsoft.Json.Linq;
 
 namespace FrankThePOSsim;
 
-public class Response
+public class TransactionResponse
 {
     public string? HttpStatus { get; }
     public string? ResultCode { get; }
     public string? Message { get; }
     public string? FullBody { get; }
 
-    public Response(HttpResponseMessage? message)
+    public TransactionResponse(HttpResponseMessage? message)
     {
         if (message == null)
         {

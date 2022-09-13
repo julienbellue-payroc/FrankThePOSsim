@@ -175,7 +175,7 @@ public partial class MainWindow
         App.LogTransaction.Add(transactionLogItem);
         var response = await App.HttpClient.SendAsync(message);
 
-        transactionLogItem.Response = new Response(response);
+        transactionLogItem.Response = new TransactionResponse(response);
 
         DataGridLogs.Items.Refresh();
     }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using FrankThePOSsim.Helpers;
 using FrankThePOSsim.observable;
 
 namespace FrankThePOSsim.UserControls;
@@ -100,14 +100,14 @@ public partial class RunTransaction: ITransactionControl
     }
     private void BtnGenerateRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = Guid.NewGuid().ToString();
+        TextBoxRefId.Text = GenerateFieldValueHelper.GenerateRefId();
     }
     private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxAmount.Text = "1";
+        TextBoxAmount.Text = GenerateFieldValueHelper.GenerateAmount();
     }
     private void BtnGenerateExpDate_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxExpDate.Text = DateTime.Now.ToString("MMddyyyy");
+        TextBoxExpDate.Text = GenerateFieldValueHelper.GenerateDate();
     }
 }

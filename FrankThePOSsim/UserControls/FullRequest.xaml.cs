@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsim.observable;
+using FrankThePOSsim.Helpers;
 
 namespace FrankThePOSsim.UserControls;
 
@@ -349,11 +350,11 @@ public partial class FullRequest: ITransactionControl
 
     private void BtnGenerateRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = Guid.NewGuid().ToString();
+        TextBoxRefId.Text = GenerateFieldValueHelper.GenerateRefId();
     }
     private void BtnGenerateDate_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxDate.Text = DateTime.Now.ToString("MMddyyyy");
+        TextBoxDate.Text = GenerateFieldValueHelper.GenerateDate();
     }
 
     private void BtnSetIsDefaultTrue_Click(object sender, RoutedEventArgs e)
@@ -384,6 +385,6 @@ public partial class FullRequest: ITransactionControl
 
     private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxAmount.Text = "1";
+        TextBoxAmount.Text = GenerateFieldValueHelper.GenerateAmount();
     }
 }

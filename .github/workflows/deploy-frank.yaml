@@ -24,6 +24,9 @@ jobs:
       - name: Run dotnet publish self-contained
         run: dotnet publish ${{ env.PROJECT_PATH }} -o sc -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false
 
+      - name: Rename self-contained file
+        run: Rename-Item -Path "sc/FrankThePOSsim.exe" -NewName "sc/FrankThePOSsim-self-contained.exe"
+
       - name: Create the release
         uses: actions/create-release@v1
         id: create_release
@@ -38,7 +41,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/appsettings.json
+            nsc/appsettings.json
             nsc/FrankThePOSsim.exe
-            sc/FrankThePOSsim.exe
+            sc/FrankThePOSsim-self-contained.exe
           release-url: ${{ steps.create_release.outputs.upload_url }}

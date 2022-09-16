@@ -25,7 +25,7 @@ jobs:
         run: dotnet publish ${{ env.PROJECT_PATH }} -o sc -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false
 
       - name: Rename self-contained file
-        run: Rename-Item -Path "sc/FrankThePOSsim.exe" -NewName "sc/FrankThePOSsim-self-contained.exe"
+        run: Rename-Item -Path "sc/FrankThePOSsim.exe" -NewName "FrankThePOSsim-self-contained.exe"
 
       - name: Create the release
         uses: actions/create-release@v1

@@ -18,8 +18,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Run dotnet publish
-        run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false
+      - name: Run dotnet publish no self-contained
+        run: dotnet publish ${{ env.PROJECT_PATH }} -o nsc -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false
+
+      - name: Run dotnet publish self-contained
+        run: dotnet publish ${{ env.PROJECT_PATH }} -o sc -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false
 
       - name: Create the release
         uses: actions/create-release@v1
@@ -36,5 +39,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/appsettings.json
-            FrankThePOSsim/bin/Release/net6.0-windows/win-x64/publish/FrankThePOSsim.exe
+            nsc/FrankThePOSsim.exe
+            sc/FrankThePOSsim.exe
           release-url: ${{ steps.create_release.outputs.upload_url }}

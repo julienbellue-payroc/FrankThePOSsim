@@ -17,15 +17,6 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-          
-#      - name: Run dotnet restore
-#        run: dotnet restore ${{ env.PROJECT_PATH }}
-#        
-#      - name: Run dotnet build
-#        run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
-#
-#      - name: Run dotnet publish
-#        run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false --no-build
 
       - name: Run dotnet publish
         run: dotnet publish ${{ env.PROJECT_PATH }} -c Release --no-self-contained -r win-x64 -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:CopyLocalLockFileAssemblies=false

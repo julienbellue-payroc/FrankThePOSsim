@@ -38,21 +38,21 @@ public partial class RunTransaction: ITransactionControl
     {
         // safely ignore there
     }
-    public Transaction GenerateTransaction()
+    public Transaction GenerateTransaction(Terminal terminal)
     {
         Transaction transaction = new();
         if (CheckBoxCommand.IsChecked == true)
             transaction.Command = (string)ComboBoxCommand.SelectedValue;
 
-        if (CheckBoxApiKey.IsChecked == true && App.Terminal.ApiKey != null)
-            transaction.Key = App.Terminal.ApiKey;
-        if (CheckBoxApiPassword.IsChecked == true && App.Terminal.ApiPassword != null)
-            transaction.Password = App.Terminal.ApiPassword;
+        if (CheckBoxApiKey.IsChecked == true && terminal.ApiKey != null)
+            transaction.Key = terminal.ApiKey;
+        if (CheckBoxApiPassword.IsChecked == true && terminal.ApiPassword != null)
+            transaction.Password = terminal.ApiPassword;
         if (CheckBoxAmount.IsChecked == true)
             transaction.Amount = TextBoxAmount.Text;
 
         if (CheckBoxTerminalId.IsChecked == true)
-            transaction.TerminalId = App.Terminal.Id.ToString();
+            transaction.TerminalId = terminal.Id.ToString();
 
         if (CheckBoxRefId.IsChecked == true)
             transaction.RefId = TextBoxRefId.Text;

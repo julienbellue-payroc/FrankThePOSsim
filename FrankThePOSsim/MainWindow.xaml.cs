@@ -85,6 +85,11 @@ public partial class MainWindow
         Resources["IconSource"] = isDarkTheme ? "☀" : "🌙";
     }
 
+    private static void ShowTerminalEmptyErrorMessage()
+    {
+        MessageBox.Show("No valid terminal selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+    }
+
     private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
     {
         var content = ((TabItem)TabControlMain.SelectedItem).Content;
@@ -105,9 +110,16 @@ public partial class MainWindow
         }
         else
         {
+            var terminal = (Terminal)ComboBoxTerminal.SelectedItem;
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            if (terminal is null)
+            {
+                ShowTerminalEmptyErrorMessage();
+                return;
+            }
             var page = (ITransactionControl)content;
 
-            transaction = page.GenerateTransaction();
+            transaction = page.GenerateTransaction(terminal);
             uri = page.GetUri();
 
             HttpContent httpContent = new StringContent(
@@ -151,8 +163,15 @@ public partial class MainWindow
         }
         else
         {
+            var terminal = (Terminal)ComboBoxTerminal.SelectedItem;
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            if (terminal is null)
+            {
+                ShowTerminalEmptyErrorMessage();
+                return;
+            }
             var page = (ITransactionControl)content;
-            transaction = page.GenerateTransaction();
+            transaction = page.GenerateTransaction(terminal);
             uri = $"{((Environment)ComboBoxEnvironment.SelectedItem).SoapUrl}/{page.GetUri()}?{transaction.ToQueryString()}";
         }
         httpRequestMessage.RequestUri = new Uri(uri);

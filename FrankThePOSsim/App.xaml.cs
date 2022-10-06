@@ -24,21 +24,8 @@ public partial class App
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        if (!File.Exists(ConfigFilePath))
-        {
-            if (MessageBox.Show(
-                    @$"Configuration file {ConfigFilePath} not found.
-Create a default one?
-(Frank won't run if you press no)",
-                    "Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                Current.Shutdown();
-            }
-            else
-            {
-                ConfigSaverHelper.SaveToFile(new Config().SetDefault());
-            }
-        }
+        CreateDefaultConfigFileIfNeeded();
+
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile(ConfigFilePath, optional: false, reloadOnChange: true);
@@ -57,13 +44,34 @@ Create a default one?
         ConfigureServices(serviceCollection);
 
         ServiceProvider = serviceCollection.BuildServiceProvider();
-            
-        //Preload the resources
-        Current.Resources["LeftEye"] = Current.Resources["ClosedLeftEye"];
-        Current.Resources["LeftEye"] = Current.Resources["OpenLeftEye"];
-            
+
+        PreloadResources();
+
         var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();
+    }
+
+    private static void PreloadResources()
+    {
+        Current.Resources["LeftEye"] = Current.Resources["ClosedLeftEye"];
+        Current.Resources["LeftEye"] = Current.Resources["OpenLeftEye"];
+    }
+
+    private static void CreateDefaultConfigFileIfNeeded()
+    {
+        if (File.Exists(ConfigFilePath)) return;
+        if (MessageBox.Show(
+                @$"Configuration file {ConfigFilePath} not found.
+Create a default one?
+(Frank won't run if you press no)",
+                "Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+        {
+            Current.Shutdown();
+        }
+        else
+        {
+            ConfigSaverHelper.SaveToFile(new Config().SetDefault());
+        }
     }
 
     private void ConfigureServices(IServiceCollection services)

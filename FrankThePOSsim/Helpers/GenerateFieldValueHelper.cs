@@ -6,7 +6,8 @@ public static class GenerateFieldValueHelper
 {
     public static string GenerateRefId()
     {
-        return Guid.NewGuid().ToString();
+        const int maxRefIdLength = 32;
+        return Guid.NewGuid().ToString()[..maxRefIdLength];
     }
     public static string GenerateDate()
     {

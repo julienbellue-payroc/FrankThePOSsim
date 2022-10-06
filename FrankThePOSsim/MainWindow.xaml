@@ -39,7 +39,7 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                 <ComboBox x:Name="ComboBoxEnvironment" SelectionChanged="comboBoxEnvironment_SelectionChanged" MinWidth="100" />
-                <ComboBox x:Name="ComboBoxTerminal" SelectionChanged="comboBoxTerminal_SelectionChanged"  MinWidth="200" />
+                <ComboBox x:Name="ComboBoxTerminal" MinWidth="200" />
             </StackPanel>
             <TabControl x:Name="TabControlMain" Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Stretch" Width="Auto">
                 <TabItem Header="RunTransaction">

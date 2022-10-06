@@ -17,8 +17,6 @@ public partial class App
     public static readonly HttpClient HttpClient = new();
     public static readonly ObservableCollection<TransactionLogItem> LogTransaction = new();
 
-    public static Terminal Terminal = new();
-
     private IServiceProvider? ServiceProvider { get; set; }
     private IConfiguration? Configuration { get; set; }
 

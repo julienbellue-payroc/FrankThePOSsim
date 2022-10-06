@@ -61,11 +61,6 @@ public partial class MainWindow
         ComboBoxTerminal.ItemsSource = new TerminalObservable((Environment)comboBox.SelectedItem);
         ComboBoxTerminal.SelectedIndex = 0;
     }
-    private void comboBoxTerminal_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var comboBox = (ComboBox)sender;
-        App.Terminal = (Terminal)comboBox.SelectedItem;
-    }
 
     private void btnClearLogs_Click(object sender, RoutedEventArgs e)
     {

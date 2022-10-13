@@ -9,7 +9,6 @@
     xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
     x:Class="FrankThePOSsim.MainWindow"
     mc:Ignorable="d"
-    Title="Frank the POSsim"
     Width="1300"
     Height="700"
     >

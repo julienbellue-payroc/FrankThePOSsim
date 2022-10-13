@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using ControlzEx.Theming;
@@ -187,9 +189,19 @@ public partial class MainWindow
             Endpoint = uri
         };
         App.LogTransaction.Add(transactionLogItem);
-        var response = await App.HttpClient.SendAsync(message);
 
-        transactionLogItem.Response = new TransactionResponse(response);
+        try
+        {
+            var response = await App.HttpClient.SendAsync(message);
+            transactionLogItem.Response = new TransactionResponse(response);
+        }
+        catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+        {
+            var errorMessage = new HttpResponseMessage(HttpStatusCode.RequestTimeout);
+            errorMessage.ReasonPhrase = "Request took too long and Frank got bored of waiting";
+            transactionLogItem.Response = new TransactionResponse(errorMessage);
+        }
+
 
         DataGridLogs.Items.Refresh();
     }

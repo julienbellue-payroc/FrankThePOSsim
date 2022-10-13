@@ -29,22 +29,14 @@ jobs:
 
       - name: Rename self-contained file
         run: Rename-Item -Path "sc/FrankThePOSsim.exe" -NewName "FrankThePOSsim-self-contained.exe"
-
+  
       - name: Create the release
-        uses: actions/create-release@v1
-        id: create_release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-
-      - name: Upload asset to release
-        uses: csexton/release-asset-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: "latest"
+          prerelease: false
           files: |
             nsc/appsettings.json
             nsc/FrankThePOSsim.exe
             sc/FrankThePOSsim-self-contained.exe
-          release-url: ${{ steps.create_release.outputs.upload_url }}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -218,5 +219,15 @@ public partial class MainWindow
 
         page.SetControlsFromTransaction(transactionLogItem.Transaction);
         page.SetUri(transactionLogItem.Endpoint);
+    }
+
+    private void ButtonOpenConfig_OnClick(object sender, RoutedEventArgs e)
+    {
+        using var fileOpener = new Process();
+
+        var appPath = AppDomain.CurrentDomain.BaseDirectory + "appsettings.json";
+        fileOpener.StartInfo.FileName = "explorer";
+        fileOpener.StartInfo.Arguments = $"\"{appPath}\"";
+        fileOpener.Start();
     }
 }

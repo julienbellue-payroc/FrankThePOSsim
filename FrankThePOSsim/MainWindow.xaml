@@ -39,6 +39,9 @@
             <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                 <ComboBox x:Name="ComboBoxEnvironment" SelectionChanged="comboBoxEnvironment_SelectionChanged" MinWidth="100" />
                 <ComboBox x:Name="ComboBoxTerminal" MinWidth="200" />
+                <Button ToolTip="Open the config in the default editor" Click="ButtonOpenConfig_OnClick" Height="26" Width="26" Padding="0">
+                    <Image emoji:Image.Source="📝" />
+                </Button>
             </StackPanel>
             <TabControl x:Name="TabControlMain" Grid.Column="0" Grid.Row="1" Height="Auto" VerticalAlignment="Stretch" Width="Auto">
                 <TabItem Header="RunTransaction">

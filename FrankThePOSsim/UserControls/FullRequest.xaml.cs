@@ -49,6 +49,7 @@ public partial class FullRequest: ITransactionControl
         CheckBoxToken.IsChecked = false;
         CheckBoxExpDate.IsChecked = false;
         CheckBoxType.IsChecked = false;
+        CheckBoxData.IsChecked = false;
         CheckBoxUrl.IsChecked = false;
         CheckBoxIsDefault.IsChecked = false;
         CheckBoxOptionName.IsChecked = false;
@@ -143,6 +144,9 @@ public partial class FullRequest: ITransactionControl
                 case RequestFields.Type:
                     CheckBoxType.IsChecked = true;
                     break;
+                case RequestFields.Data:
+                    CheckBoxData.IsChecked = true;
+                    break;
                 case RequestFields.Url:
                     CheckBoxUrl.IsChecked = true;
                     break;
@@ -226,6 +230,8 @@ public partial class FullRequest: ITransactionControl
             transaction.ExpDate = TextBoxExpDate.Text;
         if(CheckBoxType.IsChecked == true)
             transaction.Type = TextBoxType.Text;
+        if(CheckBoxData.IsChecked == true)
+            transaction.Data = TextBoxData.Text;
         if(CheckBoxUrl.IsChecked == true)
             transaction.Url = TextBoxUrl.Text;
         if(CheckBoxIsDefault.IsChecked == true)
@@ -320,6 +326,9 @@ public partial class FullRequest: ITransactionControl
         CheckBoxType.IsChecked = transaction.Type != null; 
         if(transaction.Type != null)
             TextBoxType.Text = transaction.Type;
+        CheckBoxData.IsChecked = transaction.Data != null; 
+        if(transaction.Data != null)
+            TextBoxData.Text = transaction.Data;
         CheckBoxUrl.IsChecked = transaction.Url != null; 
         if(transaction.Url != null)
             TextBoxUrl.Text = transaction.Url;

@@ -33,6 +33,7 @@ public class Transaction
     public string? Token { get; set; }
     public string? ExpDate { get; set; }
     public string? Type { get; set; }
+    public string? Data { get; set; }
     public string? Url { get; set; }
     public string? IsDefault { get; set; }
     public string? OptionName { get; set; }

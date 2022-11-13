@@ -28,6 +28,7 @@ public enum RequestFields
     Token,
     ExpDate,
     Type,
+    Data,
     Url,
     IsDefault,
     OptionName,

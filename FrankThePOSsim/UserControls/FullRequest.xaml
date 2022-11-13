@@ -371,6 +371,20 @@
                 </CheckBox>
                 <TextBox Grid.Column="1" x:Name="TextBoxType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxType, Path=IsChecked}"/>
             </Grid>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition SharedSizeGroup="CheckBoxControlGroup" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="0" x:Name="CheckBoxData">
+                    <TextBlock>Data</TextBlock>
+                </CheckBox>
+                <TextBox Grid.Column="1" x:Name="TextBoxData" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxData, Path=IsChecked}"/>
+            </Grid>
 
             <Grid>
                 <Grid.ColumnDefinitions>

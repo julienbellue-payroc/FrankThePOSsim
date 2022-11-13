@@ -188,6 +188,18 @@ internal class Endpoints
             },
             new()
             {
+                Uri = "showLineItems",
+                RequiredFields = new List<RequestFields>()
+                {
+                    RequestFields.Key,
+                    RequestFields.Password,
+                    RequestFields.TerminalId,
+                    RequestFields.Data,
+                    RequestFields.Type
+                }
+            },
+            new()
+            {
                 Uri = "getTerminalFeatures",
                 RequiredFields = new List<RequestFields>()
                 {

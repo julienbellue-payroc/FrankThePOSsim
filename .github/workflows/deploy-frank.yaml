@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - release
-  pull_request:
-    branches:
-      - release
 env:
   PROJECT_PATH: FrankThePOSsim/FrankThePOSsim.csproj
   DOTNET_CLI_TELEMETRY_OPTOUT: true

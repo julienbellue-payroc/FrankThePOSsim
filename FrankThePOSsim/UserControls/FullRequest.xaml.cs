@@ -396,4 +396,23 @@ public partial class FullRequest: ITransactionControl
     {
         TextBoxAmount.Text = GenerateFieldValueHelper.GenerateAmount();
     }
+
+    private void BtnSetTypeHtml_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxType.Text = "html";
+    }
+
+    private void BtnSetTypeJson_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxType.Text = "json";
+    }
+    private void BtnSetDataHtml_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxData.Text = "<!DOCTYPE html><html><body><h2>Menu</h2><dl><dt>Coffee</dt><dd>- black hot drink</dd><dt>Milk</dt><dd>- cold drink</dd></dl></body></html>";
+    }
+
+    private void BtnSetDataJson_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxData.Text = "{\"header\": {\"fgColor\": \"000000\",\"bgColor\": \"ffffff\",\"fontSz\": \"30\",\"rows\": [{\"text\": \"Joe's Pizza\",\"fontSz\":\"30\"},{\"text\": \"best pizza ever\",\"fontSz\":\"30\"}]},\"body\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"1- Pizza\",\"subText\": \"onions, peppers\",\"amt\":\"$9.00\",\"fgColor\":\"111111\",\"bgColor\":\"cccccc\",\"fontSz\":\"22\"},{\"text\": \"Breadsticks\",\"subText\": \"Marinara\",\"amt\":\"$1.00\",\"fgColor\":\"222222\",\"bgColor\":\"eeeeee\",\"fontSz\":\"22\"}]},\"footer\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"SubTotal\",\"amt\":\"$10.00\",\"fontSz\":\"22\"},{\"text\": \"Tax\",\"amt\":\"$1.00\",\"fontSz\":\"22\"},{\"text\": \"Total\",\"amt\":\"$12.00\",\"fontSz\":\"22\"}]}}";
+    }
 }

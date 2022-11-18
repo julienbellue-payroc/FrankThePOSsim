@@ -369,7 +369,15 @@
                 <CheckBox Grid.Column="0" x:Name="CheckBoxType">
                     <TextBlock>Type</TextBlock>
                 </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxType, Path=IsChecked}"/>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeHtml_Click" Padding="0">
+                        &lt; /&gt;
+                    </Button>
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeJson_Click" Padding="0">
+                        { }
+                    </Button>
+                    <TextBox x:Name="TextBoxType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxType, Path=IsChecked}"/>
+                </DockPanel>
             </Grid>
             
             <Grid>
@@ -383,7 +391,15 @@
                 <CheckBox Grid.Column="0" x:Name="CheckBoxData">
                     <TextBlock>Data</TextBlock>
                 </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxData" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxData, Path=IsChecked}"/>
+                <DockPanel Grid.Column="1" LastChildFill="True">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataHtml_Click" Padding="0">
+                        &lt; /&gt;
+                    </Button>
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataJson_Click" Padding="0">
+                        { }
+                    </Button>
+                    <TextBox x:Name="TextBoxData" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxData, Path=IsChecked}"/>
+                </DockPanel>
             </Grid>
 
             <Grid>

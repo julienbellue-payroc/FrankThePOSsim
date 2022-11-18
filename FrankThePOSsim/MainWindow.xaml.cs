@@ -192,6 +192,7 @@ public partial class MainWindow
             Endpoint = uri
         };
         App.LogTransaction.Add(transactionLogItem);
+        DataGridLogs.ScrollIntoView(transactionLogItem);
 
         try
         {

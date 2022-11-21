@@ -42,7 +42,7 @@ public partial class MainWindow
         SetTheme();
 
 
-        Title = $"Frank the POSsim {ThisAssembly.AssemblyFileVersion}";
+        Title = $"Frank the POSsim {ThisAssembly.AssemblyVersion}";
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);

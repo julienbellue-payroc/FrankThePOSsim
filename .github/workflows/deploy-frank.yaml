@@ -3,7 +3,7 @@ name: "Deploy Frank the POSsim"
 on:
   push:
     tags:
-      - v*
+      - '*'
 env:
   PROJECT_PATH: FrankThePOSsim/FrankThePOSsim.csproj
   DOTNET_CLI_TELEMETRY_OPTOUT: true

@@ -226,7 +226,7 @@ public partial class MainWindow
     {
         using var fileOpener = new Process();
 
-        var appPath = AppDomain.CurrentDomain.BaseDirectory + "appsettings.json";
+        var appPath = App.FullConfigPath;
         fileOpener.StartInfo.FileName = "explorer";
         fileOpener.StartInfo.Arguments = $"\"{appPath}\"";
         fileOpener.Start();

@@ -21,15 +21,19 @@ public partial class App
     private IServiceProvider? ServiceProvider { get; set; }
     private IConfiguration? Configuration { get; set; }
 
-    public const string ConfigFilePath = "appsettings.json";
+    private static string _configFilePath = String.Empty;
+    private static readonly string ConfigFileName = "appsettings.json";
+    public static string FullConfigPath = String.Empty;
 
     protected override void OnStartup(StartupEventArgs e)
     {
+        _configFilePath = System.Environment.ExpandEnvironmentVariables(@"%AppData%\FrankThePOSsim\");
+        FullConfigPath = _configFilePath + ConfigFileName;
         CreateDefaultConfigFileIfNeeded();
 
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile(ConfigFilePath, optional: false, reloadOnChange: true);
+            .AddJsonFile(FullConfigPath, optional: false, reloadOnChange: true);
 
         try
         {
@@ -61,9 +65,9 @@ public partial class App
 
     private static void CreateDefaultConfigFileIfNeeded()
     {
-        if (File.Exists(ConfigFilePath)) return;
+        if (File.Exists(FullConfigPath)) return;
         if (MessageBox.Show(
-                @$"Configuration file {ConfigFilePath} not found.
+                @$"Configuration file {FullConfigPath} not found.
 Create a default one?
 (Frank won't run if you press no)",
                 "Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -72,6 +76,7 @@ Create a default one?
         }
         else
         {
+            Directory.CreateDirectory(_configFilePath);
             ConfigSaverHelper.SaveToFile(new Config().SetDefault());
         }
     }

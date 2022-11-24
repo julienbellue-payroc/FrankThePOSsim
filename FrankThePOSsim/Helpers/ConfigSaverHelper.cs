@@ -18,7 +18,6 @@ public class ConfigSaverHelper
         };
         
         var newJson = JsonSerializer.Serialize(configurationWrapper, jsonWriteOptions);
-        var appSettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, App.ConfigFilePath);
-        File.WriteAllText(appSettingsPath, newJson);
+        File.WriteAllText(App.FullConfigPath, newJson);
     }
 }

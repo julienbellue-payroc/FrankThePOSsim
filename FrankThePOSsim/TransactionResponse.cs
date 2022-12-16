@@ -10,8 +10,9 @@ public class TransactionResponse
     public string? ResultCode { get; }
     public string? Message { get; }
     public string? FullBody { get; }
+    public string? Timestamp { get; }
 
-    public TransactionResponse(HttpResponseMessage? message)
+    public TransactionResponse(HttpResponseMessage? message, DateTime requestSentTime)
     {
         if (message == null)
         {
@@ -19,6 +20,8 @@ public class TransactionResponse
         }
         HttpStatus = $"{(int)message.StatusCode} - {message.ReasonPhrase}";
         FullBody = message.Content.ReadAsStringAsync().Result;
+        var now = DateTime.Now;
+        Timestamp = $"{now} - {now.Subtract(requestSentTime)}";
         
         if (string.IsNullOrWhiteSpace(FullBody)) return;
 

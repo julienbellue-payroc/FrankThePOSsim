@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -182,14 +183,12 @@ public partial class MainWindow
 
     private async void SendTransaction(HttpRequestMessage message, Transaction? transaction, string? uri)
     {
-        var logItem = message.RequestUri?.ToString();
-        if (message.Content != null)
-        {
-            logItem = $"{logItem}\n{message.Content.ReadAsStringAsync().Result}";
-        }
+        var now = DateTime.Now;
         var transactionLogItem = new TransactionLogItem
         {
-            Request = logItem,
+            Timestamp = now.ToString(CultureInfo.InvariantCulture),
+            Payload = message.Content != null ? message.Content.ReadAsStringAsync().Result : string.Empty,
+            Url = message.RequestUri?.ToString(),
             Transaction = transaction,
             Endpoint = uri
         };
@@ -199,13 +198,13 @@ public partial class MainWindow
         try
         {
             var response = await App.HttpClient.SendAsync(message);
-            transactionLogItem.Response = new TransactionResponse(response);
+            transactionLogItem.Response = new TransactionResponse(response, now);
         }
         catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
         {
             var errorMessage = new HttpResponseMessage(HttpStatusCode.RequestTimeout);
             errorMessage.ReasonPhrase = "Request took too long and Frank got bored of waiting";
-            transactionLogItem.Response = new TransactionResponse(errorMessage);
+            transactionLogItem.Response = new TransactionResponse(errorMessage, now);
         }
 
 

@@ -31,6 +31,8 @@ public partial class App
         FullConfigPath = _configFilePath + ConfigFileName;
         CreateDefaultConfigFileIfNeeded();
 
+        HttpClient.Timeout = TimeSpan.FromMinutes(3.1);
+
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile(FullConfigPath, optional: false, reloadOnChange: true);

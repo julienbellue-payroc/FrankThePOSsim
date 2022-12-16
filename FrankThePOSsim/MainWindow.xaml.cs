@@ -44,7 +44,7 @@ public partial class MainWindow
         SetTheme();
 
 
-        Title = "Frank the POSsim 1.2";
+        Title = "Frank the POSsim 1.3";
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);

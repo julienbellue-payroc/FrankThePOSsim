@@ -83,6 +83,8 @@
                           IsReadOnly="True"
                           VirtualizingPanel.ScrollUnit="Pixel"
                           xmlns:lcl="clr-namespace:FrankThePOSsim"
+                          AlternationCount="2"
+                          AlternatingRowBackground="{DynamicResource AlternateRowBackground}"
                           d:DataContext="{d:DesignInstance Type=lcl:TransactionLogItem}">
 
                     <DataGrid.RowStyle>

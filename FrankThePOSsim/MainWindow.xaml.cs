@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using ControlzEx.Theming;
 using FrankThePOSsim.Helpers;
 using FrankThePOSsim.observable;
@@ -83,6 +84,7 @@ public partial class MainWindow
         var isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
         ThemeManager.Current.ChangeTheme(Application.Current, isDarkTheme ? "Dark.Blue":"Light.Blue");
         Resources["IconSource"] = isDarkTheme ? "☀" : "🌙";
+        Resources["AlternateRowBackground"] = isDarkTheme ? new SolidColorBrush( Color.FromArgb(255,0x45,0x45,0x45) ) : new SolidColorBrush( Color.FromArgb(255,0xe0,0xe0,0xe0) );
     }
 
     private static void ShowTerminalEmptyErrorMessage()

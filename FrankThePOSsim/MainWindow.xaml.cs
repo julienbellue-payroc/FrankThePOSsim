@@ -206,6 +206,12 @@ public partial class MainWindow
             errorMessage.ReasonPhrase = "Request took too long and Frank got bored of waiting";
             transactionLogItem.Response = new TransactionResponse(errorMessage, now);
         }
+        catch (HttpRequestException e)
+        {
+            var errorMessage = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            errorMessage.ReasonPhrase = "Error - See full message";
+            transactionLogItem.Response = new TransactionResponse(errorMessage, now, e.Message);
+        }
 
 
         DataGridLogs.Items.Refresh();

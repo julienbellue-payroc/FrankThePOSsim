@@ -213,9 +213,6 @@ public partial class MainWindow
             errorMessage.ReasonPhrase = "Error - See full message";
             transactionLogItem.Response = new TransactionResponse(errorMessage, now, e.Message);
         }
-
-
-        DataGridLogs.Items.Refresh();
     }
 
     private void BtnReuseTransaction_Click(object sender, RoutedEventArgs e)

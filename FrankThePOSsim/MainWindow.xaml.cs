@@ -44,7 +44,7 @@ public partial class MainWindow
         SetTheme();
 
 
-        Title = "Frank the POSsim 1.3.3";
+        Title = "Frank the POSsim 1.3.3.1";
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
@@ -224,7 +224,7 @@ public partial class MainWindow
         if (transactionLogItem.Transaction == null) return;
 
         page.SetControlsFromTransaction(transactionLogItem.Transaction);
-        page.SetUri(transactionLogItem.Endpoint);
+        page.SetUri(transactionLogItem.Endpoint, (Environment)ComboBoxEnvironment.SelectedItem);
     }
 
     private void ButtonOpenConfig_OnClick(object sender, RoutedEventArgs e)

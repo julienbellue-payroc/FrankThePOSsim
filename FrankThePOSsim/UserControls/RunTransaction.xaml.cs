@@ -34,10 +34,11 @@ public partial class RunTransaction: ITransactionControl
         return "runTransaction";
     }
 
-    public void SetUri(string? uri)
+    public void SetUri(string? uri, Environment environment)
     {
         // safely ignore there
     }
+
     public Transaction GenerateTransaction(Terminal terminal)
     {
         Transaction transaction = new();

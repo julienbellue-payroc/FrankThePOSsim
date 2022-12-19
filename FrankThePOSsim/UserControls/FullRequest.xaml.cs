@@ -381,15 +381,22 @@ public partial class FullRequest: ITransactionControl
         return endpoint.Uri;
     }
 
-    public void SetUri(string? uri)
+    public void SetUri(string? uri, Environment environment)
     {
         //there probably is a better way to do that, but in the meantime...
-        foreach (Endpoint e in ComboBoxEndpoints.Items)
+        foreach (Endpoint endpoint in ComboBoxEndpoints.Items)
         {
-            if (e.Uri != uri) continue;
-            ComboBoxEndpoints.SelectedItem = e;
+            if (!IsMatchingUri(environment, endpoint)) continue;
+            ComboBoxEndpoints.SelectedItem = endpoint;
             break;
         }
+    }
+
+    private bool IsMatchingUri(Environment environment, Endpoint e)
+    {
+        return !(e.Uri != null && (
+            e.Uri.StartsWith($"{environment.SoapUrl}/{GetUri()}?")
+            || e.Uri.StartsWith($"{environment.RestUrl}/1.0/{GetUri()}")));
     }
 
     private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)

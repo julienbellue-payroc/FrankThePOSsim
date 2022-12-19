@@ -44,7 +44,7 @@ public partial class MainWindow
         SetTheme();
 
 
-        Title = "Frank the POSsim 1.3";
+        Title = "Frank the POSsim 1.3.2";
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
@@ -85,7 +85,8 @@ public partial class MainWindow
         var isDarkTheme = _configuration.DarkMode.HasValue && _configuration.DarkMode.Value;
         ThemeManager.Current.ChangeTheme(Application.Current, isDarkTheme ? "Dark.Blue":"Light.Blue");
         Resources["IconSource"] = isDarkTheme ? "☀" : "🌙";
-        Resources["AlternateRowBackground"] = isDarkTheme ? new SolidColorBrush( Color.FromArgb(255,0x45,0x45,0x45) ) : new SolidColorBrush( Color.FromArgb(255,0xe0,0xe0,0xe0) );
+        Resources["AlternateRowBackground"] = new SolidColorBrush(isDarkTheme ? Color.FromArgb(255,0x45,0x45,0x45) : Color.FromArgb(255,0xe0,0xe0,0xe0) );
+        Resources["ForegroundColour"] = new SolidColorBrush(isDarkTheme ? Colors.White : Colors.Black);
     }
 
     private static void ShowTerminalEmptyErrorMessage()

@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <TargetFramework>net6.0-windows</TargetFramework>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <Nullable>enable</Nullable>

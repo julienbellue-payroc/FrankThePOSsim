@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -43,8 +44,7 @@ public partial class MainWindow
         InitializeComponent();
         SetTheme();
 
-
-        Title = "Frank the POSsim 1.3.4";
+        Title = $"Frank the POSsim {Assembly.GetExecutingAssembly().GetName().Version}";
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);

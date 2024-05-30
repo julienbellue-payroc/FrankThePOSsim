@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -116,7 +115,6 @@ public partial class MainWindow
         else
         {
             var terminal = (Terminal)ComboBoxTerminal.SelectedItem;
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (terminal is null)
             {
                 ShowTerminalEmptyErrorMessage();
@@ -169,7 +167,6 @@ public partial class MainWindow
         else
         {
             var terminal = (Terminal)ComboBoxTerminal.SelectedItem;
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (terminal is null)
             {
                 ShowTerminalEmptyErrorMessage();

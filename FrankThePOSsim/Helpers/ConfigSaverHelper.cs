@@ -3,11 +3,11 @@ using System.Text.Json;
 
 namespace FrankThePOSsim.Helpers;
 
-public class ConfigSaverHelper
+public abstract class ConfigSaverHelper
 {
     public static void SaveToFile(Config config)
     {
-        var jsonWriteOptions = new JsonSerializerOptions()
+        var jsonWriteOptions = new JsonSerializerOptions
         {
             WriteIndented = true
         };

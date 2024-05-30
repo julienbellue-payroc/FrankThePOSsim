@@ -12,14 +12,14 @@ public class TransactionResponse
     public string? FullBody { get; }
     public string? Timestamp { get; }
 
-    public TransactionResponse(HttpResponseMessage? message, DateTime requestSentTime, string overrideFullbody = "")
+    public TransactionResponse(HttpResponseMessage? message, DateTime requestSentTime, string overrideFullBody = "")
     {
         if (message == null)
         {
             throw new NullReferenceException();
         }
         HttpStatus = $"{(int)message.StatusCode} - {message.ReasonPhrase}";
-        FullBody = String.IsNullOrEmpty(overrideFullbody) ? message.Content.ReadAsStringAsync().Result : overrideFullbody;
+        FullBody = string.IsNullOrEmpty(overrideFullBody) ? message.Content.ReadAsStringAsync().Result : overrideFullBody;
         var now = DateTime.Now;
         Timestamp = $"{now} - {now.Subtract(requestSentTime)}";
         

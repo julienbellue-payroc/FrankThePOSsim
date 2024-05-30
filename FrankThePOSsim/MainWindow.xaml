@@ -166,15 +166,18 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Response.HttpStatus, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Time" />
-                                        <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Timestamp, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="ResultCode" />
-                                        <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.ResultCode, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Message" />
-                                        <TextBox Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                                        <Expander Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Header="Full message" IsExpanded="False" Height="Auto">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Path=Response.HttpStatus, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Elapsed" VerticalAlignment="Center" />
+                                        <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=LiveTimestamp, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Timestamp" VerticalAlignment="Center" />
+                                        <TextBox Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Timestamp, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="ResultCode" VerticalAlignment="Center" />
+                                        <TextBox Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.ResultCode, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Message" VerticalAlignment="Center" />
+                                        <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
+                                        <Expander Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Header="Full message" IsExpanded="False" Height="Auto">
                                             <TextBox TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=OneWay}" />
                                         </Expander>
                                     </Grid>

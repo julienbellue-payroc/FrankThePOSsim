@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 
@@ -20,8 +21,7 @@ public class TransactionResponse
         }
         HttpStatus = $"{(int)message.StatusCode} - {message.ReasonPhrase}";
         FullBody = string.IsNullOrEmpty(overrideFullBody) ? message.Content.ReadAsStringAsync().Result : overrideFullBody;
-        var now = DateTime.Now;
-        Timestamp = $"{now} - {now.Subtract(requestSentTime)}";
+        Timestamp = DateTime.Now.ToString(CultureInfo.CurrentCulture);
         
         if (string.IsNullOrWhiteSpace(FullBody)) return;
 

@@ -10,6 +10,7 @@
         <ApplicationIcon>images\icon.ico</ApplicationIcon>
         <RootNamespace>FrankThePOSsim</RootNamespace>
         <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+        <GitVersion>true</GitVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +19,10 @@
 
     <ItemGroup>
       <PackageReference Include="Emoji.Wpf" Version="0.3.3" />
+      <PackageReference Include="GitInfo" Version="3.3.5">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="MahApps.Metro" Version="2.4.9" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />

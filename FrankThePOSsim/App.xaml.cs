@@ -21,9 +21,9 @@ public partial class App
     private IServiceProvider? ServiceProvider { get; set; }
     private IConfiguration? Configuration { get; set; }
 
-    private static string _configFilePath = String.Empty;
-    private static readonly string ConfigFileName = "appsettings.json";
-    public static string FullConfigPath = String.Empty;
+    private static string _configFilePath = string.Empty;
+    private const string ConfigFileName = "appsettings.json";
+    public static string FullConfigPath = string.Empty;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -97,11 +97,9 @@ Create a default one?
         DispatcherUnhandledException += (_, e) =>
         {
             // If we are debugging, let Visual Studio handle the exception and take us to the code that threw it.
-            if (!Debugger.IsAttached)
-            {
-                e.Handled = true;
-                HandleUnhandledException(e.Exception, "Application.Current.DispatcherUnhandledException", true);
-            }
+            if (Debugger.IsAttached) return;
+            e.Handled = true;
+            HandleUnhandledException(e.Exception, "Application.Current.DispatcherUnhandledException", true);
         };
     }
 
@@ -111,7 +109,7 @@ Create a default one?
         var messageBoxTitle = $"Unexpected Error Occurred: {source}";
         var messageBoxMessage = $"The following exception occurred:\n\n{e}";
         var messageBoxButtons = MessageBoxButton.OK;
-        var messageBoxIcon = MessageBoxImage.Error;
+        const MessageBoxImage messageBoxIcon = MessageBoxImage.Error;
 
         if (promptUserForShutdown)
         {

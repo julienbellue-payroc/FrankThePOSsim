@@ -14,9 +14,11 @@ internal static class Commands
         "void",
         "tipadjust",
         "giftactivate",
+        "giftaddvalue",
+        "giftbalance",
+        "giftdeactivate",
         "giftrefund",
         "giftsale",
-        "giftaddvalue",
-        "giftbalance"
+        "giftvoid",
     });
 }

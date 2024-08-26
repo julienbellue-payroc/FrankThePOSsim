@@ -197,19 +197,19 @@ public partial class MainWindow
         try
         {
             var response = await App.HttpClient.SendAsync(message);
-            transactionLogItem.Response = new TransactionResponse(response, now);
+            transactionLogItem.Response = new TransactionResponse(response);
         }
         catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
         {
             var errorMessage = new HttpResponseMessage(HttpStatusCode.RequestTimeout);
             errorMessage.ReasonPhrase = "Request took too long and Frank got bored of waiting";
-            transactionLogItem.Response = new TransactionResponse(errorMessage, now);
+            transactionLogItem.Response = new TransactionResponse(errorMessage);
         }
         catch (HttpRequestException e)
         {
             var errorMessage = new HttpResponseMessage(HttpStatusCode.BadRequest);
             errorMessage.ReasonPhrase = "Error - See full message";
-            transactionLogItem.Response = new TransactionResponse(errorMessage, now, e.Message);
+            transactionLogItem.Response = new TransactionResponse(errorMessage, e.Message);
         }
     }
 
@@ -223,6 +223,14 @@ public partial class MainWindow
 
         page.SetControlsFromTransaction(transactionLogItem.Transaction);
         page.SetUri(transactionLogItem.Endpoint, (Environment)ComboBoxEnvironment.SelectedItem);
+    }
+
+    private void BtnBeautify_Click(object sender, RoutedEventArgs e)
+    {
+        var button = (Button)sender;
+
+        var transactionLogItem = (TransactionLogItem)button.DataContext;
+        if (transactionLogItem?.Transaction == null) return;
     }
 
     private void ButtonOpenConfig_OnClick(object sender, RoutedEventArgs e)

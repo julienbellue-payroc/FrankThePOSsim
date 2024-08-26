@@ -13,7 +13,7 @@ public class TransactionResponse
     public string? FullBody { get; }
     public string? Timestamp { get; }
 
-    public TransactionResponse(HttpResponseMessage? message, DateTime requestSentTime, string overrideFullBody = "")
+    public TransactionResponse(HttpResponseMessage? message, string overrideFullBody = "")
     {
         if (message == null)
         {

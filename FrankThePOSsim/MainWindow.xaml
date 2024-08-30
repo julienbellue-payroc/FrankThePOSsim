@@ -178,7 +178,16 @@
                                         <TextBlock Grid.Row="4" Grid.Column="0" Text="Message" VerticalAlignment="Center" />
                                         <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Path=Response.Message, FallbackValue='', Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" />
                                         <Expander Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Header="Full message" IsExpanded="False" Height="Auto">
-                                            <TextBox TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=OneWay}" />
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox Grid.Column="0" TextWrapping="Wrap" Text="{Binding Path=Response.FullBody, FallbackValue='', Mode=TwoWay}" />
+                                                <Button Grid.Column="1" Height="26" Width="26" Click="BtnBeautify_Click" Padding="0">
+                                                <Image emoji:Image.Source="✨" />
+                                            </Button>
+                                            </Grid>
                                         </Expander>
                                     </Grid>
                                 </DataTemplate>

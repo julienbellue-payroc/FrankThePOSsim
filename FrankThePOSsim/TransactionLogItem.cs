@@ -27,7 +27,7 @@ public class TransactionLogItem: INotifyPropertyChanged
         {
             if (_liveTimestamp == value) return;
             _liveTimestamp = value;
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(LiveTimestamp)));
+            OnPropertyChanged(nameof(LiveTimestamp));
         }
     }
     private void UpdateLiveTimestamp()
@@ -40,10 +40,20 @@ public class TransactionLogItem: INotifyPropertyChanged
         get => _response;
         set
         {
+            if (_response != null)
+            {
+                // Unsubscribe from the old response's PropertyChanged event
+                _response.PropertyChanged -= Response_PropertyChanged;
+            }
             _stopwatch.Stop();
             _timer.Stop();
             _response = value;
-            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Response)));
+            if (_response != null)
+            {
+                // Subscribe to the new response's PropertyChanged event
+                _response.PropertyChanged += Response_PropertyChanged;
+            }
+            OnPropertyChanged(nameof(Response));
         }
     }
     public string? Endpoint { get; init; }
@@ -54,8 +64,16 @@ public class TransactionLogItem: INotifyPropertyChanged
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private void OnPropertyChanged(PropertyChangedEventArgs e)
+    private void Response_PropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
-        PropertyChanged?.Invoke(this, e);
+        // Notify that the FullBody property has changed
+        if (e.PropertyName == nameof(Response.FullBody))
+        {
+            OnPropertyChanged(nameof(Response));
+        }
+    }
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

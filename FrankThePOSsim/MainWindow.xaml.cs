@@ -21,6 +21,7 @@ namespace FrankThePOSsim;
 public partial class MainWindow
 {
     private Config _configuration;
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new() { WriteIndented = true };
     public MainWindow(IOptionsMonitor<Config> configurationMonitor)
     {
         _= new Winker(3000, 5000);
@@ -230,7 +231,17 @@ public partial class MainWindow
         var button = (Button)sender;
 
         var transactionLogItem = (TransactionLogItem)button.DataContext;
-        if (transactionLogItem?.Transaction == null) return;
+        if (transactionLogItem?.Response?.FullBody == null) return;
+        try
+        {
+            var jsonDocument = JsonDocument.Parse(transactionLogItem.Response.FullBody);
+            var formattedString = JsonSerializer.Serialize(jsonDocument, _jsonSerializerOptions);
+            transactionLogItem.Response.FullBody = formattedString;
+        }
+        catch (Exception)
+        {
+            // ignored - leave the field as it is
+        }
     }
 
     private void ButtonOpenConfig_OnClick(object sender, RoutedEventArgs e)

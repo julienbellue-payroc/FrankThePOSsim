@@ -55,6 +55,9 @@
                     <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateRefId_Click" Padding="0">
                         <Image emoji:Image.Source="🔄" />
                     </Button>
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnChangeRefIdRefId_Click" Padding="0">
+                        <Image emoji:Image.Source="🔠" />
+                    </Button>
                     <TextBox x:Name="TextBoxRefId" VerticalContentAlignment="Center" MinWidth="250" IsEnabled="{Binding ElementName=CheckBoxRefId, Path=IsChecked}"/>
                 </DockPanel>
             </Grid>

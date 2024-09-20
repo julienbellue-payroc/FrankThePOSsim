@@ -111,4 +111,9 @@ public partial class RunTransaction: ITransactionControl
     {
         TextBoxExpDate.Text = GenerateFieldValueHelper.GenerateDate();
     }
+
+    private void BtnChangeRefIdRefId_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxRefId.Text = GenerateFieldValueHelper.ChangeRefIdCase(TextBoxRefId.Text);
+    }
 }

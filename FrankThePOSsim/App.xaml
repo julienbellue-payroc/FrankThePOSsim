@@ -13,9 +13,9 @@
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
                 
-                <ResourceDictionary Source="images/frank.xaml" />
-                <ResourceDictionary Source="images/frank/closedEye.xaml" />
-                <ResourceDictionary Source="images/frank/openEye.xaml" />
+                <ResourceDictionary Source="assets/images/frank.xaml" />
+                <ResourceDictionary Source="assets/images/frank/closedEye.xaml" />
+                <ResourceDictionary Source="assets/images/frank/openEye.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

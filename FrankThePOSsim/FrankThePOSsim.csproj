@@ -7,30 +7,38 @@
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
-        <ApplicationIcon>images\icon.ico</ApplicationIcon>
+        <ApplicationIcon>assets\images\icon.ico</ApplicationIcon>
         <RootNamespace>FrankThePOSsim</RootNamespace>
         <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
         <GitVersion>true</GitVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="images\icon.ico" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Emoji.Wpf" Version="0.3.3" />
+      <PackageReference Include="Emoji.Wpf" Version="0.3.4" />
       <PackageReference Include="GitInfo" Version="3.3.5">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="MahApps.Metro" Version="2.4.9" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="assets\images\Frank\closedEye.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="assets\images\Frank\openEye.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="assets\images\Frank.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
     </ItemGroup>
 
 </Project>

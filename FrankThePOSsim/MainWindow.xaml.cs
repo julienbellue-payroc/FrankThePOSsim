@@ -21,7 +21,8 @@ namespace FrankThePOSsim;
 public partial class MainWindow
 {
     private Config _configuration;
-    private readonly JsonSerializerOptions _jsonSerializerOptions = new() { WriteIndented = true };
+
+    private readonly JsonSerializerOptions _jsonSerializerOptions = new() { WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
     public MainWindow(IOptionsMonitor<Config> configurationMonitor)
     {
         _= new Winker(3000, 5000);
@@ -98,7 +99,7 @@ public partial class MainWindow
     private void BtnRESTSend_Click(object sender, RoutedEventArgs e)
     {
         var content = ((TabItem)TabControlMain.SelectedItem).Content;
-        var httpRequestMessage = new HttpRequestMessage()
+        var httpRequestMessage = new HttpRequestMessage
         {
             Method = HttpMethod.Post
         };
@@ -129,11 +130,7 @@ public partial class MainWindow
             HttpContent httpContent = new StringContent(
                 JsonSerializer.Serialize(
                     transaction,
-                    new JsonSerializerOptions()
-                    {
-                        WriteIndented = true,
-                        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-                    }
+                    _jsonSerializerOptions
                 ),
                 Encoding.UTF8,
                 "application/json"
@@ -148,11 +145,11 @@ public partial class MainWindow
     private void BtnSOAPSend_Click(object sender, RoutedEventArgs e)
     {
         var content = ((TabItem)TabControlMain.SelectedItem).Content;
-        var httpRequestMessage = new HttpRequestMessage()
+        var httpRequestMessage = new HttpRequestMessage
         {
             Method = HttpMethod.Get
         };
-        string? uri;
+        string uri;
         Transaction? transaction = null;
         if ((UserControl)content is CustomTransaction customTransaction)
         {
@@ -223,7 +220,7 @@ public partial class MainWindow
         if (transactionLogItem.Transaction == null) return;
 
         page.SetControlsFromTransaction(transactionLogItem.Transaction);
-        page.SetUri(transactionLogItem.Endpoint, (Environment)ComboBoxEnvironment.SelectedItem);
+        page.SetUri((Environment)ComboBoxEnvironment.SelectedItem);
     }
 
     private void BtnBeautify_Click(object sender, RoutedEventArgs e)

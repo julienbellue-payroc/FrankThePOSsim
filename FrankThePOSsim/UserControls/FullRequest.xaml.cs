@@ -381,7 +381,7 @@ public partial class FullRequest: ITransactionControl
         return endpoint.Uri;
     }
 
-    public void SetUri(string? uri, Environment environment)
+    public void SetUri(Environment environment)
     {
         //there probably is a better way to do that, but in the meantime...
         foreach (Endpoint endpoint in ComboBoxEndpoints.Items)

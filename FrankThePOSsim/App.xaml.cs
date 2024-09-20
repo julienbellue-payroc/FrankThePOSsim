@@ -16,14 +16,14 @@ namespace FrankThePOSsim;
 public partial class App
 {
     public static readonly HttpClient HttpClient = new();
-    public static readonly ObservableCollection<TransactionLogItem> LogTransaction = new();
+    public static readonly ObservableCollection<TransactionLogItem> LogTransaction = [];
 
     private IServiceProvider? ServiceProvider { get; set; }
     private IConfiguration? Configuration { get; set; }
 
     private static string _configFilePath = string.Empty;
     private const string ConfigFileName = "appsettings.json";
-    public static string FullConfigPath = string.Empty;
+    public static string FullConfigPath { get; private set; } = string.Empty;
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -69,9 +69,11 @@ public partial class App
     {
         if (File.Exists(FullConfigPath)) return;
         if (MessageBox.Show(
-                @$"Configuration file {FullConfigPath} not found.
-Create a default one?
-(Frank won't run if you press no)",
+                $"""
+                 Configuration file {FullConfigPath} not found.
+                 Create a default one?
+                 (Frank won't run if you press no)
+                 """,
                 "Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
         {
             Current.Shutdown();
@@ -86,7 +88,7 @@ Create a default one?
     private void ConfigureServices(IServiceCollection services)
     {
         services.AddTransient(typeof(MainWindow));
-        services.Configure<Config>(Configuration?.GetSection(nameof(Config)));
+        services.Configure<Config>(Configuration?.GetSection(nameof(Config)) ?? throw new InvalidOperationException());
     }
     
     private void SetupExceptionHandling()

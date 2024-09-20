@@ -2,8 +2,8 @@
 
 public class Terminal
 {
-    public int Id { get; set; }
-    public string? SerialNumber { get; set; }
-    public string? ApiKey { get; set; }
-    public string? ApiPassword { get; set; }
+    public int Id { get; init; }
+    public string? SerialNumber { get; init; }
+    public string? ApiKey { get; init; }
+    public string? ApiPassword { get; init; }
 }

@@ -34,7 +34,7 @@ public partial class RunTransaction: ITransactionControl
         return "runTransaction";
     }
 
-    public void SetUri(string? uri, Environment environment)
+    public void SetUri(Environment environment)
     {
         // safely ignore there
     }

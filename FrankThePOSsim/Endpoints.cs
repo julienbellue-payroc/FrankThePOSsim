@@ -4,12 +4,12 @@ namespace FrankThePOSsim;
 
 internal class Endpoints
 {
-    public List<Endpoint> All { get; } = new()
-    {
+    public List<Endpoint> All { get; } =
+    [
         new Endpoint
         {
             Uri = "checkStatus",
-            RequiredFields = new List<RequestFields>()
+            RequiredFields = new List<RequestFields>
             {
                 RequestFields.Key,
                 RequestFields.Password,
@@ -19,6 +19,7 @@ internal class Endpoints
                 RequestFields.Date
             }
         },
+
         new Endpoint
         {
             Uri = "checkStatus2",
@@ -33,6 +34,7 @@ internal class Endpoints
                 RequestFields.MerchantId
             }
         },
+
         new Endpoint
         {
             Uri = "checkStatusList",
@@ -46,9 +48,10 @@ internal class Endpoints
                 RequestFields.Date
             }
         },
+
         new Endpoint
-        { 
-            Uri = "closeBatch", 
+        {
+            Uri = "closeBatch",
             RequiredFields = new List<RequestFields>()
             {
                 RequestFields.Key,
@@ -58,6 +61,7 @@ internal class Endpoints
                 RequestFields.MerchantId
             }
         },
+
         new Endpoint
         {
             Uri = "getSignature",
@@ -68,6 +72,7 @@ internal class Endpoints
                 RequestFields.TerminalId
             }
         },
+
         new Endpoint
         {
             Uri = "getSwipe",
@@ -79,6 +84,7 @@ internal class Endpoints
                 RequestFields.Prompt
             }
         },
+
         new Endpoint
         {
             Uri = "getTerminalConfiguration",
@@ -89,6 +95,7 @@ internal class Endpoints
                 RequestFields.TerminalId
             }
         },
+
         new Endpoint
         {
             Uri = "getTerminalFeatures",
@@ -99,6 +106,7 @@ internal class Endpoints
                 RequestFields.TerminalId
             }
         },
+
         new Endpoint
         {
             Uri = "getUserInput",
@@ -112,6 +120,7 @@ internal class Endpoints
                 RequestFields.MaxLength
             }
         },
+
         new Endpoint
         {
             Uri = "getUserSelection",
@@ -124,6 +133,7 @@ internal class Endpoints
                 RequestFields.Options
             }
         },
+
         new Endpoint
         {
             Uri = "pairTerminal",
@@ -142,6 +152,7 @@ internal class Endpoints
                 RequestFields.TerminalSerialNumber
             }
         },
+
         new Endpoint
         {
             Uri = "pairTerminalWithCountry",
@@ -161,6 +172,7 @@ internal class Endpoints
                 RequestFields.TerminalSerialNumber
             }
         },
+
         new Endpoint
         {
             Uri = "runTransaction",
@@ -174,6 +186,7 @@ internal class Endpoints
                 RequestFields.RefId
             }
         },
+
         new Endpoint
         {
             Uri = "runTransaction2",
@@ -191,6 +204,7 @@ internal class Endpoints
                 RequestFields.ExpDate
             }
         },
+
         new Endpoint
         {
             Uri = "setTerminalConfiguration",
@@ -203,6 +217,7 @@ internal class Endpoints
                 RequestFields.OptionValue
             }
         },
+
         new Endpoint
         {
             Uri = "showLineItems",
@@ -215,6 +230,7 @@ internal class Endpoints
                 RequestFields.Type
             }
         },
+
         new Endpoint
         {
             Uri = "showUrl",
@@ -227,6 +243,7 @@ internal class Endpoints
                 RequestFields.IsDefault
             }
         },
+
         new Endpoint
         {
             Uri = "unPairTerminal",
@@ -237,5 +254,5 @@ internal class Endpoints
                 RequestFields.TerminalId
             }
         }
-    };
+    ];
 }

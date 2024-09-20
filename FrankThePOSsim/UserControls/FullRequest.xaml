@@ -61,8 +61,11 @@
                     <TextBlock>refId</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateRefId_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateRefId_Click" Padding="0" ToolTip="Generate a random refId">
                         <Image emoji:Image.Source="🔄" />
+                    </Button>
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnChangeRefIdRefId_Click" Padding="0" ToolTip="Change the refId's case">
+                        <Image emoji:Image.Source="🔠" />
                     </Button>
                     <TextBox x:Name="TextBoxRefId" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxRefId, Path=IsChecked}"/>
                 </DockPanel>
@@ -80,7 +83,7 @@
                     <TextBlock>Date</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateDate_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateDate_Click" Padding="0" ToolTip="Set to today's date">
                         <Image emoji:Image.Source="📅" />
                     </Button>
                     <TextBox x:Name="TextBoxDate" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxDate, Path=IsChecked}"/>
@@ -309,7 +312,7 @@
                     <TextBlock>Amount</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0" ToolTip="Generate a random amount ($0.01 to $19.99)">
                         <Image emoji:Image.Source="💰" />
                     </Button>
                     <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}"/>
@@ -370,10 +373,10 @@
                     <TextBlock>Type</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeHtml_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeHtml_Click" Padding="0" ToolTip="Fill in with HTML">
                         &lt; /&gt;
                     </Button>
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeJson_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetTypeJson_Click" Padding="0" ToolTip="Fill in with JSON">
                         { }
                     </Button>
                     <TextBox x:Name="TextBoxType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxType, Path=IsChecked}"/>
@@ -392,10 +395,10 @@
                     <TextBlock>Data</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataHtml_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataHtml_Click" Padding="0" ToolTip="Fill in with HTML data">
                         &lt; /&gt;
                     </Button>
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataJson_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetDataJson_Click" Padding="0" ToolTip="Fill in with JSON data">
                         { }
                     </Button>
                     <TextBox x:Name="TextBoxData" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxData, Path=IsChecked}"/>
@@ -428,10 +431,10 @@
                     <TextBlock>IsDefault</TextBlock>
                 </CheckBox>
                 <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetIsDefaultFalse_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetIsDefaultFalse_Click" Padding="0" ToolTip="Set to false">
                         <Image emoji:Image.Source="❌" />
                     </Button>
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetIsDefaultTrue_Click" Padding="0">
+                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnSetIsDefaultTrue_Click" Padding="0" ToolTip="Set to true">
                         <Image emoji:Image.Source="✔" />
                     </Button>
                     <TextBox x:Name="TextBoxIsDefault" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxIsDefault, Path=IsChecked}"/>

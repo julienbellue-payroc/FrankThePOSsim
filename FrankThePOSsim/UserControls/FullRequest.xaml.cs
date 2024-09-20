@@ -361,6 +361,12 @@ public partial class FullRequest: ITransactionControl
     {
         TextBoxRefId.Text = GenerateFieldValueHelper.GenerateRefId();
     }
+    
+    private void BtnChangeRefIdRefId_Click(object sender, RoutedEventArgs e)
+    {
+        TextBoxRefId.Text = GenerateFieldValueHelper.ChangeRefIdCase(TextBoxRefId.Text);
+    }
+    
     private void BtnGenerateDate_Click(object sender, RoutedEventArgs e)
     {
         TextBoxDate.Text = GenerateFieldValueHelper.GenerateDate();

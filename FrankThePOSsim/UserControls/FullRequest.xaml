@@ -3,10 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
       xmlns:local="clr-namespace:FrankThePOSsim.UserControls"
       mc:Ignorable="d">
-
+    
     <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
         <StackPanel Grid.IsSharedSizeScope="True">
             <Grid>
@@ -171,18 +170,22 @@
                                           IsChecked="{Binding TypeChecked}"
                                           TextValue="{Binding TypeText}"
                                           Button1Click="BtnSetTypeHtml_Click" 
-                                          Button1Image="📅"
+                                          Button1Type="Text"
+                                          Button1Text="&lt; /&gt;"
                                           Button2Click="BtnSetTypeJson_Click"
-                                          Button2Image="📅"/>
+                                          Button2Type="Text"
+                                          Button2Text="{StaticResource CurlyBracesString}" />
             
             <local:CheckBoxTextBoxControl x:Name="CheckBoxTextBoxControlData"
                                           Header="Data"
                                           IsChecked="{Binding DataChecked}"
                                           TextValue="{Binding DataText}"
                                           Button1Click="BtnSetDataHtml_Click"
-                                          Button1Image="📅"
+                                          Button1Type="Text"
+                                          Button1Text="&lt; /&gt;"
                                           Button2Click="BtnSetDataJson_Click"
-                                          Button2Image="📅" />
+                                          Button2Type="Text"
+                                          Button2Text="{StaticResource CurlyBracesString}" />
             
             <local:CheckBoxTextBoxControl x:Name="CheckBoxTextBoxControlUrl"
                                           Header="Url"

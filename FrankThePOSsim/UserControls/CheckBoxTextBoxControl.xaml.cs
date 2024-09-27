@@ -34,9 +34,31 @@ public partial class CheckBoxTextBoxControl
         set => SetValue(TextValueProperty, value);
     }
 
+    public static readonly DependencyProperty Button1TypeProperty =
+        DependencyProperty.Register(nameof(Button1Type), typeof(string), typeof(CheckBoxTextBoxControl),
+            new PropertyMetadata("Image"));
+
+    public string Button1Type
+    {
+        get => (string)GetValue(Button1TypeProperty);
+        set
+        {
+            SetValue(Button1TypeProperty, value); 
+            UpdateButtonVisibility();
+        }
+    }
+    public static readonly DependencyProperty Button1TextProperty =
+        DependencyProperty.Register(nameof(Button1Text), typeof(string), typeof(CheckBoxTextBoxControl),
+            new PropertyMetadata(string.Empty, OnButton1ContentChanged));
+
+    public string Button1Text
+    {
+        get => (string)GetValue(Button1TextProperty);
+        set => SetValue(Button1TextProperty, value);
+    }
     public static readonly DependencyProperty Button1ImageProperty =
         DependencyProperty.Register(nameof(Button1Image), typeof(string), typeof(CheckBoxTextBoxControl),
-            new PropertyMetadata(string.Empty, OnButton1ImageChanged));
+            new PropertyMetadata(string.Empty, OnButton1ContentChanged));
 
     public string Button1Image
     {
@@ -44,7 +66,7 @@ public partial class CheckBoxTextBoxControl
         set => SetValue(Button1ImageProperty, value);
     }
 
-    private static void OnButton1ImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    private static void OnButton1ContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var control = (CheckBoxTextBoxControl)d;
         var newValue = e.NewValue as string;
@@ -63,17 +85,37 @@ public partial class CheckBoxTextBoxControl
         set => SetValue(Button1VisibilityProperty, value);
     }
     
+    public static readonly DependencyProperty Button2TypeProperty =
+        DependencyProperty.Register(nameof(Button2Type), typeof(string), typeof(CheckBoxTextBoxControl),
+            new PropertyMetadata("Image")); 
+    public string Button2Type
+    {
+        get => (string)GetValue(Button2TypeProperty);
+        set
+        {
+            SetValue(Button2TypeProperty, value); 
+            UpdateButtonVisibility();
+        }
+    }
     public static readonly DependencyProperty Button2ImageProperty =
         DependencyProperty.Register(nameof(Button2Image), typeof(string), typeof(CheckBoxTextBoxControl),
-            new PropertyMetadata(string.Empty, OnButton2ImageChanged));
+            new PropertyMetadata(string.Empty, OnButton2ContentChanged));
 
     public string Button2Image
     {
         get => (string)GetValue(Button2ImageProperty);
         set => SetValue(Button2ImageProperty, value);
     }
+    public static readonly DependencyProperty Button2TextProperty =
+        DependencyProperty.Register(nameof(Button2Text), typeof(string), typeof(CheckBoxTextBoxControl),
+            new PropertyMetadata(string.Empty, OnButton2ContentChanged));
 
-    private static void OnButton2ImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    public string Button2Text
+    {
+        get => (string)GetValue(Button2TextProperty);
+        set => SetValue(Button2TextProperty, value);
+    }
+    private static void OnButton2ContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var control = (CheckBoxTextBoxControl)d;
         var newValue = e.NewValue as string;
@@ -109,5 +151,32 @@ public partial class CheckBoxTextBoxControl
     private void Button2_Click(object sender, RoutedEventArgs e)
     {
         Button2Click?.Invoke(this, e);
+    }
+    
+    private void UpdateButtonVisibility()
+    {
+        // Button 1
+        if (Button1Type == "Text")
+        {
+            Button1TextContent.Visibility = Visibility.Visible;
+            Button1ImageContent.Visibility = Visibility.Collapsed;
+        }
+        else if (Button1Type == "Image")
+        {
+            Button1TextContent.Visibility = Visibility.Collapsed;
+            Button1ImageContent.Visibility = Visibility.Visible;
+        }
+
+        // Button 2
+        if (Button2Type == "Text")
+        {
+            Button1TextContent.Visibility = Visibility.Visible;
+            Button1ImageContent.Visibility = Visibility.Collapsed;
+        }
+        else if (Button2Type == "Image")
+        {
+            Button1TextContent.Visibility = Visibility.Collapsed;
+            Button1ImageContent.Visibility = Visibility.Visible;
+        }
     }
 }

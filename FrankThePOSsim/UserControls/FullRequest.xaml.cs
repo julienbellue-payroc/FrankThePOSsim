@@ -27,36 +27,36 @@ public partial class FullRequest: ITransactionControl
         CheckBoxApiKey.IsChecked = false;
         CheckBoxTerminalId.IsChecked = false;
         CheckBoxCommand.IsChecked = false;
-        CheckBoxRefId.IsChecked = false;
-        CheckBoxDate.IsChecked = false;
-        CheckBoxMerchantId.IsChecked = false;
-        CheckBoxPaymentType.IsChecked = false;
-        CheckBoxPrompt.IsChecked = false;
-        CheckBoxCountry.IsChecked = false;
-        CheckBoxBusinessName.IsChecked = false;
-        CheckBoxContactName.IsChecked = false;
-        CheckBoxAddress.IsChecked = false;
-        CheckBoxCity.IsChecked = false;
-        CheckBoxState.IsChecked = false;
-        CheckBoxZipCode.IsChecked = false;
-        CheckBoxEmail.IsChecked = false;
-        CheckBoxPhone.IsChecked = false;
-        CheckBoxResellerName.IsChecked = false;
-        CheckBoxReferenceId.IsChecked = false;
-        CheckBoxTerminalSerialNumber.IsChecked = false;
-        CheckBoxAmount.IsChecked = false;
-        CheckBoxInvoiceNumber.IsChecked = false;
-        CheckBoxToken.IsChecked = false;
-        CheckBoxExpDate.IsChecked = false;
-        CheckBoxType.IsChecked = false;
-        CheckBoxData.IsChecked = false;
-        CheckBoxUrl.IsChecked = false;
-        CheckBoxIsDefault.IsChecked = false;
-        CheckBoxOptionName.IsChecked = false;
-        CheckBoxOptionValue.IsChecked = false;
-        CheckBoxTitle.IsChecked = false;
-        CheckBoxMaxLength.IsChecked = false;
-        CheckBoxOptions.IsChecked = false;
+        CheckBoxTextBoxControlRefId.IsChecked = false;
+        CheckBoxTextBoxControlDate.IsChecked = false;
+        CheckBoxTextBoxControlMerchantId.IsChecked = false;
+        CheckBoxTextBoxControlPaymentType.IsChecked = false;
+        CheckBoxTextBoxControlPrompt.IsChecked = false;
+        CheckBoxTextBoxControlCountry.IsChecked = false;
+        CheckBoxTextBoxControlBusinessName.IsChecked = false;
+        CheckBoxTextBoxControlContactName.IsChecked = false;
+        CheckBoxTextBoxControlAddress.IsChecked = false;
+        CheckBoxTextBoxControlCity.IsChecked = false;
+        CheckBoxTextBoxControlState.IsChecked = false;
+        CheckBoxTextBoxControlZipCode.IsChecked = false;
+        CheckBoxTextBoxControlEmail.IsChecked = false;
+        CheckBoxTextBoxControlPhone.IsChecked = false;
+        CheckBoxTextBoxControlResellerName.IsChecked = false;
+        CheckBoxTextBoxControlReferenceId.IsChecked = false;
+        CheckBoxTextBoxControlTerminalSerialNumber.IsChecked = false;
+        CheckBoxTextBoxControlAmount.IsChecked = false;
+        CheckBoxTextBoxControlInvoiceNumber.IsChecked = false;
+        CheckBoxTextBoxControlToken.IsChecked = false;
+        CheckBoxTextBoxControlExpDate.IsChecked = false;
+        CheckBoxTextBoxControlType.IsChecked = false;
+        CheckBoxTextBoxControlData.IsChecked = false;
+        CheckBoxTextBoxControlUrl.IsChecked = false;
+        CheckBoxTextBoxControlIsDefault.IsChecked = false;
+        CheckBoxTextBoxControlOptionName.IsChecked = false;
+        CheckBoxTextBoxControlOptionValue.IsChecked = false;
+        CheckBoxTextBoxControlTitle.IsChecked = false;
+        CheckBoxTextBoxControlMaxLength.IsChecked = false;
+        CheckBoxTextBoxControlOptions.IsChecked = false;
     }
     private void SelectEndpointAvailableControls(Endpoint endpoint)
     {
@@ -79,94 +79,94 @@ public partial class FullRequest: ITransactionControl
                     CheckBoxCommand.IsChecked = true;
                     break;
                 case RequestFields.RefId:
-                    CheckBoxRefId.IsChecked = true;
+                    CheckBoxTextBoxControlRefId.IsChecked = true;
                     break;
                 case RequestFields.Date:
-                    CheckBoxDate.IsChecked = true;
+                    CheckBoxTextBoxControlDate.IsChecked = true;
                     break;
                 case RequestFields.MerchantId:
-                    CheckBoxMerchantId.IsChecked = true;
+                    CheckBoxTextBoxControlMerchantId.IsChecked = true;
                     break;
                 case RequestFields.PaymentType:
-                    CheckBoxPaymentType.IsChecked = true;
+                    CheckBoxTextBoxControlPaymentType.IsChecked = true;
                     break;
                 case RequestFields.Prompt:
-                    CheckBoxPrompt.IsChecked = true;
+                    CheckBoxTextBoxControlPrompt.IsChecked = true;
                     break;
                 case RequestFields.Country:
-                    CheckBoxCountry.IsChecked = true;
+                    CheckBoxTextBoxControlCountry.IsChecked = true;
                     break;
                 case RequestFields.BusinessName:
-                    CheckBoxBusinessName.IsChecked = true;
+                    CheckBoxTextBoxControlBusinessName.IsChecked = true;
                     break;
                 case RequestFields.ContactName:
-                    CheckBoxContactName.IsChecked = true;
+                    CheckBoxTextBoxControlContactName.IsChecked = true;
                     break;
                 case RequestFields.Address:
-                    CheckBoxAddress.IsChecked = true;
+                    CheckBoxTextBoxControlAddress.IsChecked = true;
                     break;
                 case RequestFields.City:
-                    CheckBoxCity.IsChecked = true;
+                    CheckBoxTextBoxControlCity.IsChecked = true;
                     break;
                 case RequestFields.State:
-                    CheckBoxState.IsChecked = true;
+                    CheckBoxTextBoxControlState.IsChecked = true;
                     break;
                 case RequestFields.ZipCode:
-                    CheckBoxZipCode.IsChecked = true;
+                    CheckBoxTextBoxControlZipCode.IsChecked = true;
                     break;
                 case RequestFields.Email:
-                    CheckBoxEmail.IsChecked = true;
+                    CheckBoxTextBoxControlEmail.IsChecked = true;
                     break;
                 case RequestFields.Phone:
-                    CheckBoxPhone.IsChecked = true;
+                    CheckBoxTextBoxControlPhone.IsChecked = true;
                     break;
                 case RequestFields.ResellerName:
-                    CheckBoxResellerName.IsChecked = true;
+                    CheckBoxTextBoxControlResellerName.IsChecked = true;
                     break;
                 case RequestFields.ReferenceId:
-                    CheckBoxReferenceId.IsChecked = true;
+                    CheckBoxTextBoxControlReferenceId.IsChecked = true;
                     break;
                 case RequestFields.TerminalSerialNumber:
-                    CheckBoxTerminalSerialNumber.IsChecked = true;
+                    CheckBoxTextBoxControlTerminalSerialNumber.IsChecked = true;
                     break;
                 case RequestFields.Amount:
-                    CheckBoxAmount.IsChecked = true;
+                    CheckBoxTextBoxControlAmount.IsChecked = true;
                     break;
                 case RequestFields.InvoiceNumber:
-                    CheckBoxInvoiceNumber.IsChecked = true;
+                    CheckBoxTextBoxControlInvoiceNumber.IsChecked = true;
                     break;
                 case RequestFields.Token:
-                    CheckBoxToken.IsChecked = true;
+                    CheckBoxTextBoxControlToken.IsChecked = true;
                     break;
                 case RequestFields.ExpDate:
-                    CheckBoxExpDate.IsChecked = true;
+                    CheckBoxTextBoxControlExpDate.IsChecked = true;
                     break;
                 case RequestFields.Type:
-                    CheckBoxType.IsChecked = true;
+                    CheckBoxTextBoxControlType.IsChecked = true;
                     break;
                 case RequestFields.Data:
-                    CheckBoxData.IsChecked = true;
+                    CheckBoxTextBoxControlData.IsChecked = true;
                     break;
                 case RequestFields.Url:
-                    CheckBoxUrl.IsChecked = true;
+                    CheckBoxTextBoxControlUrl.IsChecked = true;
                     break;
                 case RequestFields.IsDefault:
-                    CheckBoxIsDefault.IsChecked = true;
+                    CheckBoxTextBoxControlIsDefault.IsChecked = true;
                     break;
                 case RequestFields.OptionName:
-                    CheckBoxOptionName.IsChecked = true;
+                    CheckBoxTextBoxControlOptionName.IsChecked = true;
                     break;
                 case RequestFields.OptionValue:
-                    CheckBoxOptionValue.IsChecked = true;
+                    CheckBoxTextBoxControlOptionValue.IsChecked = true;
                     break;
                 case RequestFields.Title:
-                    CheckBoxTitle.IsChecked = true;
+                    CheckBoxTextBoxControlTitle.IsChecked = true;
                     break;
                 case RequestFields.MaxLength:
-                    CheckBoxMaxLength.IsChecked = true;
+                    CheckBoxTextBoxControlMaxLength.IsChecked = true;
                     break;
                 case RequestFields.Options:
-                    CheckBoxOptions.IsChecked = true;
+                    CheckBoxTextBoxControlOptions.IsChecked = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -186,66 +186,66 @@ public partial class FullRequest: ITransactionControl
             transaction.TerminalId = terminal.Id.ToString();
         if(CheckBoxCommand.IsChecked == true)
             transaction.Command = (string)ComboBoxCommand.SelectedValue;
-        if(CheckBoxRefId.IsChecked == true)
-            transaction.RefId = TextBoxRefId.Text;
-        if(CheckBoxDate.IsChecked == true)
-            transaction.Date = TextBoxDate.Text;
-        if(CheckBoxMerchantId.IsChecked == true)
-            transaction.MerchantId = TextBoxMerchantId.Text;
-        if(CheckBoxPaymentType.IsChecked == true)
-            transaction.PaymentType = TextBoxPaymentType.Text;
-        if(CheckBoxPrompt.IsChecked == true)
-            transaction.Prompt = TextBoxPrompt.Text;
-        if(CheckBoxCountry.IsChecked == true)
-            transaction.Country = TextBoxCountry.Text;
-        if(CheckBoxBusinessName.IsChecked == true)
-            transaction.BusinessName = TextBoxBusinessName.Text;
-        if(CheckBoxContactName.IsChecked == true)
-            transaction.ContactName = TextBoxContactName.Text;
-        if(CheckBoxAddress.IsChecked == true)
-            transaction.Address = TextBoxAddress.Text;
-        if(CheckBoxCity.IsChecked == true)
-            transaction.City = TextBoxCity.Text;
-        if(CheckBoxState.IsChecked == true)
-            transaction.State = TextBoxState.Text;
-        if(CheckBoxZipCode.IsChecked == true)
-            transaction.ZipCode = TextBoxZipCode.Text;
-        if(CheckBoxEmail.IsChecked == true)
-            transaction.Email = TextBoxEmail.Text;
-        if(CheckBoxPhone.IsChecked == true)
-            transaction.Phone = TextBoxPhone.Text;
-        if(CheckBoxResellerName.IsChecked == true)
-            transaction.ResellerName = TextBoxResellerName.Text;
-        if(CheckBoxReferenceId.IsChecked == true)
-            transaction.ReferenceId = TextBoxReferenceId.Text;
-        if(CheckBoxTerminalSerialNumber.IsChecked == true)
-            transaction.TerminalSerialNumber = TextBoxTerminalSerialNumber.Text;
-        if(CheckBoxAmount.IsChecked == true)
-            transaction.Amount = TextBoxAmount.Text;
-        if(CheckBoxInvoiceNumber.IsChecked == true)
-            transaction.InvoiceNumber = TextBoxInvoiceNumber.Text;
-        if(CheckBoxToken.IsChecked == true)
-            transaction.Token = TextBoxToken.Text;
-        if(CheckBoxExpDate.IsChecked == true)
-            transaction.ExpDate = TextBoxExpDate.Text;
-        if(CheckBoxType.IsChecked == true)
-            transaction.Type = TextBoxType.Text;
-        if(CheckBoxData.IsChecked == true)
-            transaction.Data = TextBoxData.Text;
-        if(CheckBoxUrl.IsChecked == true)
-            transaction.Url = TextBoxUrl.Text;
-        if(CheckBoxIsDefault.IsChecked == true)
-            transaction.IsDefault = TextBoxIsDefault.Text;
-        if(CheckBoxOptionName.IsChecked == true)
-            transaction.OptionName = TextBoxOptionName.Text;
-        if(CheckBoxOptionValue.IsChecked == true)
-            transaction.OptionValue = TextBoxOptionValue.Text;
-        if(CheckBoxTitle.IsChecked == true)
-            transaction.Title = TextBoxTitle.Text;
-        if(CheckBoxMaxLength.IsChecked == true)
-            transaction.MaxLength = TextBoxMaxLength.Text;
-        if(CheckBoxOptions.IsChecked == true)
-            transaction.Options = new List<string>(TextBoxOptions.Text.Split(','));
+        if(CheckBoxTextBoxControlRefId.IsChecked)
+            transaction.RefId = CheckBoxTextBoxControlRefId.TextValue;
+        if(CheckBoxTextBoxControlDate.IsChecked)
+            transaction.Date = CheckBoxTextBoxControlDate.TextValue;
+        if(CheckBoxTextBoxControlMerchantId.IsChecked)
+            transaction.MerchantId = CheckBoxTextBoxControlMerchantId.TextValue;
+        if(CheckBoxTextBoxControlPaymentType.IsChecked)
+            transaction.PaymentType = CheckBoxTextBoxControlPaymentType.TextValue;
+        if(CheckBoxTextBoxControlPrompt.IsChecked)
+            transaction.Prompt = CheckBoxTextBoxControlPrompt.TextValue;
+        if(CheckBoxTextBoxControlCountry.IsChecked)
+            transaction.Country = CheckBoxTextBoxControlCountry.TextValue;
+        if(CheckBoxTextBoxControlBusinessName.IsChecked)
+            transaction.BusinessName = CheckBoxTextBoxControlBusinessName.TextValue;
+        if(CheckBoxTextBoxControlContactName.IsChecked)
+            transaction.ContactName = CheckBoxTextBoxControlContactName.TextValue;
+        if(CheckBoxTextBoxControlAddress.IsChecked)
+            transaction.Address = CheckBoxTextBoxControlAddress.TextValue;
+        if(CheckBoxTextBoxControlCity.IsChecked)
+            transaction.City = CheckBoxTextBoxControlCity.TextValue;
+        if(CheckBoxTextBoxControlState.IsChecked)
+            transaction.State = CheckBoxTextBoxControlState.TextValue;
+        if(CheckBoxTextBoxControlZipCode.IsChecked)
+            transaction.ZipCode = CheckBoxTextBoxControlZipCode.TextValue;
+        if(CheckBoxTextBoxControlEmail.IsChecked)
+            transaction.Email = CheckBoxTextBoxControlEmail.TextValue;
+        if(CheckBoxTextBoxControlPhone.IsChecked)
+            transaction.Phone = CheckBoxTextBoxControlPhone.TextValue;
+        if(CheckBoxTextBoxControlResellerName.IsChecked)
+            transaction.ResellerName = CheckBoxTextBoxControlResellerName.TextValue;
+        if(CheckBoxTextBoxControlReferenceId.IsChecked)
+            transaction.ReferenceId = CheckBoxTextBoxControlReferenceId.TextValue;
+        if(CheckBoxTextBoxControlTerminalSerialNumber.IsChecked)
+            transaction.TerminalSerialNumber = CheckBoxTextBoxControlTerminalSerialNumber.TextValue;
+        if(CheckBoxTextBoxControlAmount.IsChecked)
+            transaction.Amount = CheckBoxTextBoxControlAmount.TextValue;
+        if(CheckBoxTextBoxControlInvoiceNumber.IsChecked)
+            transaction.InvoiceNumber = CheckBoxTextBoxControlInvoiceNumber.TextValue;
+        if(CheckBoxTextBoxControlToken.IsChecked)
+            transaction.Token = CheckBoxTextBoxControlToken.TextValue;
+        if(CheckBoxTextBoxControlExpDate.IsChecked)
+            transaction.ExpDate = CheckBoxTextBoxControlExpDate.TextValue;
+        if(CheckBoxTextBoxControlType.IsChecked)
+            transaction.Type = CheckBoxTextBoxControlType.TextValue;
+        if(CheckBoxTextBoxControlData.IsChecked)
+            transaction.Data = CheckBoxTextBoxControlData.TextValue;
+        if(CheckBoxTextBoxControlUrl.IsChecked)
+            transaction.Url = CheckBoxTextBoxControlUrl.TextValue;
+        if(CheckBoxTextBoxControlIsDefault.IsChecked)
+            transaction.IsDefault = CheckBoxTextBoxControlIsDefault.TextValue;
+        if(CheckBoxTextBoxControlOptionName.IsChecked)
+            transaction.OptionName = CheckBoxTextBoxControlOptionName.TextValue;
+        if(CheckBoxTextBoxControlOptionValue.IsChecked)
+            transaction.OptionValue = CheckBoxTextBoxControlOptionValue.TextValue;
+        if(CheckBoxTextBoxControlTitle.IsChecked)
+            transaction.Title = CheckBoxTextBoxControlTitle.TextValue;
+        if(CheckBoxTextBoxControlMaxLength.IsChecked)
+            transaction.MaxLength = CheckBoxTextBoxControlMaxLength.TextValue;
+        if(CheckBoxTextBoxControlOptions.IsChecked)
+            transaction.Options = new List<string>(CheckBoxTextBoxControlOptions.TextValue.Split(','));
             
         return transaction;
     }
@@ -260,96 +260,96 @@ public partial class FullRequest: ITransactionControl
         if (transaction.Command != null)
             ComboBoxCommand.SelectedValue = transaction.Command;
 
-        CheckBoxRefId.IsChecked = transaction.RefId != null;
+        CheckBoxTextBoxControlRefId.IsChecked = transaction.RefId != null;
         if(transaction.RefId != null)
-            TextBoxRefId.Text = transaction.RefId;
-        CheckBoxDate.IsChecked = transaction.Date != null; 
+            CheckBoxTextBoxControlRefId.TextValue = transaction.RefId;
+        CheckBoxTextBoxControlDate.IsChecked = transaction.Date != null; 
         if(transaction.Date != null)
-            TextBoxDate.Text = transaction.Date;
-        CheckBoxMerchantId.IsChecked = transaction.MerchantId != null; 
+            CheckBoxTextBoxControlDate.TextValue = transaction.Date;
+        CheckBoxTextBoxControlMerchantId.IsChecked = transaction.MerchantId != null; 
         if(transaction.MerchantId != null)
-            TextBoxMerchantId.Text = transaction.MerchantId;
-        CheckBoxPaymentType.IsChecked = transaction.PaymentType != null; 
+            CheckBoxTextBoxControlMerchantId.TextValue = transaction.MerchantId;
+        CheckBoxTextBoxControlPaymentType.IsChecked = transaction.PaymentType != null; 
         if(transaction.PaymentType != null)
-            TextBoxPaymentType.Text = transaction.PaymentType;
-        CheckBoxPrompt.IsChecked = transaction.Prompt != null; 
+            CheckBoxTextBoxControlPaymentType.TextValue = transaction.PaymentType;
+        CheckBoxTextBoxControlPrompt.IsChecked = transaction.Prompt != null; 
         if(transaction.Prompt != null)
-            TextBoxPrompt.Text = transaction.Prompt;
-        CheckBoxCountry.IsChecked = transaction.Country != null; 
+            CheckBoxTextBoxControlPrompt.TextValue = transaction.Prompt;
+        CheckBoxTextBoxControlCountry.IsChecked = transaction.Country != null; 
         if(transaction.Country != null)
-            TextBoxCountry.Text = transaction.Country;
-        CheckBoxBusinessName.IsChecked = transaction.BusinessName != null; 
+            CheckBoxTextBoxControlCountry.TextValue = transaction.Country;
+        CheckBoxTextBoxControlBusinessName.IsChecked = transaction.BusinessName != null; 
         if(transaction.BusinessName != null)
-            TextBoxBusinessName.Text = transaction.BusinessName;
-        CheckBoxContactName.IsChecked = transaction.ContactName != null; 
+            CheckBoxTextBoxControlBusinessName.TextValue = transaction.BusinessName;
+        CheckBoxTextBoxControlContactName.IsChecked = transaction.ContactName != null; 
         if(transaction.ContactName != null)
-            TextBoxContactName.Text = transaction.ContactName;
-        CheckBoxAddress.IsChecked = transaction.Address != null; 
+            CheckBoxTextBoxControlContactName.TextValue = transaction.ContactName;
+        CheckBoxTextBoxControlAddress.IsChecked = transaction.Address != null; 
         if(transaction.Address != null)
-            TextBoxAddress.Text = transaction.Address;
-        CheckBoxCity.IsChecked = transaction.City != null; 
+            CheckBoxTextBoxControlAddress.TextValue = transaction.Address;
+        CheckBoxTextBoxControlCity.IsChecked = transaction.City != null; 
         if(transaction.City != null)
-            TextBoxCity.Text = transaction.City;
-        CheckBoxState.IsChecked = transaction.State != null; 
+            CheckBoxTextBoxControlCity.TextValue = transaction.City;
+        CheckBoxTextBoxControlState.IsChecked = transaction.State != null; 
         if(transaction.State != null)
-            TextBoxState.Text = transaction.State;
-        CheckBoxZipCode.IsChecked = transaction.ZipCode != null; 
+            CheckBoxTextBoxControlState.TextValue = transaction.State;
+        CheckBoxTextBoxControlZipCode.IsChecked = transaction.ZipCode != null; 
         if(transaction.ZipCode != null)
-            TextBoxZipCode.Text = transaction.ZipCode;
-        CheckBoxEmail.IsChecked = transaction.Email != null; 
+            CheckBoxTextBoxControlZipCode.TextValue = transaction.ZipCode;
+        CheckBoxTextBoxControlEmail.IsChecked = transaction.Email != null; 
         if(transaction.Email != null)
-            TextBoxEmail.Text = transaction.Email;
-        CheckBoxPhone.IsChecked = transaction.Phone != null; 
+            CheckBoxTextBoxControlEmail.TextValue = transaction.Email;
+        CheckBoxTextBoxControlPhone.IsChecked = transaction.Phone != null; 
         if(transaction.Phone != null)
-            TextBoxPhone.Text = transaction.Phone;
-        CheckBoxResellerName.IsChecked = transaction.ResellerName != null; 
+            CheckBoxTextBoxControlPhone.TextValue = transaction.Phone;
+        CheckBoxTextBoxControlResellerName.IsChecked = transaction.ResellerName != null; 
         if(transaction.ResellerName != null)
-            TextBoxResellerName.Text = transaction.ResellerName;
-        CheckBoxReferenceId.IsChecked = transaction.ReferenceId != null; 
+            CheckBoxTextBoxControlResellerName.TextValue = transaction.ResellerName;
+        CheckBoxTextBoxControlReferenceId.IsChecked = transaction.ReferenceId != null; 
         if(transaction.ReferenceId != null)
-            TextBoxReferenceId.Text = transaction.ReferenceId;
-        CheckBoxTerminalSerialNumber.IsChecked = transaction.TerminalSerialNumber != null; 
+            CheckBoxTextBoxControlReferenceId.TextValue = transaction.ReferenceId;
+        CheckBoxTextBoxControlTerminalSerialNumber.IsChecked = transaction.TerminalSerialNumber != null; 
         if(transaction.TerminalSerialNumber != null)
-            TextBoxTerminalSerialNumber.Text = transaction.TerminalSerialNumber;
-        CheckBoxAmount.IsChecked = transaction.Amount != null; 
+            CheckBoxTextBoxControlTerminalSerialNumber.TextValue = transaction.TerminalSerialNumber;
+        CheckBoxTextBoxControlAmount.IsChecked = transaction.Amount != null; 
         if(transaction.Amount != null)
-            TextBoxAmount.Text = transaction.Amount;
-        CheckBoxInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
+            CheckBoxTextBoxControlAmount.TextValue = transaction.Amount;
+        CheckBoxTextBoxControlInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
         if(transaction.InvoiceNumber != null)
-            TextBoxInvoiceNumber.Text = transaction.InvoiceNumber;
-        CheckBoxToken.IsChecked = transaction.Token != null; 
+            CheckBoxTextBoxControlInvoiceNumber.TextValue = transaction.InvoiceNumber;
+        CheckBoxTextBoxControlToken.IsChecked = transaction.Token != null; 
         if(transaction.Token != null)
-            TextBoxToken.Text = transaction.Token;
-        CheckBoxExpDate.IsChecked = transaction.ExpDate != null; 
+            CheckBoxTextBoxControlToken.TextValue = transaction.Token;
+        CheckBoxTextBoxControlExpDate.IsChecked = transaction.ExpDate != null; 
         if(transaction.ExpDate != null)
-            TextBoxExpDate.Text = transaction.ExpDate;
-        CheckBoxType.IsChecked = transaction.Type != null; 
+            CheckBoxTextBoxControlExpDate.TextValue = transaction.ExpDate;
+        CheckBoxTextBoxControlType.IsChecked = transaction.Type != null; 
         if(transaction.Type != null)
-            TextBoxType.Text = transaction.Type;
-        CheckBoxData.IsChecked = transaction.Data != null; 
+            CheckBoxTextBoxControlType.TextValue = transaction.Type;
+        CheckBoxTextBoxControlData.IsChecked = transaction.Data != null; 
         if(transaction.Data != null)
-            TextBoxData.Text = transaction.Data;
-        CheckBoxUrl.IsChecked = transaction.Url != null; 
+            CheckBoxTextBoxControlData.TextValue = transaction.Data;
+        CheckBoxTextBoxControlUrl.IsChecked = transaction.Url != null; 
         if(transaction.Url != null)
-            TextBoxUrl.Text = transaction.Url;
-        CheckBoxIsDefault.IsChecked = transaction.IsDefault != null; 
+            CheckBoxTextBoxControlUrl.TextValue = transaction.Url;
+        CheckBoxTextBoxControlIsDefault.IsChecked = transaction.IsDefault != null; 
         if(transaction.IsDefault != null)
-            TextBoxIsDefault.Text = transaction.IsDefault;
-        CheckBoxOptionName.IsChecked = transaction.OptionName != null; 
+            CheckBoxTextBoxControlIsDefault.TextValue = transaction.IsDefault;
+        CheckBoxTextBoxControlOptionName.IsChecked = transaction.OptionName != null; 
         if(transaction.OptionName != null)
-            TextBoxOptionName.Text = transaction.OptionName;
-        CheckBoxOptionValue.IsChecked = transaction.OptionValue != null; 
+            CheckBoxTextBoxControlOptionName.TextValue = transaction.OptionName;
+        CheckBoxTextBoxControlOptionValue.IsChecked = transaction.OptionValue != null; 
         if(transaction.OptionValue != null)
-            TextBoxOptionValue.Text = transaction.OptionValue;
-        CheckBoxTitle.IsChecked = transaction.Title != null; 
+            CheckBoxTextBoxControlOptionValue.TextValue = transaction.OptionValue;
+        CheckBoxTextBoxControlTitle.IsChecked = transaction.Title != null; 
         if(transaction.Title != null)
-            TextBoxTitle.Text = transaction.Title;
-        CheckBoxMaxLength.IsChecked = transaction.MaxLength != null; 
+            CheckBoxTextBoxControlTitle.TextValue = transaction.Title;
+        CheckBoxTextBoxControlMaxLength.IsChecked = transaction.MaxLength != null; 
         if(transaction.MaxLength != null)
-            TextBoxMaxLength.Text = transaction.MaxLength;
-        CheckBoxOptions.IsChecked = transaction.Options != null; 
+            CheckBoxTextBoxControlMaxLength.TextValue = transaction.MaxLength;
+        CheckBoxTextBoxControlOptions.IsChecked = transaction.Options != null; 
         if(transaction.Options != null)
-            TextBoxOptions.Text = string.Join(",", transaction.Options);
+            CheckBoxTextBoxControlOptions.TextValue = string.Join(",", transaction.Options);
     }
     private void ComboBoxEndpoints_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -359,27 +359,32 @@ public partial class FullRequest: ITransactionControl
 
     private void BtnGenerateRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = GenerateFieldValueHelper.GenerateRefId();
+        CheckBoxTextBoxControlRefId.TextValue = GenerateFieldValueHelper.GenerateRefId();
     }
     
     private void BtnChangeRefIdRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = GenerateFieldValueHelper.ChangeRefIdCase(TextBoxRefId.Text);
+        CheckBoxTextBoxControlRefId.TextValue = GenerateFieldValueHelper.ChangeRefIdCase(CheckBoxTextBoxControlRefId.TextValue);
     }
     
     private void BtnGenerateDate_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxDate.Text = GenerateFieldValueHelper.GenerateDate();
+        CheckBoxTextBoxControlDate.TextValue = GenerateFieldValueHelper.GenerateDate();
+    }
+    
+    private void BtnGenerateExpDate_Click(object sender, RoutedEventArgs e)
+    {
+        CheckBoxTextBoxControlExpDate.TextValue = GenerateFieldValueHelper.GenerateDate();
     }
 
     private void BtnSetIsDefaultTrue_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxIsDefault.Text = "True";
+        CheckBoxTextBoxControlIsDefault.TextValue = "True";
     }
 
     private void BtnSetIsDefaultFalse_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxIsDefault.Text = "False";
+        CheckBoxTextBoxControlIsDefault.TextValue = "False";
     }
     public string? GetUri()
     {
@@ -407,25 +412,25 @@ public partial class FullRequest: ITransactionControl
 
     private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxAmount.Text = GenerateFieldValueHelper.GenerateAmount();
+        CheckBoxTextBoxControlAmount.TextValue = GenerateFieldValueHelper.GenerateAmount();
     }
 
     private void BtnSetTypeHtml_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxType.Text = "html";
+        CheckBoxTextBoxControlType.TextValue = "html";
     }
 
     private void BtnSetTypeJson_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxType.Text = "json";
+        CheckBoxTextBoxControlType.TextValue = "json";
     }
     private void BtnSetDataHtml_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxData.Text = "<!DOCTYPE html><html><body><h2>Menu</h2><dl><dt>Coffee</dt><dd>- black hot drink</dd><dt>Milk</dt><dd>- cold drink</dd></dl></body></html>";
+        CheckBoxTextBoxControlData.TextValue = "<!DOCTYPE html><html><body><h2>Menu</h2><dl><dt>Coffee</dt><dd>- black hot drink</dd><dt>Milk</dt><dd>- cold drink</dd></dl></body></html>";
     }
 
     private void BtnSetDataJson_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxData.Text = "{\"header\": {\"fgColor\": \"000000\",\"bgColor\": \"ffffff\",\"fontSz\": \"30\",\"rows\": [{\"text\": \"Joe's Pizza\",\"fontSz\":\"30\"},{\"text\": \"best pizza ever\",\"fontSz\":\"30\"}]},\"body\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"1- Pizza\",\"subText\": \"onions, peppers\",\"amt\":\"$9.00\",\"fgColor\":\"111111\",\"bgColor\":\"cccccc\",\"fontSz\":\"22\"},{\"text\": \"Breadsticks\",\"subText\": \"Marinara\",\"amt\":\"$1.00\",\"fgColor\":\"222222\",\"bgColor\":\"eeeeee\",\"fontSz\":\"22\"}]},\"footer\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"SubTotal\",\"amt\":\"$10.00\",\"fontSz\":\"22\"},{\"text\": \"Tax\",\"amt\":\"$1.00\",\"fontSz\":\"22\"},{\"text\": \"Total\",\"amt\":\"$12.00\",\"fontSz\":\"22\"}]}}";
+        CheckBoxTextBoxControlData.TextValue = "{\"header\": {\"fgColor\": \"000000\",\"bgColor\": \"ffffff\",\"fontSz\": \"30\",\"rows\": [{\"text\": \"Joe's Pizza\",\"fontSz\":\"30\"},{\"text\": \"best pizza ever\",\"fontSz\":\"30\"}]},\"body\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"1- Pizza\",\"subText\": \"onions, peppers\",\"amt\":\"$9.00\",\"fgColor\":\"111111\",\"bgColor\":\"cccccc\",\"fontSz\":\"22\"},{\"text\": \"Breadsticks\",\"subText\": \"Marinara\",\"amt\":\"$1.00\",\"fgColor\":\"222222\",\"bgColor\":\"eeeeee\",\"fontSz\":\"22\"}]},\"footer\": {\"fgColor\": \"000000\",\"fontSz\": \"22\",\"rows\": [{\"text\": \"SubTotal\",\"amt\":\"$10.00\",\"fontSz\":\"22\"},{\"text\": \"Tax\",\"amt\":\"$1.00\",\"fontSz\":\"22\"},{\"text\": \"Total\",\"amt\":\"$12.00\",\"fontSz\":\"22\"}]}}";
     }
 }

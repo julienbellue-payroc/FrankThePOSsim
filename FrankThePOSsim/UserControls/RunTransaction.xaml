@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+      xmlns:userControls="clr-namespace:FrankThePOSsim.UserControls"
       mc:Ignorable="d">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
@@ -40,106 +40,50 @@
                 </CheckBox>
                 <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ComboBoxCommand" IsEnabled="{Binding ElementName=CheckBoxCommand, Path=IsChecked}" SelectionChanged="ComboBoxCommand_SelectionChanged" />
             </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxRefId">
-                    <TextBlock>refId</TextBlock>
-                </CheckBox>
-                <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateRefId_Click" Padding="0" ToolTip="Generate a random refId">
-                        <Image emoji:Image.Source="🔄" />
-                    </Button>
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnChangeRefIdRefId_Click" Padding="0" ToolTip="Change the refId's case">
-                        <Image emoji:Image.Source="🔠" />
-                    </Button>
-                    <TextBox x:Name="TextBoxRefId" VerticalContentAlignment="Center" MinWidth="250" IsEnabled="{Binding ElementName=CheckBoxRefId, Path=IsChecked}"/>
-                </DockPanel>
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxAmount">
-                    <TextBlock>Amount</TextBlock>
-                </CheckBox>
-                <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateAmount_Click" Padding="0" ToolTip="Generate a random amount ($0.01 to $19.99)">
-                        <Image emoji:Image.Source="💰"/>
-                    </Button>
-                    <TextBox x:Name="TextBoxAmount" VerticalContentAlignment="Center" MinWidth="250"  IsEnabled="{Binding ElementName=CheckBoxAmount, Path=IsChecked}" />
-                </DockPanel>
-            </Grid>
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlRefId"
+                Header="refId"
+                IsChecked="{Binding RefIdChecked}"
+                TextValue="{Binding RefIdText}"
+                Button1Image="🔠"
+                Button1Click="BtnChangeRefIdRefId_Click"
+                Button2Image="🔄"
+                Button2Click="BtnGenerateRefId_Click" />
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlAmount"
+                Header="Amount"
+                IsChecked="{Binding AmountChecked}"
+                TextValue="{Binding AmountText}"
+                Button1Click="BtnGenerateAmount_Click"
+                Button1Image="💰" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxExpDate">
-                    <TextBlock>ExpDate</TextBlock>
-                </CheckBox>
-                <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Height="26" Width="26" Click="BtnGenerateExpDate_Click" Padding="0" ToolTip="Set to today's date">
-                        <Image emoji:Image.Source="📅"/>
-                    </Button>
-                    <TextBox x:Name="TextBoxExpDate" VerticalContentAlignment="Center" MinWidth="250" IsEnabled="{Binding ElementName=CheckBoxExpDate, Path=IsChecked}"/>
-                </DockPanel>
-            </Grid>
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlExpDate"
+                Header="ExpDate"
+                IsChecked="{Binding ExpDateChecked}"
+                TextValue="{Binding ExpDateText}"
+                Button1Image="📅"
+                Button1Click="BtnGenerateExpDate_Click" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxInvoiceNumber">
-                    <TextBlock>InvoiceNumber</TextBlock>
-                </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxInvoiceNumber" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxInvoiceNumber, Path=IsChecked}"/>
-            </Grid>
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlInvoiceNumber"
+                Header="InvoiceNumber"
+                IsChecked="{Binding InvoiceNumberChecked}"
+                TextValue="{Binding InvoiceNumberText}" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxMerchantId">
-                    <TextBlock>MerchantId</TextBlock>
-                </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxMerchantId" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxMerchantId, Path=IsChecked}"/>
-            </Grid>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition SharedSizeGroup="ControlGroup"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxPaymentType">
-                    <TextBlock>PaymentType</TextBlock>
-                </CheckBox>
-                <TextBox Grid.Column="1" x:Name="TextBoxPaymentType" VerticalContentAlignment="Center" IsEnabled="{Binding ElementName=CheckBoxPaymentType, Path=IsChecked}"/>
-            </Grid>
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlMerchantId"
+                Header="MerchantId"
+                IsChecked="{Binding MerchantIdChecked}"
+                TextValue="{Binding MerchantIdText}" />
+
+            <userControls:CheckBoxTextBoxControl
+                x:Name="CheckBoxTextBoxControlPaymentType"
+                Header="PaymentType"
+                IsChecked="{Binding PaymentTypeChecked}"
+                TextValue="{Binding PaymentTypeText}" />
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

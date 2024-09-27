@@ -19,14 +19,14 @@ public partial class RunTransaction: ITransactionControl
     {
         var comboBox = (ComboBox)sender;
         var isGift = ((string)comboBox.SelectedItem).ToLower().StartsWith("gift");
-        CheckBoxExpDate.IsChecked = !isGift;
-        CheckBoxInvoiceNumber.IsChecked = !isGift;
-        CheckBoxMerchantId.IsChecked = !isGift;
-        CheckBoxPaymentType.IsChecked = !isGift;
+        CheckBoxTextBoxControlExpDate.IsChecked = !isGift;
+        CheckBoxTextBoxControlInvoiceNumber.IsChecked = !isGift;
+        CheckBoxTextBoxControlMerchantId.IsChecked = !isGift;
+        CheckBoxTextBoxControlPaymentType.IsChecked = !isGift;
 
         CheckBoxCommand.IsChecked = true;
-        CheckBoxAmount.IsChecked = true;
-        CheckBoxRefId.IsChecked = true;
+        CheckBoxTextBoxControlAmount.IsChecked = true;
+        CheckBoxTextBoxControlRefId.IsChecked = true;
     }
 
     public string GetUri()
@@ -49,23 +49,23 @@ public partial class RunTransaction: ITransactionControl
             transaction.Key = terminal.ApiKey;
         if (CheckBoxApiPassword.IsChecked == true && terminal.ApiPassword != null)
             transaction.Password = terminal.ApiPassword;
-        if (CheckBoxAmount.IsChecked == true)
-            transaction.Amount = TextBoxAmount.Text;
+        if (CheckBoxTextBoxControlAmount.IsChecked)
+            transaction.Amount = CheckBoxTextBoxControlAmount.TextValue;
 
         if (CheckBoxTerminalId.IsChecked == true)
             transaction.TerminalId = terminal.Id.ToString();
 
-        if (CheckBoxRefId.IsChecked == true)
-            transaction.RefId = TextBoxRefId.Text;
-        if (CheckBoxExpDate.IsChecked == true)
-            transaction.ExpDate = TextBoxExpDate.Text;
-        if (CheckBoxMerchantId.IsChecked == true)
-            transaction.MerchantId = TextBoxMerchantId.Text;
-        if (CheckBoxInvoiceNumber.IsChecked == true)
-            transaction.InvoiceNumber = TextBoxInvoiceNumber.Text;
+        if (CheckBoxTextBoxControlRefId.IsChecked)
+            transaction.RefId = CheckBoxTextBoxControlRefId.TextValue;
+        if (CheckBoxTextBoxControlExpDate.IsChecked)
+            transaction.ExpDate = CheckBoxTextBoxControlExpDate.TextValue;
+        if (CheckBoxTextBoxControlMerchantId.IsChecked)
+            transaction.MerchantId = CheckBoxTextBoxControlMerchantId.TextValue;
+        if (CheckBoxTextBoxControlInvoiceNumber.IsChecked)
+            transaction.InvoiceNumber = CheckBoxTextBoxControlInvoiceNumber.TextValue;
             
-        if (CheckBoxPaymentType.IsChecked == true)
-            transaction.PaymentType = TextBoxPaymentType.Text;
+        if (CheckBoxTextBoxControlPaymentType.IsChecked)
+            transaction.PaymentType = CheckBoxTextBoxControlPaymentType.TextValue;
             
         return transaction;
     }
@@ -80,40 +80,40 @@ public partial class RunTransaction: ITransactionControl
         if (transaction.Command != null)
             ComboBoxCommand.SelectedValue = transaction.Command;
 
-        CheckBoxRefId.IsChecked = transaction.RefId != null;
+        CheckBoxTextBoxControlRefId.IsChecked = transaction.RefId != null;
         if(transaction.RefId != null)
-            TextBoxRefId.Text = transaction.RefId;
-        CheckBoxMerchantId.IsChecked = transaction.MerchantId != null; 
+            CheckBoxTextBoxControlRefId.TextValue = transaction.RefId;
+        CheckBoxTextBoxControlMerchantId.IsChecked = transaction.MerchantId != null; 
         if(transaction.MerchantId != null)
-            TextBoxMerchantId.Text = transaction.MerchantId;
-        CheckBoxPaymentType.IsChecked = transaction.PaymentType != null; 
+            CheckBoxTextBoxControlMerchantId.TextValue = transaction.MerchantId;
+        CheckBoxTextBoxControlPaymentType.IsChecked = transaction.PaymentType != null; 
         if(transaction.PaymentType != null)
-            TextBoxPaymentType.Text = transaction.PaymentType;
-        CheckBoxAmount.IsChecked = transaction.Amount != null; 
+            CheckBoxTextBoxControlPaymentType.TextValue = transaction.PaymentType;
+        CheckBoxTextBoxControlAmount.IsChecked = transaction.Amount != null; 
         if(transaction.Amount != null)
-            TextBoxAmount.Text = transaction.Amount;
-        CheckBoxInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
+            CheckBoxTextBoxControlAmount.TextValue = transaction.Amount;
+        CheckBoxTextBoxControlInvoiceNumber.IsChecked = transaction.InvoiceNumber != null; 
         if(transaction.InvoiceNumber != null)
-            TextBoxInvoiceNumber.Text = transaction.InvoiceNumber;
-        CheckBoxExpDate.IsChecked = transaction.ExpDate != null; 
+            CheckBoxTextBoxControlInvoiceNumber.TextValue = transaction.InvoiceNumber;
+        CheckBoxTextBoxControlExpDate.IsChecked = transaction.ExpDate != null; 
         if(transaction.ExpDate != null)
-            TextBoxExpDate.Text = transaction.ExpDate;
+            CheckBoxTextBoxControlExpDate.TextValue = transaction.ExpDate;
     }
     private void BtnGenerateRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = GenerateFieldValueHelper.GenerateRefId();
+        CheckBoxTextBoxControlRefId.TextValue = GenerateFieldValueHelper.GenerateRefId();
     }
     private void BtnGenerateAmount_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxAmount.Text = GenerateFieldValueHelper.GenerateAmount();
+        CheckBoxTextBoxControlAmount.TextValue = GenerateFieldValueHelper.GenerateAmount();
     }
     private void BtnGenerateExpDate_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxExpDate.Text = GenerateFieldValueHelper.GenerateDate();
+        CheckBoxTextBoxControlExpDate.TextValue = GenerateFieldValueHelper.GenerateDate();
     }
 
     private void BtnChangeRefIdRefId_Click(object sender, RoutedEventArgs e)
     {
-        TextBoxRefId.Text = GenerateFieldValueHelper.ChangeRefIdCase(TextBoxRefId.Text);
+        CheckBoxTextBoxControlRefId.TextValue = GenerateFieldValueHelper.ChangeRefIdCase(CheckBoxTextBoxControlRefId.TextValue);
     }
 }

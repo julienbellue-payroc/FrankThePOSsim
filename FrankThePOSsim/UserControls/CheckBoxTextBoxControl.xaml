@@ -29,10 +29,14 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="Button2TextContent"
                                    Text="{Binding Button2Text}" 
-                                   Visibility="{Binding Button2Type}" />
+                                   Visibility="{Binding Button2Type}"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" />
                         <Image x:Name="Button2ImageContent"
                                wpf:Image.Source="{Binding Button2Image}" 
-                               Visibility="{Binding Button2Type}" />
+                               Visibility="{Binding Button2Type}"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center" />
                     </StackPanel>
                 </Button>
             </ContentControl>
@@ -44,10 +48,14 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock x:Name="Button1TextContent"
                                    Text="{Binding Button1Text}" 
-                                   Visibility="{Binding Button1Type}" />
+                                   Visibility="{Binding Button1Type}"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" />
                         <Image x:Name="Button1ImageContent"
                                wpf:Image.Source="{Binding Button1Image}" 
-                               Visibility="{Binding Button1Type}" />
+                               Visibility="{Binding Button1Type}"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center" />
                     </StackPanel>
                 </Button>
             </ContentControl>

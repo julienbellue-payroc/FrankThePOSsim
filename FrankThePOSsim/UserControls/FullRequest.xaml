@@ -174,7 +174,7 @@
                                           Button1Text="&lt; /&gt;"
                                           Button2Click="BtnSetTypeJson_Click"
                                           Button2Type="Text"
-                                          Button2Text="{StaticResource CurlyBracesString}" />
+                                          Button2Text="{DynamicResource CurlyBracesString}" />
             
             <local:CheckBoxTextBoxControl x:Name="CheckBoxTextBoxControlData"
                                           Header="Data"
@@ -185,7 +185,7 @@
                                           Button1Text="&lt; /&gt;"
                                           Button2Click="BtnSetDataJson_Click"
                                           Button2Type="Text"
-                                          Button2Text="{StaticResource CurlyBracesString}" />
+                                          Button2Text="{DynamicResource CurlyBracesString}" />
             
             <local:CheckBoxTextBoxControl x:Name="CheckBoxTextBoxControlUrl"
                                           Header="Url"

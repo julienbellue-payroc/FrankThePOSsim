@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsim.Helpers;
-using FrankThePOSsim.observable;
 
 namespace FrankThePOSsim.UserControls;
 
@@ -10,21 +9,30 @@ public partial class RunTransaction: ITransactionControl
     public RunTransaction()
     {
         InitializeComponent();
-
-        ComboBoxCommand.ItemsSource = new CommandObservable(Commands.GetCommands);
-        ComboBoxCommand.SelectedIndex = 0;
+        CheckBoxCommandControl.SelectedIndex = 0;
     }
         
     private void ComboBoxCommand_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var comboBox = (ComboBox)sender;
-        var isGift = ((string)comboBox.SelectedItem).ToLower().StartsWith("gift");
+        // Ensure that the sender is a CheckBoxCommand
+        if (sender is not CheckBoxCommand checkBoxCommand) return;
+
+        // Find the ComboBox inside the CheckBoxCommand control
+        var comboBox = checkBoxCommand.FindName("ThisComboBox") as ComboBox;
+
+        // Ensure ComboBox is found and SelectedItem is valid
+        if (comboBox?.SelectedItem is not string selectedItem) return;
+        
+        // Check if the selected item starts with "gift" (case-insensitive)
+        var isGift = selectedItem.StartsWith("gift", System.StringComparison.CurrentCultureIgnoreCase);
+
+        // Update CheckBox states based on the selection
         CheckBoxTextBoxControlExpDate.IsChecked = !isGift;
         CheckBoxTextBoxControlInvoiceNumber.IsChecked = !isGift;
         CheckBoxTextBoxControlMerchantId.IsChecked = !isGift;
         CheckBoxTextBoxControlPaymentType.IsChecked = !isGift;
 
-        CheckBoxCommand.IsChecked = true;
+        CheckBoxCommandControl.IsChecked = true;
         CheckBoxTextBoxControlAmount.IsChecked = true;
         CheckBoxTextBoxControlRefId.IsChecked = true;
     }
@@ -42,17 +50,17 @@ public partial class RunTransaction: ITransactionControl
     public Transaction GenerateTransaction(Terminal terminal)
     {
         Transaction transaction = new();
-        if (CheckBoxCommand.IsChecked == true)
-            transaction.Command = (string)ComboBoxCommand.SelectedValue;
+        if (CheckBoxCommandControl.IsChecked)
+            transaction.Command = CheckBoxCommandControl.SelectedValue;
 
-        if (CheckBoxApiKey.IsChecked == true && terminal.ApiKey != null)
+        if (ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked && terminal.ApiKey != null)
             transaction.Key = terminal.ApiKey;
-        if (CheckBoxApiPassword.IsChecked == true && terminal.ApiPassword != null)
+        if (ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked && terminal.ApiPassword != null)
             transaction.Password = terminal.ApiPassword;
         if (CheckBoxTextBoxControlAmount.IsChecked)
             transaction.Amount = CheckBoxTextBoxControlAmount.TextValue;
 
-        if (CheckBoxTerminalId.IsChecked == true)
+        if (ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked)
             transaction.TerminalId = terminal.Id.ToString();
 
         if (CheckBoxTextBoxControlRefId.IsChecked)
@@ -72,13 +80,13 @@ public partial class RunTransaction: ITransactionControl
 
     public void SetControlsFromTransaction(Transaction transaction)
     {
-        CheckBoxApiKey.IsChecked = transaction.Key != null;
-        CheckBoxApiPassword.IsChecked = transaction.Password != null;
-        CheckBoxTerminalId.IsChecked = transaction.TerminalId != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked = transaction.Key != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked = transaction.Password != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked = transaction.TerminalId != null;
 
-        CheckBoxCommand.IsChecked = transaction.Command != null;
+        CheckBoxCommandControl.IsChecked = transaction.Command != null;
         if (transaction.Command != null)
-            ComboBoxCommand.SelectedValue = transaction.Command;
+            CheckBoxCommandControl.SelectedValue = transaction.Command;
 
         CheckBoxTextBoxControlRefId.IsChecked = transaction.RefId != null;
         if(transaction.RefId != null)

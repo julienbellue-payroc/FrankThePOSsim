@@ -8,6 +8,7 @@
     
     <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
         <StackPanel Grid.IsSharedSizeScope="True">
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -15,39 +16,11 @@
                 <ComboBox x:Name="ComboBoxEndpoints" SelectionChanged="ComboBoxEndpoints_OnSelectionChanged"/>
             </Grid>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30" SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" x:Name="CheckBoxApiKey" IsChecked="True">
-                    <TextBlock>API Key</TextBlock>
-                </CheckBox>
-                <CheckBox Grid.Column="1" x:Name="CheckBoxApiPassword" IsChecked="True">
-                    <TextBlock>API Password</TextBlock>
-                </CheckBox>
-                <CheckBox Grid.Column="2" x:Name="CheckBoxTerminalId" IsChecked="True">
-                    <TextBlock>terminal Id</TextBlock>
-                </CheckBox>
-            </Grid>
+            <local:ApiKeyPasswordTerminalIdCheckboxes
+                x:Name="ApiKeyPasswordTerminalIdCheckboxesControl" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" MinWidth="150" SharedSizeGroup="CheckBoxControlGroup" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition SharedSizeGroup="ControlGroupHeight" />
-                </Grid.RowDefinitions>
-                <CheckBox Grid.Row="0" Grid.Column="0" x:Name="CheckBoxCommand" IsChecked="True">
-                    <TextBlock>Command</TextBlock>
-                </CheckBox>
-                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ComboBoxCommand" IsEnabled="{Binding ElementName=CheckBoxCommand, Path=IsChecked}" />
-            </Grid>
+            <local:CheckBoxCommand 
+                x:Name="CheckBoxCommandControl"/>
 
             <local:CheckBoxTextBoxControl x:Name="CheckBoxTextBoxControlRefId"
                                           Header="refId"

@@ -16,17 +16,14 @@ public partial class FullRequest: ITransactionControl
         ComboBoxEndpoints.DisplayMemberPath = "Uri";
         ComboBoxEndpoints.ItemsSource = new EndPointObservable(new Endpoints());
         ComboBoxEndpoints.SelectedIndex = 0;
-
-        ComboBoxCommand.ItemsSource = new CommandObservable(Commands.GetCommands);
-        ComboBoxCommand.SelectedIndex = 0;
     }
 
     private void SwitchAllCheckboxesOff()
     {
-        CheckBoxApiPassword.IsChecked = false;
-        CheckBoxApiKey.IsChecked = false;
-        CheckBoxTerminalId.IsChecked = false;
-        CheckBoxCommand.IsChecked = false;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked = false;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked = false;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked = false;
+        CheckBoxCommandControl.IsChecked = false;
         CheckBoxTextBoxControlRefId.IsChecked = false;
         CheckBoxTextBoxControlDate.IsChecked = false;
         CheckBoxTextBoxControlMerchantId.IsChecked = false;
@@ -67,16 +64,16 @@ public partial class FullRequest: ITransactionControl
             switch (requiredField)
             {
                 case RequestFields.Key:
-                    CheckBoxApiKey.IsChecked = true;
+                    ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked = true;
                     break;
                 case RequestFields.Password:
-                    CheckBoxApiPassword.IsChecked = true;
+                    ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked = true;
                     break;
                 case RequestFields.TerminalId:
-                    CheckBoxTerminalId.IsChecked = true;
+                    ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked = true;
                     break;
                 case RequestFields.Command:
-                    CheckBoxCommand.IsChecked = true;
+                    CheckBoxCommandControl.IsChecked = true;
                     break;
                 case RequestFields.RefId:
                     CheckBoxTextBoxControlRefId.IsChecked = true;
@@ -178,14 +175,14 @@ public partial class FullRequest: ITransactionControl
     {
         Transaction transaction = new();
 
-        if(CheckBoxApiKey.IsChecked == true && terminal.ApiKey != null)
+        if(ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked && terminal.ApiKey != null)
             transaction.Key = terminal.ApiKey;
-        if(CheckBoxApiPassword.IsChecked == true && terminal.ApiPassword != null)
+        if(ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked && terminal.ApiPassword != null)
             transaction.Password = terminal.ApiPassword;
-        if(CheckBoxTerminalId.IsChecked == true)
+        if(ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked)
             transaction.TerminalId = terminal.Id.ToString();
-        if(CheckBoxCommand.IsChecked == true)
-            transaction.Command = (string)ComboBoxCommand.SelectedValue;
+        if(CheckBoxCommandControl.IsChecked)
+            transaction.Command = CheckBoxCommandControl.SelectedValue;
         if(CheckBoxTextBoxControlRefId.IsChecked)
             transaction.RefId = CheckBoxTextBoxControlRefId.TextValue;
         if(CheckBoxTextBoxControlDate.IsChecked)
@@ -252,13 +249,13 @@ public partial class FullRequest: ITransactionControl
 
     public void SetControlsFromTransaction(Transaction transaction)
     {
-        CheckBoxApiKey.IsChecked = transaction.Key != null;
-        CheckBoxApiPassword.IsChecked = transaction.Password != null;
-        CheckBoxTerminalId.IsChecked = transaction.TerminalId != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiKeyChecked = transaction.Key != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsApiPasswordChecked = transaction.Password != null;
+        ApiKeyPasswordTerminalIdCheckboxesControl.IsTerminalIdChecked = transaction.TerminalId != null;
 
-        CheckBoxCommand.IsChecked = transaction.Command != null;
+        CheckBoxCommandControl.IsChecked = transaction.Command != null;
         if (transaction.Command != null)
-            ComboBoxCommand.SelectedValue = transaction.Command;
+            CheckBoxCommandControl.SelectedValue = transaction.Command;
 
         CheckBoxTextBoxControlRefId.IsChecked = transaction.RefId != null;
         if(transaction.RefId != null)

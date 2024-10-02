@@ -12,9 +12,11 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using ControlzEx.Theming;
 using FrankThePOSsim.Helpers;
+using FrankThePOSsim.Models;
 using FrankThePOSsim.observable;
 using FrankThePOSsim.UserControls;
 using Microsoft.Extensions.Options;
+using Environment = FrankThePOSsim.Models.Environment;
 
 namespace FrankThePOSsim;
 
@@ -25,28 +27,55 @@ public partial class MainWindow
     private readonly JsonSerializerOptions _jsonSerializerOptions = new() { WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
     public MainWindow(IOptionsMonitor<Config> configurationMonitor)
     {
-        _= new Winker(3000, 5000);
+        InitializeComponent();
+        InitializeWinker();
+        InitializeConfigurationManager(configurationMonitor);
+        _configuration = configurationMonitor.CurrentValue;
+
+        InitialiseComboBoxes();
+        SetTheme();
+        SetTitle();
+
+        DataGridLogs.ItemsSource = App.LogTransaction;
+    }
+
+    private void SetTitle()
+    {
+        Title = $"Frank the POSsim {ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
+    }
+    private void InitializeConfigurationManager(IOptionsMonitor<Config> configurationMonitor)
+    {
         configurationMonitor.OnChange(config =>
         {
             _configuration = config;
-            Dispatcher.Invoke(() =>
-            {
-                SetTheme();
-                if (_configuration.Environments != null)
-                    ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
-                ComboBoxEnvironment.SelectedIndex = 0;
-                ComboBoxTerminal.ItemsSource =
-                    new TerminalObservable((Environment)ComboBoxEnvironment.SelectedItem);
-                ComboBoxTerminal.SelectedIndex = 0;
-            });
+            Dispatcher.Invoke(ReloadUiAfterConfigChange);
         });
-        _configuration = configurationMonitor.CurrentValue;
+    }
 
-        InitializeComponent();
+    private void ReloadUiAfterConfigChange()
+    {
         SetTheme();
+        if (_configuration.Environments != null) 
+        {
+            ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
+        }
 
-        Title = $"Frank the POSsim {ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}";
+        ComboBoxEnvironment.SelectedIndex = 0;
+        ComboBoxTerminal.ItemsSource = new TerminalObservable((Environment)ComboBoxEnvironment.SelectedItem);
+        ComboBoxTerminal.SelectedIndex = 0;
+    }
 
+    private static void InitializeWinker()
+    {
+        _ = new Winker(3000, 5000);
+    }
+    private void UpdateSetting()
+    {
+        ConfigSaverHelper.SaveToFile(_configuration);
+    }
+
+    private void InitialiseComboBoxes()
+    {
         ComboBoxEnvironment.DisplayMemberPath = "Name";
         if (_configuration.Environments != null)
             ComboBoxEnvironment.ItemsSource = new EnvironmentObservable(_configuration.Environments);
@@ -55,13 +84,6 @@ public partial class MainWindow
         ComboBoxTerminal.DisplayMemberPath = "SerialNumber";
         ComboBoxTerminal.ItemsSource = new TerminalObservable((Environment)ComboBoxEnvironment.SelectedItem);
         ComboBoxTerminal.SelectedIndex = 0;
-
-        DataGridLogs.ItemsSource = App.LogTransaction;
-    }
-
-    private void UpdateSetting()
-    {
-        ConfigSaverHelper.SaveToFile(_configuration);
     }
         
     private void comboBoxEnvironment_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -184,7 +206,7 @@ public partial class MainWindow
         var transactionLogItem = new TransactionLogItem
         {
             Timestamp = now.ToString(CultureInfo.InvariantCulture),
-            Payload = message.Content != null ? message.Content.ReadAsStringAsync().Result : string.Empty,
+            Payload = message.Content != null ? await message.Content.ReadAsStringAsync() : string.Empty,
             Url = message.RequestUri?.ToString(),
             Transaction = transaction,
             Endpoint = uri

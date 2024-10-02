@@ -1,10 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Timers;
 
 namespace FrankThePOSsim;
 
-public class TransactionLogItem: INotifyPropertyChanged
+public class TransactionLogItem: INotifyPropertyChanged, IDisposable
 {
     private readonly Timer _timer;
     private string? _liveTimestamp;
@@ -75,5 +76,11 @@ public class TransactionLogItem: INotifyPropertyChanged
     private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Dispose()
+    {
+        _timer.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

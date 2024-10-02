@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using FrankThePOSsim.Models;
 
 namespace FrankThePOSsim.observable;
 

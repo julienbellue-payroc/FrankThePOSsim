@@ -1,4 +1,6 @@
-﻿namespace FrankThePOSsim;
+﻿using FrankThePOSsim.Models;
+
+namespace FrankThePOSsim;
 
 public interface ITransactionControl
 {

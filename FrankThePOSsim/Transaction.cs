@@ -46,7 +46,7 @@ public class Transaction
     public string ToQueryString()
     {
         var result = new List<string>();
-        var props = this.GetType().GetProperties().Where(p => p.GetValue(this, null) != null);
+        var props = GetType().GetProperties().Where(p => p.GetValue(this, null) != null);
         foreach (var p in props)
         {
             var value = p.GetValue(this, null);

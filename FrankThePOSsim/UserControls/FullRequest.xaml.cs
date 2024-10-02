@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsim.observable;
 using FrankThePOSsim.Helpers;
+using FrankThePOSsim.Models;
+using Environment = FrankThePOSsim.Models.Environment;
 
 namespace FrankThePOSsim.UserControls;
 

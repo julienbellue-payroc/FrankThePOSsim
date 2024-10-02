@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FrankThePOSsim;
+namespace FrankThePOSsim.Models;
 
 internal class Endpoints
 {

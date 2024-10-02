@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Http;
 using System.Windows;
 using FrankThePOSsim.Helpers;
+using FrankThePOSsim.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FrankThePOSsim;
+namespace FrankThePOSsim.Models;
 
 internal static class Commands
 {

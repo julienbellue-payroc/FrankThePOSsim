@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using FrankThePOSsim.Helpers;
+using FrankThePOSsim.Models;
 
 namespace FrankThePOSsim.UserControls;
 

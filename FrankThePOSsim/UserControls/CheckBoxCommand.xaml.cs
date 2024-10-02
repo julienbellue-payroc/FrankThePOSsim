@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using FrankThePOSsim.Models;
 using FrankThePOSsim.observable;
 
 namespace FrankThePOSsim.UserControls;

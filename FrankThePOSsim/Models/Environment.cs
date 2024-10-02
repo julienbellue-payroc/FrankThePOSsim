@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FrankThePOSsim;
+namespace FrankThePOSsim.Models;
 
 public class Environment
 {

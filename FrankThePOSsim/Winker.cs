@@ -4,23 +4,29 @@ using System.Windows;
 
 namespace FrankThePOSsim;
 
-public class Winker //Henry
+public class /*Henry*/ Winker: IDisposable
 {
     private readonly Random _rnd = new();
     private readonly Timer _timer;
     private readonly int _lowerBoundary;
     private readonly int _upperBoundary;
+    private const int CloseInterval = 100;
 
     public Winker(int lowerBoundary, int upperBoundary)
     {
         _lowerBoundary = lowerBoundary;
         _upperBoundary = upperBoundary;
         
-        _timer = new Timer(_rnd.Next(_lowerBoundary, _upperBoundary));
+        _timer = new Timer(GenerateRandomInterval());
             
         _timer.Elapsed += CloseEye;
         _timer.AutoReset = true;
         _timer.Enabled = true;
+    }
+
+    private int GenerateRandomInterval()
+    {
+        return _rnd.Next(_lowerBoundary, _upperBoundary);
     }
 
     private void OpenEye(object? source, ElapsedEventArgs e)
@@ -35,7 +41,13 @@ public class Winker //Henry
     {
         Application.Current.Resources["LeftEye"] = Application.Current.Resources["ClosedLeftEye"];
         _timer.Elapsed -= CloseEye;
-        _timer.Interval = 100;
+        _timer.Interval = CloseInterval;
         _timer.Elapsed += OpenEye;
+    }
+
+    public void Dispose()
+    {
+        GC.SuppressFinalize(this);
+        _timer.Dispose();
     }
 }

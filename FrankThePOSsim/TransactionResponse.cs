@@ -37,7 +37,9 @@ public class TransactionResponse : INotifyPropertyChanged
             throw new NullReferenceException();
         }
         HttpStatus = $"{(int)message.StatusCode} - {message.ReasonPhrase}";
-        FullBody = string.IsNullOrEmpty(overrideFullBody) ? message.Content.ReadAsStringAsync().Result : overrideFullBody;
+        FullBody = string.IsNullOrEmpty(overrideFullBody)
+            ? message.Content.ReadAsStringAsync().GetAwaiter().GetResult()
+            : overrideFullBody;
         Timestamp = DateTime.Now.ToString(CultureInfo.CurrentCulture);
         
         if (string.IsNullOrWhiteSpace(FullBody)) return;

@@ -1,4 +1,4 @@
-﻿namespace FrankThePOSsim;
+﻿namespace FrankThePOSsim.Models;
 
 public class Terminal
 {
